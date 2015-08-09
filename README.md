@@ -1,4 +1,4 @@
-# Art of Neutrality
+# Art of neutrality
 
 Copyright &copy; 2015 Per Jonsson
 
