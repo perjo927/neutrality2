@@ -12,6 +12,7 @@ App = {
 // Presentation collections to create
 ContentAreas =
     [
+        "hero",
         "intro",
         "work",
         "team",

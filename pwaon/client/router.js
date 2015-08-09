@@ -9,6 +9,7 @@ Router.route('/', {
         var noParams = false;
 
         return CreateSubscriptions({
+            "hero": noParams,
             "intro": noParams,
             "work": noParams,
             "team": noParams,
@@ -23,6 +24,7 @@ Router.route('/', {
             data: function () {
                 // TODO: refactor
                 return {
+                    hero: c["hero"].find(),
                     intro: c["intro"].find(),
                     work: c["work"].find(),
                     team: c["team"].find(),
