@@ -1,0 +1,30 @@
+.img-product {
+  height: 14em;
+}
+
+
+.delete-work {
+  cursor: pointer;
+}
+
+.remove-work {
+  cursor: pointer;
+  &:hover {
+    text-shadow: 0 0 5px #e2e2e2;
+  }
+  &:active {
+    text-shadow: 0 0 1px #e2e2e2;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1499px) {
+  .img-product {
+    height: 18em;
+  }
+}
+
+@media only screen and (min-width: 1500px)  {
+  .img-product {
+    height: 22em;
+  }
+}

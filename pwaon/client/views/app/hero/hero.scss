@@ -1,0 +1,21 @@
+// TODO: Sass
+
+
+#ydb-logo {
+  max-height: 80vh;
+  padding: 1em;
+}
+
+.read-more {
+  margin-bottom: 0.5em;
+
+  &:hover {
+    text-shadow: 0 0 50px yellow;
+    font-weight: 900;
+  }
+}
+
+#index-banner {
+  height: 100vh;
+  position: relative;
+}

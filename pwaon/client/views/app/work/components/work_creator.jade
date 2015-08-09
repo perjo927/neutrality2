@@ -1,0 +1,29 @@
+template(name="work_creator")
+    #work-creator.modal.bottom-sheet
+        .modal-content
+            h4 L&auml;gg till produkt
+
+            .row
+                form#work-create-form.col.s12
+                    .row
+                        .input-field.col.s6
+                            input#work-create-title.validate(value='Titel', type='text' pattern=".{3,20}"
+                            maxlength="20" required title="(3 to 20 characters)" name="title")
+                            label.active(for='work-create-title') Titel (HTML)
+                        .input-field.col.s6
+                            input#work-create-img.validate(value='img/flaska.png', type='text' maxlength="100"
+                            pattern=".{4,100}" required title="(4 to 100 characters)" name="img")
+                            label.active(for='work-create-img') Bild (URL)
+                    .row
+                        .input-field.col.s12
+                            textarea#work-create-description.materialize-textarea.validate(value="Beskrivning"
+                            name='text' minlength="10" maxlength="200"
+                            required title="(10 to 200 characters)")
+                            label(for='work-create-description') Beskrivning (HTML) (min. 10 tecken)
+                        .col.s12.m12.center
+                            br
+                            a.modal-action.modal-close.waves-effect.waves-green.btn-flat.left(href="#") Avbryt
+                            button.modal-action.modal-close.waves-effect.waves-green.btn.right(type='submit', name='action') Skicka
+
+        .modal-footer
+            //hr

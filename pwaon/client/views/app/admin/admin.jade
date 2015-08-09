@@ -1,0 +1,21 @@
+template(name="admin")
+    .container
+        .row
+            h1.center.cantarell Admin
+        .row
+            form#admin-login.col.s12
+                .row
+                    .input-field.col.s6.cantarell
+                        i.mdi-communication-email.prefix.black-text
+                        input#email.validate.black-text(type='email' name='email' minlength="5"
+                        maxlength="40" required title="Vänligen ange en giltig e-post-adress")
+                        label.black-text(for='email') Email
+                    .input-field.col.s6.cantarell
+                        i.mdi-content-flag.prefix.black-text
+                        input#password.validate(type='password' name='password' minlength="6"
+                        maxlength="20" pattern=".{6,20}" required title="(6 till 20 tecken)")
+                        label.black-text(for='password') L&ouml;senord
+                    .col.s3.right.cantarell
+                        button.btn.waves-effect.waves-light.black.btn-submit(type='submit', name='action')
+                            | Skicka
+                            i.mdi-content-send.right.white-text

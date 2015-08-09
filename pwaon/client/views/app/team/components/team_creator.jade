@@ -1,0 +1,29 @@
+template(name="team_creator")
+    #team-creator.modal.bottom-sheet
+        .modal-content
+            h4 L&auml;gg till medlem
+
+            .row
+                form#team-create-form.col.s12
+                    .row
+                        .input-field.col.s6
+                            input#team-create-title.validate(value='Titel', type='text' pattern=".{3,20}"
+                            maxlength="20" required title="(3 to 20 characters)" name="title")
+                            label.active(for='team-create-title') Titel (HTML)
+                        .input-field.col.s6
+                            input#team-create-name.validate(value="Namn" type="text" pattern=".{3,30}"
+                            name='name' minlength="3" maxlength="30"
+                            required title="(3 to 30 characters)")
+                            label(for='team-create-name') Namn (HTML)
+                    .row
+                        .input-field.col.s6
+                            input#team-create-img.validate(value='img/avatar1.png', type='text' maxlength="100"
+                            pattern=".{4,100}" required title="(4 to 100 characters)" name="img")
+                            label.active(for='team-create-img') Bild (URL)
+                        .col.s6
+                            br
+                            a.modal-action.modal-close.waves-effect.waves-green.btn-flat.left(href="#") Avbryt
+                            button.modal-action.modal-close.waves-effect.waves-green.btn.right(type='submit', name='action') Skicka
+
+        .modal-footer
+            //hr
