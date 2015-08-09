@@ -1,12 +1,14 @@
 // TODO: Split up + namespace
 
 template(name="navbar")
-    // Navigation
-    .navbar-fixed
-        nav#nav_f.amber(role='navigation')
+    #navbar.navbar-fixed
+        nav.white(role='navigation')
             .container
                 .nav-wrapper
-                    a#logo-container.brand-logo.black-text.cantarell(href='#top') YELLOW DANGER BREWERY
+                    // TODO: href="#navbar" ?
+                    a#logo-container.brand-logo(href='#top')
+                        span.logo-icon(class="icon-yin_yang purple-text")
+                        span.logo-name.purple-text Art of Neutrality
                     a.button-collapse(href='#', data-activates='nav-mobile')
                         i.mdi-navigation-menu
 
@@ -16,7 +18,7 @@ template(name="navbar")
                                 +account
 
                     ul#nav-mobile.side-nav
-                        +nav_items_side
+                       +nav_items_side
                     ul#nav-upper.hide-on-med-and-down.right
                         +nav_container
 
@@ -28,7 +30,7 @@ template(name="account")
     // Dropdown Trigger
     li
         a.dropdown-button(href='#!', data-activates='account-dropdown')
-            i.mdi-action-settings
+            i.mdi-action-settings.purple-text
 
 
 
@@ -53,18 +55,26 @@ template(name="nav_items_side")
 
 //
 template(name="nav_items")
-    li.cantarell
-        a(href='#{{#unless currentUser}}{{intro.link}}{{/unless}}'
-        name="intro" class="{{#if currentUser}}edit{{/if}}")= intro.text
+    li
+        a(href='#{{#unless currentUser}}{{about.link}}{{/unless}}'
+        name="about" class="{{#if currentUser}}edit{{/if}}")= about.text
 
-    li.cantarell
-        a(href='#{{#unless currentUser}}{{work.link}}{{/unless}}'
-        name="work" class="{{#if currentUser}}edit{{/if}}")= work.text
+    li
+        a(href='#{{#unless currentUser}}{{videos.link}}{{/unless}}'
+        name="videos" class="{{#if currentUser}}edit{{/if}}")= videos.text
 
-    li.cantarell
-        a(href='#{{#unless currentUser}}{{team.link}}{{/unless}}'
-        name="team" class="{{#if currentUser}}edit{{/if}}")= team.text
+    li
+        a(href='#{{#unless currentUser}}{{consultation.link}}{{/unless}}'
+        name="consultation" class="{{#if currentUser}}edit{{/if}}")= consultation.text
 
-    li.cantarell
-        a(href='#{{#unless currentUser}}{{contact.link}}{{/unless}}'
-        name="contact" class="{{#if currentUser}}edit{{/if}}")= contact.text
+    li
+        a(href='#{{#unless currentUser}}{{training.link}}{{/unless}}'
+        name="training" class="{{#if currentUser}}edit{{/if}}")= training.text
+
+    li
+        a(href='#{{#unless currentUser}}{{experiences.link}}{{/unless}}'
+        name="experiences" class="{{#if currentUser}}edit{{/if}}")= experiences.text
+
+    li
+        a(href='#{{#unless currentUser}}{{eventss.link}}{{/unless}}'
+        name="eventss" class="{{#if currentUser}}edit{{/if}}")= eventss.text

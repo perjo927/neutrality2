@@ -1,20 +1,29 @@
 var navbar = {
-    intro: {
-        link: "intro",
-        text: "OM"
+    about: {
+        link: "about", //#infotainer
+        text: "About"
     },
-    work: {
-        link: "work",
-        text: "PRODUKTER"
+    videos: {
+        link: "videos", // #second-banner
+        text: "Videos"
     },
-    team: {
-        link: "team",
-        text: "TEAM"
+    consultation: {
+        link: "consultation", // contact
+        text: "Consultation"
     },
-    contact: {
-        link: "contact",
-        text: "KONTAKT"
+    training: {
+        link: "training", // #third-banner
+        text: "Training"
+    },
+    experiences: {
+        link: "experiences", // #experiences
+        text: "Experiences"
+    },
+    eventss: {
+        link: "eventss", // #fourth-banner
+        text: "Events"
     }
+
 };
 
 VM.sections["navbar"] = [

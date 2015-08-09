@@ -4,10 +4,6 @@
   right: -2em;
 }
 
-.cantarell {
-  font-family: 'Cantarell', sans-serif;
-}
-
 #intro, #work, #team {padding-top: 4rem;}
 #work, #team{background: rgb(247, 247, 247);}
 
@@ -15,4 +11,107 @@
 input, textarea {
   border-bottom: 1px solid #fff;
 }
+
+////////////////////////
+
+@import "lib/colors.scss";
+
+
+// TODO: global material variables
+$color_theme: $purple; // TODO: color("deep-purple", "darken-1");
+$color_banner: $white_90;
+$color_sticky: $color_theme;
+$color_sticky_icon: $white_90;
+
+
+p {
+  line-height: 2rem;
+}
+.button-collapse {
+  color: $color_theme;
+}
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: $color_banner;
+
+  .section {
+    width: 100%;
+  }
+}
+
+.sticky-row {
+  margin-bottom: 0;
+}
+
+.sticky-social {
+  background: $color_sticky;
+  opacity: 0.2;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 3rem;
+  font-size: 2rem;
+  //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+    height: 4rem;
+    font-size: 3rem;
+    //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: all 0.5s ease-in-out;
+  }
+}
+.sticky-icon {
+  cursor: pointer;
+  transition: text-shadow 0.3s ease-in-out; //
+
+  &:hover {
+    text-shadow: 0 0 3rem rgba($color_sticky_icon, .9);
+    transition: text-shadow 0.3s ease-in-out; //
+  }
+}
+
+// MEDIA QUERIES
+@media only screen and(min-width : 992px) {
+  .logo-name {
+    display: none;
+  }
+}
+
+@media only screen and(max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+    // TODO:  background: linear-gradient(to right, #673AB7, #9c27b0);
+  }
+}
+
+// TODO:
+//@media #{$medium-and-down} {
+@media only screen and(max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+  .logo-name {
+    display: none;
+  }
+}
+// TODO:
+//@media #{$small-and-down} {
+//  // styles for small screens and down //
+//}
+//@media #{$medium-and-up} {
+//  // styles for medium screens and larger //
+//}
+//@media #{$large-and-up} {
+//  // styles for large screens and up //
+//}
+
+
 
