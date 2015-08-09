@@ -1,4 +1,4 @@
-# YDB
+# Art of Neutrality
 
 Copyright &copy; 2015 Per Jonsson
 
