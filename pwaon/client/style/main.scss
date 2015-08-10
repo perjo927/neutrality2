@@ -75,33 +75,8 @@ p {
 }
 
 // MEDIA QUERIES
-@media only screen and(min-width : 992px) {
-  .logo-name {
-    display: none;
-  }
-}
 
-@media only screen and(max-width : 992px) {
-  .parallax-container .section {
-    position: absolute;
-    top: 40%;
-  }
-  #index-banner .section {
-    top: 10%;
-    // TODO:  background: linear-gradient(to right, #673AB7, #9c27b0);
-  }
-}
 
-// TODO:
-//@media #{$medium-and-down} {
-@media only screen and(max-width : 600px) {
-  #index-banner .section {
-    top: 0;
-  }
-  .logo-name {
-    display: none;
-  }
-}
 // TODO:
 //@media #{$small-and-down} {
 //  // styles for small screens and down //

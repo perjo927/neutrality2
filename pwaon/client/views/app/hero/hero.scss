@@ -1,10 +1,6 @@
 // TODO: Sass
 
 
-#ydb-logo {
-  max-height: 80vh;
-  padding: 1em;
-}
 
 .read-more {
   margin-bottom: 0.5em;
@@ -18,4 +14,27 @@
 #index-banner {
   height: 100vh;
   position: relative;
+}
+
+
+@media only screen and(max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+    // TODO:  background: linear-gradient(to right, #673AB7, #9c27b0);
+  }
+}
+
+// TODO:
+//@media #{$medium-and-down} {
+@media only screen and(max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+  .logo-name {
+    display: none;
+  }
 }

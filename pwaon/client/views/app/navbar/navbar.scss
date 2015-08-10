@@ -17,4 +17,8 @@ nav {
 }
 
 
-
+@media only screen and(min-width : 992px) {
+  .logo-name {
+    display: none;
+  }
+}
