@@ -5,39 +5,83 @@ template(name="hero")
                 #promo-banner.container.section.scrollspy
                     br
                     br
-                    h1.header.center.text-lighten-2.cyan-text= title
+                    +hero_title_container
                     .row.center
-                        h5.header.col.s12.white-text= subTitle
+                        +hero_subtitle_container
                     .row.center
                         br
                         br
-                        p.white-text
-                            +markdown
-                               #{text}
-                            //b= boldText
-                            //br
-                            //| #{normalText}
+                        +hero_text_container
+
                         a#download-button.btn-large.waves-effect.waves-light.lighten-1.modal-trigger.cyan(
-                        href='#oth_modal')= button
+                        href='#hero_modal')= button
                     br
                     br
             .parallax.scrollfire.hero
                 img(src='#{img}', alt='#{alt}')
-                // Hidden modal
+
             with modal
-                +oth_modal
+                +hero_modal
 
 //
-template(name="oth_modal")
+template(name="hero_title_container")
+    if Session 'editingHeroTitle'
+        if currentUser
+            +InputHelper(attribute="title" document=this collection="hero"
+            class='form-control' placeholder=title id=this)
+        else
+            +hero_title
+    else
+        +hero_title
+
+//
+template(name="hero_title")
+    h1.header.center.text-lighten-2.cyan-text(name="title" class="{{#if currentUser}}edit{{/if}}")= title
+
+//
+template(name="hero_subtitle_container")
+    if Session 'editingHeroSubTitle'
+        if currentUser
+            +InputHelper(attribute="subTitle" document=this collection="hero"
+            class='form-control' placeholder=title id=this)
+        else
+            +hero_subtitle
+    else
+        +hero_subtitle
+
+//
+template(name="hero_subtitle")
+    h5.header.col.s12.white-text(name="subTitle" class="{{#if currentUser}}edit{{/if}}")= subTitle
+
+//
+template(name="hero_text_container")
+    if Session 'editingHeroText'
+        if currentUser
+            +InputHelper(attribute="text" document=this collection="hero"
+            class='form-control' placeholder=title id=this)
+        else
+            +hero_text
+    else
+        +hero_text
+
+//
+template(name="hero_text")
+    p.white-text(name="text" class="{{#if currentUser}}edit{{/if}}")
+        +markdown
+            #{text}
+
+// **** //
+//
+template(name="hero_modal")
     // Material Modal Structure
-    #oth_modal.modal.modal-fixed-footer
+    #hero_modal.modal.modal-fixed-footer
         .modal-content.center
             h4.black-text= title
 
             #signup_form
                 h5.black-text= subTitle
                 p.black-text= text
-                +signup
+                +hero_signup
 
             #confirmation.hide
                 .row
@@ -48,8 +92,9 @@ template(name="oth_modal")
 
         .modal-footer
             a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
-                //
-template(name="signup")
+
+//
+template(name="hero_signup")
     row
         form.col.s12
             .row

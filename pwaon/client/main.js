@@ -7,10 +7,10 @@ Session.setDefault("editingIntroTitle", false);
 
 Session.setDefault("editingNavbar", false);
 
-Session.setDefault("editingTeamTitle", false);
-Session.setDefault("editingTeamImg", false);
-Session.setDefault("editingTeamName", false);
-Session.setDefault("editingTeamPosition", false);
+Session.setDefault("editingHeroTitle", false);
+Session.setDefault("editingHeroSubTitle", false);
+Session.setDefault("editingHeroImg", false);
+Session.setDefault("editingHeroText", false);
 
 Session.setDefault("editingWorkTitle", false);
 Session.setDefault("editingWorkImg", false);
