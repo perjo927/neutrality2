@@ -17,8 +17,7 @@ template(name="hero")
                         href='#hero_modal')= button
                     br
                     br
-            .parallax.scrollfire.hero
-                img(src='#{img}', alt='#{alt}')
+            +hero_img_container
 
             with modal
                 +hero_modal
@@ -43,7 +42,7 @@ template(name="hero_subtitle_container")
     if Session 'editingHeroSubTitle'
         if currentUser
             +InputHelper(attribute="subTitle" document=this collection="hero"
-            class='form-control' placeholder=title id=this)
+            class='form-control' placeholder=subTitle id=this)
         else
             +hero_subtitle
     else
@@ -58,7 +57,7 @@ template(name="hero_text_container")
     if Session 'editingHeroText'
         if currentUser
             +InputHelper(attribute="text" document=this collection="hero"
-            class='form-control' placeholder=title id=this)
+            class='form-control' placeholder=text id=this)
         else
             +hero_text
     else
@@ -70,8 +69,25 @@ template(name="hero_text")
         +markdown
             #{text}
 
-// **** //
+
 //
+template(name="hero_img_container")
+    if Session 'editingHeroImg'
+        if currentUser
+            +InputHelper(attribute="img" document=this collection="hero"
+            class='form-control' placeholder=img id=this)
+        else
+            +hero_img
+    else
+        +hero_img
+//
+template(name="hero_img")
+    .parallax.scrollfire.hero(name="img" class="{{#if currentUser}}edit{{/if}}")
+        img(src='#{img}', alt='#{alt}')
+
+
+// **** //
+// TODO: BREAK OUT
 template(name="hero_modal")
     // Material Modal Structure
     #hero_modal.modal.modal-fixed-footer
@@ -85,14 +101,15 @@ template(name="hero_modal")
 
             #confirmation.hide
                 .row
-                i.large.green-text(class="#{icon}")
-                h2.black-text= confirmationTitle
-                p.black-text= confirmationText
-                h5.black-text= confirmationSubTitle
+                    i.large.green-text(class="#{icon}")
+                    h2.black-text= confirmationTitle
+                    p.black-text= confirmationText
+                    h5.black-text= confirmationSubTitle
 
         .modal-footer
             a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
 
+// *** //
 //
 template(name="hero_signup")
     row

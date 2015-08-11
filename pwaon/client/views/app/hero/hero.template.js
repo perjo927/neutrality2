@@ -62,3 +62,9 @@ Template.hero_text_container.events({
     "keypress input": App.Template.Session.toggleAfterKeyPress("editingHeroText"),
     "click .edit": App.Template.Session.setHelper("editingHeroText", "text", App.Template.Jquery.focus)
 });
+
+/**/
+Template.hero_img_container.events({
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingHeroImg"),
+    "click .edit": App.Template.Session.setHelper("editingHeroImg", "img", App.Template.Jquery.focus)
+});
