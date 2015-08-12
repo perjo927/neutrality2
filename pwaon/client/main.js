@@ -12,6 +12,10 @@ Session.setDefault("editingHeroSubTitle", false);
 Session.setDefault("editingHeroImg", false);
 Session.setDefault("editingHeroText", false);
 
+
+Session.setDefault("editingHeroTitle", false);
+Session.setDefault("editingHeroSubTitle", false);
+
 Session.setDefault("editingWorkTitle", false);
 Session.setDefault("editingWorkImg", false);
 Session.setDefault("editingWorkName", false);

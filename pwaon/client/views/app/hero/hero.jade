@@ -19,8 +19,7 @@ template(name="hero")
                     br
             +hero_img_container
 
-            with modal
-                +hero_modal
+            +hero_modal
 
 //
 template(name="hero_title_container")
@@ -86,45 +85,3 @@ template(name="hero_img")
         img(src='#{img}', alt='#{alt}')
 
 
-// **** //
-// TODO: BREAK OUT
-template(name="hero_modal")
-    // Material Modal Structure
-    #hero_modal.modal.modal-fixed-footer
-        .modal-content.center
-            h4.black-text= title
-
-            #signup_form
-                h5.black-text= subTitle
-                p.black-text= text
-                +hero_signup
-
-            #confirmation.hide
-                .row
-                    i.large.green-text(class="#{icon}")
-                    h2.black-text= confirmationTitle
-                    p.black-text= confirmationText
-                    h5.black-text= confirmationSubTitle
-
-        .modal-footer
-            a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
-
-// *** //
-//
-template(name="hero_signup")
-    row
-        form.col.s12
-            .row
-                .input-field.col.s12.purple-text
-                    input#signup_firstname.validate(type='text' name='signup_firstname'
-                    minlength="3" maxlength="30" pattern=".{3,30}"
-                    required title="(3 to 30 characters)")
-                    label(for='signup_firstname') First Name
-                .input-field.col.s12.purple-text
-                    input#signup_email.validate(type='email' name='signup_email'
-                    required title="Please enter a valid email address")
-                    label(for='signup_email') Email
-
-            button.btn.waves-effect.waves-light(type='submit', name='action')
-                | Submit
-                i.mdi-content-send.right

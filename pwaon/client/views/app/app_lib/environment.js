@@ -90,6 +90,17 @@ App.Template.Session.setDesignatedCollectionPropertyFromClickName = function (sV
         callback(this, event, template);
     }
 };
+// TODO: refactor using above
+App.Template.Session.setDesignatedCollectionPropertyFromClickTitle = function (sVariable, attribute, callback) {
+    return function (event, template) {
+        var name = event.target.title;
+        if (!!attribute) {
+            name = name + "." + attribute;
+        }
+        Session.set(sVariable, name);
+        callback(this, event, template);
+    }
+};
 
 App.Template.Session.toggleAfterKeyPress = function (variable) {
     return function (event) {

@@ -1,0 +1,37 @@
+// **** //
+// TODO: BREAK OUT
+template(name="hero_modal")
+   // Material Modal Structure
+   #hero_modal.modal.modal-fixed-footer
+      .modal-content.center
+         +hero_modal_title_container
+         #signup_form
+            h5.black-text= modal.subTitle
+            p.black-text= modal.text
+            +hero_signup
+         #confirmation.hide
+            .row
+               i.large.green-text(class="#{icon}")
+               h2.black-text= modal.confirmationTitle
+               p.black-text= modal.confirmationText
+               h5.black-text= modal.confirmationSubTitle
+      .modal-footer
+         a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+
+//
+template(name="hero_modal_title_container")
+   if Session 'editingHeroModalTitle'
+      if currentUser
+         .black-text
+            +InputHelper(attribute='modal.title' document=this collection="hero"
+            class='form-control' placeholder=modal.title id=this)
+      else
+         +hero_modal_title
+   else
+      +hero_modal_title
+
+//
+template(name="hero_modal_title")
+   h4.black-text(name="modal.title" class="{{#if currentUser}}edit{{/if}}")= modal.title
+
+
