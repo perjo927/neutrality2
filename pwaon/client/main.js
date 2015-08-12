@@ -13,8 +13,13 @@ Session.setDefault("editingHeroImg", false);
 Session.setDefault("editingHeroText", false);
 
 
-Session.setDefault("editingHeroTitle", false);
-Session.setDefault("editingHeroSubTitle", false);
+Session.setDefault("editingHeroModalTitle", false);
+Session.setDefault("editingHeroModalSubTitle", false);
+Session.setDefault("editingHeroModalText", false);
+
+Session.setDefault("editingHeroModalConfirmationTitle", false);
+Session.setDefault("editingHeroModalConfirmationSubTitle", false);
+Session.setDefault("editingHeroModalConfirmationText", false);
 
 Session.setDefault("editingWorkTitle", false);
 Session.setDefault("editingWorkImg", false);
