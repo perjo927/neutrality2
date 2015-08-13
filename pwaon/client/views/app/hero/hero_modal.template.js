@@ -3,6 +3,15 @@ Template.hero_modal_title_container.events({
     "keypress input": App.Template.Session.toggleAfterKeyPress("editingHeroModalTitle"),
     "click .edit": App.Template.Session.setHelper("editingHeroModalTitle", "title", App.Template.Jquery.focus)
 });
+Template.hero_modal_title_container.helpers({
+    'modalDocument': function () {
+        var modal = this.modal;
+        modal._id = this._id;
+        return modal;
+    }
+});
+
+
 
 Template.hero_modal_subtitle_container.events({
     "keypress input": App.Template.Session.toggleAfterKeyPress("editingHeroModalSubTitle"),

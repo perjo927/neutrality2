@@ -1,4 +1,14 @@
 /* */
+App.Utils.getPropertyOrDescendantProperty = function (obj, desc) {
+    if (desc.indexOf(".") === -1) {
+        return obj[desc];
+    }
+    var arr = desc.split(".");
+    while(arr.length && (obj = obj[arr.shift()]));
+    return obj;
+};
+
+/* */
 App.UI.parseForm = function(event) {
     var formContainer = {};
     var form = $(event.target).serializeArray();

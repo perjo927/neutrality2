@@ -6,7 +6,8 @@ App = {
     "collections": {},
     "Plugin": {},
     "Template": {},
-    "UI": {}
+    "UI": {},
+    "Utils": {}
 };
 
 // Presentation collections to create
