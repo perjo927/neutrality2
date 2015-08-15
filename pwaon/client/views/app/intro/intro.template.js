@@ -37,3 +37,4 @@ Template.intro_icon_container.events({
     "keypress input": App.Template.Session.toggleAfterKeyPress("editingIntroIcon")
 });
 
+

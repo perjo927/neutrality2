@@ -7,7 +7,7 @@ var introTitle = {
 var introText1 = {
     icon: "mdi-action-favorite",
     mdText: "<h5> Opening of the heart</h5>" +
-        "<p>" +
+        "<p class='light'>" +
         "A new programme that very few people know about. Paul is transitioning from teaching" +
         " Art of Neutrality techniques to Opening the Heart energy transmissions." +
         "</p>",
@@ -62,13 +62,13 @@ var introText1 = {
 
 var introText2 = {
     icon: "icon-yin_yang",
-    mdText: "<h5>What is The Art of Neutrality &#8482;</h5>" + // TODO: &TM;
-    "<p>" +
+    mdText: "<h5>What is The Art of Neutrality &#8482;</h5>" +
+    "<p class='light'>" +
     "A leading-edge awareness training to shift consciousness by " +
     "applying principles and consciousness tools founded on Chinese and Western holistic practices. " +
     "</p>",
     modal: {
-        title: "The Art of Neutrality (TM) &#8482;",
+        title: "The Art of Neutrality &#8482;",
         text: "The Art of Neutrality&#8482; Program: " +
             "Leading-edge awareness training to shift consciousness by applying principles and consciousness tools founded" +
             " on Chinese and Western holistic practices. One key principle is shifting conscious awareness to " +
@@ -81,7 +81,7 @@ var introText2 = {
 var introText3 = {
     icon: "mdi-action-question-answer",
     mdText: "<h5>Frequently Asked Questions</h5>" +
-    "<p>" +
+    "<p class='light'>" +
     "Please visit this section in order to learn more about Paul Wong, Opening The Heart," +
     " Art Of Neutrality and the Yuen Method" +
     "</p>",
