@@ -14,7 +14,7 @@ template(name="videos_title_container")
         if currentUser
             .black-text
                 +InputHelper(attribute='title' document=this collection="videos"
-                class='form-control' placeholder=title id=this)
+                class='form-control center' placeholder=title id=this)
         else
             +videos_title
     else
@@ -30,7 +30,7 @@ template(name="videos_img_container")
         if currentUser
             .black-text
                 +InputHelper(attribute='img' document=this collection="videos"
-                class='form-control' placeholder=img id=this)
+                class='form-control center' placeholder=img id=this)
         else
             +videos_img
     else
