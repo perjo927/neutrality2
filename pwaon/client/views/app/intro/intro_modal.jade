@@ -1,8 +1,42 @@
 //
 template(name="intro_modal")
-   #intro_modal.modal.modal-fixed-footer
+   .modal.modal-fixed-footer(id="modal-#{_id}")
       .modal-content.center
-         h4.black-text= modal.title
-         p= modal.text
+         +intro_modal_title_container
+         +intro_modal_text_container
       .modal-footer
          a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+
+// TODO: Input-helper med stöd för browser-default textarea
+
+//
+template(name="intro_modal_title_container")
+   if Session 'editingIntroModalTitle' eq=_id
+      if currentUser
+         +InputHelper(attribute="modal.title" document=this collection="intro"
+         class='form-control' placeholder=modal.title id=this)
+      else
+         +intro_modal_title
+   else
+      +intro_modal_title
+
+//
+template(name="intro_modal_title")
+   h4.black-text(name="title" class="{{#if currentUser}}edit{{/if}}")!= modal.title
+
+//
+template(name="intro_modal_text_container")
+   if Session 'editingIntroModalText' eq=_id
+      if currentUser
+         +InputHelper(attribute="modal.text" document=this collection="intro"
+         class='form-control' placeholder=modal.text id=this)
+      else
+         +intro_modal_text
+   else
+      +intro_modal_text
+//
+template(name="intro_modal_text")
+      // TODO: MARKDOWN SUPPORT
+         //+markdown
+            #{text}
+      p(name="text" class="{{#if currentUser}}edit{{/if}}")!= modal.text

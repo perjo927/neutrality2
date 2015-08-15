@@ -17,6 +17,9 @@ Session.setDefault("editingHeroModalTitle", false);
 Session.setDefault("editingHeroModalSubTitle", false);
 Session.setDefault("editingHeroModalText", false);
 
+Session.setDefault("editingIntroModalTitle", false);
+Session.setDefault("editingIntroModalText", false);
+
 Session.setDefault("editingHeroModalConfirmationTitle", false);
 Session.setDefault("editingHeroModalConfirmationSubTitle", false);
 Session.setDefault("editingHeroModalConfirmationText", false);

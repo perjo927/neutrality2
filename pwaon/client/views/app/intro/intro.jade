@@ -9,7 +9,7 @@ template(name="intro")
                each intro
                   if modal
                      +intro_bottom
-      +intro_modal
+                     +intro_modal
 
 //
 template(name="intro_top")
@@ -71,4 +71,4 @@ template(name="intro_text")
    div(name="mdText" class="{{#if currentUser}}edit{{/if}}")
       +markdown
          #{mdText}
-   a.modal-trigger(href="#intro_modal") Read more
+   a.modal-trigger(href="#modal-#{_id}") Read more
