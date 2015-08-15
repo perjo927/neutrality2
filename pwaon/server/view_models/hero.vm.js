@@ -1,6 +1,6 @@
 var hero = {
     title: "Art of Neutrality",
-    subTitle: "Leading Edge to Reduce Physical Pain & Stress - Energy Medicine",
+    subTitle: "Leading Edge Technology to Reduce Physical Pain & Stress - Energy Medicine",
     text: "<b>Receive free Opening the Heart (OTH) energy transmissions</b>" +
         "<br>" +
         "Mastering Health, Emotions, Relationships and Wealth",

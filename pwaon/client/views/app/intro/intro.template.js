@@ -15,6 +15,7 @@ Template.intro.onRendered(function () {
     ];
     Materialize.scrollFire(scrollFireOptions);
 
+    this.$('.modal-trigger').leanModal();
 });
 
 // TODO: Refactor the mess
@@ -35,3 +36,4 @@ Template.intro_icon_container.events({
     "click .edit": App.Template.Session.setHelperById("editingIntroIcon", App.Template.Jquery.focus),
     "keypress input": App.Template.Session.toggleAfterKeyPress("editingIntroIcon")
 });
+

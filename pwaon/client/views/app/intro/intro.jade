@@ -1,5 +1,5 @@
 template(name="intro")
-   #intro.section.scrollspy
+   #about.section.scrollspy
       .container
          .row
             .col.s12
@@ -34,7 +34,7 @@ template(name="intro_title")
 template(name="intro_bottom")
    li
       .col.s12.m4.l4
-         .center.promo.cantarell
+         .center.promo
             +intro_icon_container
             +intro_text_container
 
@@ -70,3 +70,30 @@ template(name="intro_icon")
    // TODO: What to do if editing an icon and it's wrongly spelled. It can be clicked because nothing will show
    if icon
       i.amber-text.intro-icon(class="#{icon} {{#if currentUser}}edit{{/if}}" name="icon")
+
+//
+   template(name="infotainer")
+      with content
+         #infotainer.container.section.scrollspy
+            .section
+               .row
+                  each iconSectionItems
+                     .col.s12.m4
+                        ul.scrollfire(class="#{thisViewName}")
+                           li
+                              h2.center(class="#{color}-text")
+                                 i(class="#{icon}")
+                              h5.center= title
+                              p.light= text
+                              with link
+                                 a.modal-trigger(href="#{link}")= text
+                     with modal
+                        +readmore_modal
+   //
+   template(name="readmore_modal")
+      #readmore_modal.modal.modal-fixed-footer
+         .modal-content.center
+            h4(class="#{color}-text")= title
+            p= text
+         .modal-footer
+            a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
