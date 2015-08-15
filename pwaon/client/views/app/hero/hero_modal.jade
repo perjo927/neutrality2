@@ -10,7 +10,8 @@ template(name="hero_modal")
             +hero_signup
          #confirmation.hide
             .row
-               i.large.green-text(class="#{icon}")
+               br
+               i.large.green-text(class="#{modal.icon}")
                +hero_modal_confirmation_title_container
                +hero_modal_confirmation_subtitle_container
                +hero_modal_confirmation_text_container
@@ -67,6 +68,7 @@ template(name="hero_modal_text_container")
 template(name="hero_modal_text")
    p.black-text(name="modal.text" class="{{#if currentUser}}edit{{/if}}")= modal.text
 
+// *** //
 //
 template(name="hero_modal_confirmation_title_container")
    if Session 'editingHeroModalConfirmationTitle'
@@ -102,7 +104,7 @@ template(name="hero_modal_confirmation_subtitle")
 
 //
 template(name="hero_modal_confirmation_text_container")
-   if Session 'editingHeroConfirmationModalText'
+   if Session 'editingHeroModalConfirmationText'
       if currentUser
          .black-text
             +InputHelper(attribute='modal.confirmationText' document=this collection="hero"

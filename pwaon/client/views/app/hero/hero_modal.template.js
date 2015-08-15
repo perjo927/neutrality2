@@ -25,8 +25,8 @@ Template.hero_modal_text_container.events({
 
 
 Template.hero_modal_confirmation_title_container.events({
-    "keypress input": App.Template.Session.toggleAfterKeyPress("editingHeroConfirmationTitle"),
-    "click .edit": App.Template.Session.setHelper("editingHeroConfirmationTitle", "modal.confirmationTitle", App.Template.Jquery.focus)
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingHeroModalConfirmationTitle"),
+    "click .edit": App.Template.Session.setHelper("editingHeroModalConfirmationTitle", "modal.confirmationTitle", App.Template.Jquery.focus)
 });
 
 
