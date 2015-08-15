@@ -15,6 +15,7 @@ ContentAreas =
     [
         "hero",
         "intro",
+        "videos",
         "work",
         "team",
         "navbar"

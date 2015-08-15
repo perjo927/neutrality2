@@ -11,6 +11,7 @@ Router.route('/', {
         return CreateSubscriptions({
             "hero": noParams,
             "intro": noParams,
+            "videos": noParams,
             "work": noParams,
             "team": noParams,
             "navbar": noParams
@@ -26,6 +27,7 @@ Router.route('/', {
                 return {
                     hero: c["hero"].find(),
                     intro: c["intro"].find(),
+                    videos: c["videos"].find(),
                     work: c["work"].find(),
                     team: c["team"].find(),
                     navbar: c["navbar"].find()

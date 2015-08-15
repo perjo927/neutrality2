@@ -24,6 +24,9 @@ Session.setDefault("editingHeroModalConfirmationTitle", false);
 Session.setDefault("editingHeroModalConfirmationSubTitle", false);
 Session.setDefault("editingHeroModalConfirmationText", false);
 
+Session.setDefault("editingVideosTitle", false);
+Session.setDefault("editingVideosText", false);
+
 Session.setDefault("editingWorkTitle", false);
 Session.setDefault("editingWorkImg", false);
 Session.setDefault("editingWorkName", false);
