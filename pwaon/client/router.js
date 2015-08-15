@@ -12,6 +12,7 @@ Router.route('/', {
             "hero": noParams,
             "intro": noParams,
             "videos": noParams,
+            "consultation": noParams,
             "work": noParams,
             "team": noParams,
             "navbar": noParams
@@ -28,6 +29,7 @@ Router.route('/', {
                     hero: c["hero"].find(),
                     intro: c["intro"].find(),
                     videos: c["videos"].find(),
+                    consultation: c["consultation"].find(),
                     work: c["work"].find(),
                     team: c["team"].find(),
                     navbar: c["navbar"].find()

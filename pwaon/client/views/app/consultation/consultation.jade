@@ -1,0 +1,16 @@
+template(name="consultation")
+    #consultation.container.section.scrollspy
+        each consultation
+            .section
+                .row
+                    .col.s12.center
+                        ul.scrollfire.consultation
+                            li
+                                h2 bajs
+                                h3.pink-text
+                                    a.contact-text.modal-trigger(href="#contact_modal")
+                                        i.black-text(class="#{icon}" href="#contact_modal")
+                                h4.contact-text(href="#contact_modal")= title
+                                p.contact-text.center.light.modal-trigger(href="#contact_modal")= text
+    +contact_modal
+

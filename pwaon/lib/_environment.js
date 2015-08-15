@@ -16,6 +16,7 @@ ContentAreas =
         "hero",
         "intro",
         "videos",
+        "consultation",
         "work",
         "team",
         "navbar"

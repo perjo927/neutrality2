@@ -1,0 +1,28 @@
+//
+template(name="contact_form")
+    .row
+        .col.s6.offset-s3.m2.l3
+            img.circle.responsive-img(src='#{modal.image}', alt='')
+        .col.s9.offset-s1.m8.l6
+            .card-panel.grey.lighten-5.z-depth-1
+                .row.valign-wrapper
+                    span.black-text= modal.text
+        form.col.s12
+            .row
+                .input-field.col.s12.purple-text
+                    input#fullname.validate(type='text' name='fullname' minlength="3" maxlength="30"
+                    pattern=".{3,30}" required title="(3 to 30 characters)")
+                    label(for='fullname') Your Name
+                .input-field.col.s12.purple-text
+                    input#email.validate(type='email' name='email'
+                    required title="Please enter a valid email address")
+                    label(for='email') Your e-mail address
+                .row
+                    .input-field.col.s12
+                        textarea#textmessage.materialize-textarea(
+                        name='textmessage' minlength="20" maxlength="500"
+                        required title="(20 to 500 characters)")
+                        label(for='textmessage') Your message (min. 20 characters, max. 500)
+            button.btn.waves-effect.waves-light(type='submit', name='action')
+                | Send e-mail
+                i.mdi-content-send.right
