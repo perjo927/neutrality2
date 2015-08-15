@@ -2,11 +2,11 @@
 template(name="contact_form")
     .row
         .col.s6.offset-s3.m2.l3
-            img.circle.responsive-img(src='#{modal.image}', alt='#{modal.alt}')
+            +contact_form_image_container
         .col.s9.offset-s1.m8.l6
             .card-panel.grey.lighten-5.z-depth-1
                 .row.valign-wrapper
-                    span.black-text= modal.text
+                    +contact_form_text_container
         form.col.s12
             .row
                 .input-field.col.s12.purple-text
@@ -26,3 +26,34 @@ template(name="contact_form")
             button.btn.waves-effect.waves-light(type='submit', name='action')
                 | Send e-mail
                 i.mdi-content-send.right
+
+//
+template(name="contact_form_image_container")
+    if Session 'editingConsultationModalImg'
+        if currentUser
+            +InputHelper(attribute="modal.image" document=this collection="consultation"
+            class='form-control' placeholder=modal.image id=this)
+        else
+            +contact_form_image
+    else
+        +contact_form_image
+//
+template(name="contact_form_image")
+    img.circle.responsive-img(src='#{modal.image}', alt='#{modal.alt}'
+    name="image" class="{{#if currentUser}}edit{{/if}}")
+
+//
+template(name="contact_form_text_container")
+    if Session 'editingConsultationModalText'
+        if currentUser
+            +InputHelper(attribute="modal.text" document=this collection="consultation"
+            class='form-control' placeholder=modal.text id=this)
+        else
+            +contact_form_text
+    else
+        +contact_form_text
+//
+template(name="contact_form_text")
+    span.black-text(name="text" class="{{#if currentUser}}edit{{/if}}")= modal.text
+
+

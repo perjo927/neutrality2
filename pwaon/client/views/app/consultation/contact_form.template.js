@@ -32,3 +32,17 @@ Template.contact_form.events({
         });
     }
 });
+
+
+Template.contact_form_image_container.events({
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingConsultationModalImg"),
+    "click .edit": App.Template.Session.setHelper("editingConsultationModalImg", "modal.image", App.Template.Jquery.focus)
+});
+
+
+Template.contact_form_text_container.events({
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingConsultationModalText"),
+    "click .edit": App.Template.Session.setHelper("editingConsultationModalText", "modal.text", App.Template.Jquery.focus)
+});
+
+

@@ -9,9 +9,6 @@ Template.contact_form.onValidationDone = function (isValid, errorMessage, formCo
             " has sent you a message from the contact form at artofneutrality.com. ";
 
     var callback = function(err, res) {
-        // TODO: Remove
-        console.info(err, res);
-
         if (!!err) {
             Materialize.toast(errorMessage, 5000, 'pink');
         } else {
