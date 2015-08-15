@@ -12,7 +12,7 @@ Template.hero_modal_title_container.helpers({
 });
 
 
-
+/* */
 Template.hero_modal_subtitle_container.events({
     "keypress input": App.Template.Session.toggleAfterKeyPress("editingHeroModalSubTitle"),
     "click .edit": App.Template.Session.setHelper("editingHeroModalSubTitle", "subTitle", App.Template.Jquery.focus)

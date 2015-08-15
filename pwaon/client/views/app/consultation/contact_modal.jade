@@ -2,7 +2,21 @@
 template(name="contact_modal")
     #contact_modal.modal.modal-fixed-footer
         .modal-content.center
-            h4.black-text= modal.title
+            +contact_modal_title_container
             +contact_form
         .modal-footer
             a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+
+//
+template(name="contact_modal_title_container")
+    if Session 'editingConsultationModalTitle'
+        if currentUser
+            +InputHelper(attribute="modal.title" document=this collection="consultation"
+            class='form-control' placeholder=modal.title id=this)
+        else
+            +contact_modal_title
+    else
+        +contact_modal_title
+//
+template(name="contact_modal_title")
+    h4.black-text(name="title" class="{{#if currentUser}}edit{{/if}}")= modal.title

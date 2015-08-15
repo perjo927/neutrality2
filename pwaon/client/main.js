@@ -5,6 +5,10 @@ Session.setDefault("editingConsultationIcon", false);
 Session.setDefault("editingConsultationText", false);
 Session.setDefault("editingConsultationTitle", false);
 
+Session.setDefault("editingConsultationModalImg", false);
+Session.setDefault("editingConsultationModalText", false);
+Session.setDefault("editingConsultationModalTitle", false);
+
 Session.setDefault("editingIntroIcon", false);
 Session.setDefault("editingIntroText", false);
 Session.setDefault("editingIntroTitle", false);
