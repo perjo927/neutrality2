@@ -1,16 +1,71 @@
 template(name="consultation")
     #consultation.container.section.scrollspy
-        each consultation
-            .section
-                .row
-                    .col.s12.center
-                        ul.scrollfire.consultation
-                            li
-                                h2 bajs
-                                h3.pink-text
-                                    a.contact-text.modal-trigger(href="#contact_modal")
-                                        i.black-text(class="#{icon}" href="#contact_modal")
-                                h4.contact-text(href="#contact_modal")= title
-                                p.contact-text.center.light.modal-trigger(href="#contact_modal")= text
-    +contact_modal
+        .section
+            .row
+                each consultation
+                    ul.consultation.scrollfire
+                        li
+                            .col.s12.center
+                                +consultation_icon_container
+                                +consultation_title_container
+                                +consultation_text_container
+        +contact_modal
+
+//
+template(name="consultation_icon_container")
+    // TODO: Maybe fix editable ...
+    //if Session 'editingConsultationIcon'
+        if currentUser
+            +InputHelper(attribute="icon" document=this collection="consultation"
+            class='form-control' placeholder=icon id=this)
+        else
+            +consultation_icon
+    //else
+        +consultation_icon
+    +consultation_icon
+
+//
+template(name="consultation_icon")
+    // TODO: Maybe fix ...
+    //h3.pink-text(name="icon" class="{{#if currentUser}}edit{{/if}}")
+    h3.pink-text(name="icon")
+        //a.contact-text(href="#contact_modal" class="{{#unless currentUser}}modal-trigger{{/unless}}")
+        a.contact-text.modal-trigger(href="#contact_modal")
+            i(class="#{icon}")
+
+//
+template(name="consultation_title_container")
+    if Session 'editingConsultationTitle'
+        if currentUser
+            +InputHelper(attribute="title" document=this collection="consultation"
+            class='form-control' placeholder=title id=this)
+        else
+            +consultation_title
+    else
+        +consultation_title
+
+//
+template(name="consultation_title")
+    h4.contact-text(href="#contact_modal" name="title"
+    class="{{#unless currentUser}}modal-trigger{{/unless}} {{#if currentUser}}edit{{/if}}"
+    )= title
+
+//
+template(name="consultation_text_container")
+    if Session 'editingConsultationText'
+        if currentUser
+            +InputHelper(attribute="text" document=this collection="consultation"
+            class='form-control' placeholder=text id=this)
+        else
+            +consultation_text
+    else
+        +consultation_text
+
+//
+template(name="consultation_text")
+    p.contact-text.center.light(
+    href="#contact_modal" name="text"
+    class="{{#unless currentUser}}modal-trigger{{/unless}} {{#if currentUser}}edit{{/if}}"
+    )= text
+
 

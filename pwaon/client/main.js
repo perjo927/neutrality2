@@ -1,6 +1,10 @@
 // TODO: ES6
 // TODO: Refactor each content area session helper somehow
 
+Session.setDefault("editingConsultationIcon", false);
+Session.setDefault("editingConsultationText", false);
+Session.setDefault("editingConsultationTitle", false);
+
 Session.setDefault("editingIntroIcon", false);
 Session.setDefault("editingIntroText", false);
 Session.setDefault("editingIntroTitle", false);
