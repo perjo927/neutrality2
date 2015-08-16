@@ -22,6 +22,13 @@ Template.experiences_bottom.onRendered(function () {
 
 Template.experiences_bottom.helpers({
     "overFlowText": function () {
-        return this.text.substring(0,75) + " ... ";
+        return this.text.substring(0,100) + " ... ";
     }
+});
+
+
+/* */
+Template.experiences_name_container.events({
+    "click .edit": App.Template.Session.setHelperById("editingExperiencesName", App.Template.Jquery.focus),
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingExperiencesName")
 });

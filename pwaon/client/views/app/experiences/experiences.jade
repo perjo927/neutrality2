@@ -25,9 +25,7 @@ template(name="experiences_bottom")
                     .col.s12.m6.l4
                         .card.white
                             .card-content.black-text
-                                span.purple-text.i(class="#{icon} medium")
-                                span.black-text
-                                    b= name
+                                +experiences_name_container
                                 p
                                     i= overFlowText
                             .card-action
@@ -36,4 +34,19 @@ template(name="experiences_bottom")
                 +experiences_modal
 
 
+//
+template(name="experiences_name_container")
+    if Session 'editingExperiencesName' eq=_id
+        if currentUser
+            +InputHelper(attribute="name" document=this collection="experiences"
+            class='form-control' placeholder=name id=this)
+        else
+            +experiences_name
+    else
+        +experiences_name
+//
+template(name="experiences_name")
+    span.purple-text.i(class="#{icon} medium")
+    span.black-text
+        b(name="name" class="{{#if currentUser}}edit{{/if}}")= name
 
