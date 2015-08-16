@@ -22,7 +22,8 @@ ContentAreas =
         "eventss",
         "footer",
         "navbar",
-        "sticky"
+        "sticky",
+        "appointment"
     ];
 
 

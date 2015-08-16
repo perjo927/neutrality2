@@ -1,0 +1,21 @@
+.action-button {
+  bottom: 3rem;
+  right: 2rem;
+}
+.action-title {
+  bottom: 0.2rem;
+  right: 2rem;
+}
+
+#appointment_modal {
+  border-top: 0.5rem solid deeppink;
+}
+
+
+
+@media only screen and(max-width : 600px) {
+
+  .fixed-action-btn.action-title {
+    display: none;
+  }
+}

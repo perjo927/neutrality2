@@ -1,0 +1,27 @@
+template(name="appointment")
+    .fixed-action-btn.action-title
+        h6(class="#{actionButton.color}-text")= actionButton.text
+    .fixed-action-btn.action-button
+        a.btn-floating.btn-large(class="#{actionButton.color}")
+            i.large(class="#{actionButton.icon}")
+        ul
+            each appointment
+                li
+                    a.btn-floating.modal-trigger.tooltipped(class="#{color}" href="#{link}"
+                    data-position="left" data-delay="10" data-tooltip="#{title}")
+                        i.large(class="#{icon}")
+                with modal
+                    +appointment_modal
+
+// TODO: Modals, tooltips
+//
+template(name="appointment_modal")
+    #appointment_modal.modal.bottom-sheet
+        .modal-content.center
+            h4(class="#{color}-text")= title
+            p= text
+            p= text
+            p= text
+            p= text
+        .modal-footer
+            a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close

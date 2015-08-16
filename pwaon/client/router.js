@@ -29,7 +29,8 @@ Router.route('/', {
             "experiences": noParams,
             "eventss": noParams,
             "footer": noParams,
-            "sticky": noParams
+            "sticky": noParams,
+            "appointment": noParams
 
         });
     },
@@ -52,7 +53,8 @@ Router.route('/', {
                     training: c["training"].find(),
                     experiences: c["experiences"].find(),
                     eventss: c["eventss"].find(),
-                    sticky: c["sticky"].find()
+                    sticky: c["sticky"].find(),
+                    appointment: c["appointment"].find()
                 }
             }
         });
