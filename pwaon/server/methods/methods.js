@@ -1,4 +1,9 @@
 Meteor.methods({
+    "processEnv": function(environmentVariable) {
+        check(environmentVariable, String);
+        var processEnvVar = process.env[environmentVariable];
+        return processEnvVar;
+    },
     "sendEmail": function (email, message, subject) {
         check([email, message, subject], [String]);
 
@@ -15,5 +20,10 @@ Meteor.methods({
             // headers : Object - dictionary of custom headers
         });
         return isEmailSent;
+    },
+    "validatePin": function(pin) {
+        check(pin, String);
+        var answer = Server.Methods.ParseAssets("pin");
+        return (pin === answer);
     }
 });

@@ -1,12 +1,21 @@
 template(name='home')
-    +hero
-    +intro
-    +videos
-    +consultation
-    +training
-    +experiences
-    +parallax
-    +eventss
-    // sticky
-    // appointment
+    unless isUnlocked
+        .row
+            form#pin.col.s12.center
+                .row
+                    .input-field.col.s6
+                        i.mdi-content-create.prefix
+                        input#pin_code(type='text' name='pin')
+                        label(for='pin_code') PIN Code
+    else
+        +hero
+        +intro
+        +videos
+        +consultation
+        +training
+        +experiences
+        +parallax
+        +eventss
+        +sticky
+        // appointment
 

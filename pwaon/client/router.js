@@ -1,4 +1,15 @@
-// TODO: ES6
+// TODO: Remove after release
+var validatePin = function (params) {
+    if (params.query.hasOwnProperty("pin")) {
+        var pin = params.query.pin;
+
+        Meteor.call("validatePin", pin, function(err,res){
+            if(!!res) {
+                Session.set("isUnlocked", res);
+            }
+        });
+    }
+};
 
 
 Router.route('/', {
@@ -17,11 +28,16 @@ Router.route('/', {
             "training": noParams,
             "experiences": noParams,
             "eventss": noParams,
-            "footer": noParams
+            "footer": noParams,
+            "sticky": noParams
+
         });
     },
     action: function(){
         var router = this;
+        var params = router.params;
+        validatePin(params);
+
         var c = App.collections;
 
         router.render('home', {
@@ -35,7 +51,8 @@ Router.route('/', {
                     consultation: c["consultation"].find(),
                     training: c["training"].find(),
                     experiences: c["experiences"].find(),
-                    eventss: c["eventss"].find()
+                    eventss: c["eventss"].find(),
+                    sticky: c["sticky"].find()
                 }
             }
         });

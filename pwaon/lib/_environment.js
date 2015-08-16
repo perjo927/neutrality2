@@ -21,7 +21,8 @@ ContentAreas =
         "experiences",
         "eventss",
         "footer",
-        "navbar"
+        "navbar",
+        "sticky"
     ];
 
 
