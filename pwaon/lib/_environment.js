@@ -20,7 +20,7 @@ ContentAreas =
         "training",
         "experiences",
         "eventss",
-        // footer
+        "footer",
         "navbar"
     ];
 

@@ -9,6 +9,7 @@ Router.route('/', {
         var noParams = false;
 
         return CreateSubscriptions({
+            "navbar": noParams,
             "hero": noParams,
             "intro": noParams,
             "videos": noParams,
@@ -16,7 +17,7 @@ Router.route('/', {
             "training": noParams,
             "experiences": noParams,
             "eventss": noParams,
-            "navbar": noParams
+            "footer": noParams
         });
     },
     action: function(){
@@ -27,14 +28,14 @@ Router.route('/', {
             data: function () {
                 // TODO: refactor
                 return {
+                    navbar: c["navbar"].find(),
                     hero: c["hero"].find(),
                     intro: c["intro"].find(),
                     videos: c["videos"].find(),
                     consultation: c["consultation"].find(),
                     training: c["training"].find(),
                     experiences: c["experiences"].find(),
-                    eventss: c["eventss"].find(),
-                    navbar: c["navbar"].find()
+                    eventss: c["eventss"].find()
                 }
             }
         });
@@ -47,7 +48,12 @@ Router.route('/', {
             }
         });
         router.render('footer', {
-            to: "footer"
+            to: "footer",
+            data: function () {
+                return {
+                    footer: c["footer"].find()
+                }
+            }
         });
     }
 });
