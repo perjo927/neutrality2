@@ -43,6 +43,8 @@ $color_sticky_icon: $white_90;
 }
 .parallax-container {
   min-height: 380px;
+  max-height: 400px;
+
   line-height: 0;
   height: auto;
   color: $color_banner;

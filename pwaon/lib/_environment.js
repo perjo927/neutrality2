@@ -19,8 +19,8 @@ ContentAreas =
         "consultation",
         "training",
         "experiences",
-        "work",
-        "team",
+        "eventss",
+        // footer
         "navbar"
     ];
 

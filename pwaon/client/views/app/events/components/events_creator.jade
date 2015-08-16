@@ -1,0 +1,27 @@
+template(name="events_creator")
+    #events-creator.modal.bottom-sheet
+        .modal-content
+            h4 Add event
+            .row
+                form#events-create-form.col.s12
+                    .row
+                        .input-field.col.s12
+                            input#events-create-title.validate(value='Title', type='text' pattern=".{3,100}"
+                            maxlength="100" required title="(3 to 100 characters)" name="title")
+                            label.active(for='events-create-title') Title
+                        .input-field.col.s12
+                            input#events-create-location.validate(value='Location', type='text' pattern=".{3,50}"
+                            maxlength="50" required title="(3 to 50 characters)" name="location")
+                            label.active(for='events-create-location') Location
+                        .input-field.col.s12
+                            textarea#events-create-text.materialize-textarea.validate(value="Text"
+                            name='text' minlength="10" maxlength="200"
+                            required title="(10 to 200 characters)")
+                            label(for='events-create-text') Text
+                        .col.s12.m12.center
+                            br
+                            a.modal-action.modal-close.waves-effect.waves-green.btn-flat.left(href="#") Cancel
+                            button.modal-action.modal-close.waves-effect.waves-green.btn.right(
+                            type='submit', name='action') Submit
+        .modal-footer
+            //hr

@@ -50,6 +50,18 @@ Template.experiences_bottom.helpers({
 
 
 /* */
+Template.experiences_main_title_container.events({
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingExperiencesMainTitle"),
+    "click .edit": App.Template.Session.setHelper("editingExperiencesMainTitle", "text", App.Template.Jquery.focus)
+});
+
+/* */
+Template.experiences_icon_container.events({
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingExperiencesIcon"),
+    "click .edit": App.Template.Session.setHelper("editingExperiencesIcon", "text", App.Template.Jquery.focus)
+});
+
+/* */
 Template.experiences_name_container.events({
     "click .edit": App.Template.Session.setHelperById("editingExperiencesName", App.Template.Jquery.focus),
     "keypress input": App.Template.Session.toggleAfterKeyPress("editingExperiencesName")

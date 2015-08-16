@@ -9,7 +9,6 @@ var experienceTitle =
 
 var experience1 =
 {
-    icon: "mdi-social-person",
     name: "JACKQUI H UK",
     title: "OTH-ISness for Improving Relationship with Aging Mother and her Physical Health",
     text: "I am a natural intuitive a spiritual researcher and lay healer. I was researching for some healing " +
@@ -56,7 +55,6 @@ var experience1 =
 
 var experience2 =
 {
-    icon: "mdi-social-person",
     name: "MAUREEN M, CANADA",
     title: "OTH-IsNess for Abuse Trauma from 45 years ago…",
     text: "I was hanging on to an abuse of power issue from 45 years ago. I was an 11 year old who was" +
@@ -76,7 +74,6 @@ var experience2 =
 
 var experience3 =
 {
-    icon: "mdi-social-person",
     name: "PEACE, SUZANNE",
     title: "OTH-IsNess after 4 weeks…",
     text:   "Thanks again for working with me. Some really nice changes have happened in my life just" +
@@ -98,9 +95,7 @@ var experience3 =
 
 };
 
-
-
-
+/**/
 VM.sections["experiences"] = [
     experienceTitle, experience1, experience2, experience3
 ];

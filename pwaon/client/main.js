@@ -9,9 +9,17 @@ Session.setDefault("editingConsultationModalImg", false);
 Session.setDefault("editingConsultationModalText", false);
 Session.setDefault("editingConsultationModalTitle", false);
 
+Session.setDefault("editingEventsIcon", false);
+Session.setDefault("editingEventsLocation", false);
+Session.setDefault("editingEventsTitle", false);
+Session.setDefault("editingEventsMainTitle", false);
+Session.setDefault("editingEventsText", false);
+
+
 Session.setDefault("editingExperiencesIcon", false);
 Session.setDefault("editingExperiencesName", false);
 Session.setDefault("editingExperiencesTitle", false);
+Session.setDefault("editingExperiencesMainTitle", false);
 Session.setDefault("editingExperiencesText", false);
 
 Session.setDefault("editingConsultationModalImg", false);

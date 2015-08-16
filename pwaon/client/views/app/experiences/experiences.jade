@@ -11,9 +11,11 @@ template(name="experiences_top")
     .col.s12.center
         each experiences
             if isTitle
-                i.pink-text(class="#{icon} medium")
-                h4= text
+                +experiences_icon_container
+                +experiences_main_title_container
                 +experiences_action_button
+
+
 
 //
 template(name="experiences_action_button")
@@ -24,6 +26,37 @@ template(name="experiences_action_button")
 template(name="experiences_remove_button")
     if currentUser
         i.remove-item.mdi-action-highlight-remove.left
+
+//
+template(name="experiences_icon_container")
+    if Session 'editingExperiencesIcon'
+        if currentUser
+            +InputHelper(attribute="icon" document=this collection="experiences"
+            class='form-control' placeholder=icon id=this)
+        else
+            +experiences_icon
+    else
+        +experiences_icon
+//
+template(name="experiences_icon")
+    i.pink-text(class="#{icon} medium {{#if currentUser}}edit{{/if}}" name="icon" )
+
+//
+template(name="experiences_main_title_container")
+    if Session 'editingExperiencesMainTitle'
+        if currentUser
+            +InputHelper(attribute="text" document=this collection="experiences"
+            class='form-control' placeholder=text id=this)
+        else
+            +experiences_main_title
+    else
+        +experiences_main_title
+//
+template(name="experiences_main_title")
+    h4(name="text" class="{{#if currentUser}}edit{{/if}}")= text
+
+
+
 
 // *** //
 template(name="experiences_bottom")
@@ -57,7 +90,7 @@ template(name="experiences_name_container")
         +experiences_name
 //
 template(name="experiences_name")
-    span.purple-text.i(class="#{icon} medium")
+    span.purple-text.i.mdi-social-person.medium
     span.black-text
         b(name="name" class="{{#if currentUser}}edit{{/if}}")= name
 
