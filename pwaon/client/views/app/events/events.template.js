@@ -23,7 +23,7 @@ Template.eventss.events({
             Materialize.toast(
                 '<span>Remove event? &nbsp;</span>' +
                 '<span class="btn-flat pink-text" class="delete-item" ' +
-                'onclick= App.collections.events.remove(\'' +
+                'onclick= App.collections.eventss.remove(\'' +
                 this._id +
                 '\')>' +
                 ' REMOVE ' +
@@ -50,12 +50,24 @@ Template.events_bottom.helpers({
 
 
 /* */
-Template.events_main_title_container.events({
-    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsMainTitle"),
-    "click .edit": App.Template.Session.setHelper("editingEventsMainTitle", "text", App.Template.Jquery.focus)
+Template.events_icon_container.events({
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsIcon"),
+    "click .edit": App.Template.Session.setHelper("editingEventsIcon", "icon", App.Template.Jquery.focus)
 });
 
 
+/* */
+Template.events_main_title_container.events({
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsMainTitle"),
+    "click .edit": App.Template.Session.setHelper("editingEventsMainTitle", "title", App.Template.Jquery.focus)
+});
+
+
+/* */
+Template.events_title_container.events({
+    "click .edit": App.Template.Session.setHelperById("editingEventsTitle", App.Template.Jquery.focus),
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsTitle")
+});
 
 /* */
 Template.events_location_container.events({

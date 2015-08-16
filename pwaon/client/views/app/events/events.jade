@@ -33,6 +33,7 @@ template(name="events_icon_container")
             +events_icon
     else
         +events_icon
+
 //
 template(name="events_icon")
     i.pink-text(class="#{icon} medium {{#if currentUser}}edit{{/if}}" name="icon" )
@@ -49,7 +50,7 @@ template(name="events_main_title_container")
         +events_main_title
 //
 template(name="events_main_title")
-    h4(name="title" class="{{#if currentUser}}edit{{/if}}")= title
+    h4.pink-text(name="title" class="{{#if currentUser}}edit{{/if}}")= title
 
 // *** //
 template(name="events_bottom")
@@ -61,13 +62,36 @@ template(name="events_bottom")
                         .card.white
                             +events_remove_button
                             .card-content.black-text
+                                +events_title_container
+                                br
                                 +events_location_container
+                                br
                                 p
                                     i= overFlowText
                             .card-action
                                 a.modal-trigger.cyan-text(href="#modal-#{_id}")
                                     | READ MORE
                 +events_modal
+
+
+//
+template(name="events_title_container")
+    if Session 'editingEventsTitle' eq=_id
+        if currentUser
+            +InputHelper(attribute="title" document=this collection="eventss"
+            class='form-control' placeholder=title id=this)
+        else
+            +events_title
+    else
+        +events_title
+
+//
+template(name="events_title")
+    span.purple-text.mdi-action-event.medium
+    span.black-text
+        b(name="title" class="{{#if currentUser}}edit{{/if}}")= title
+
+
 //
 template(name="events_location_container")
     if Session 'editingEventsLocation' eq=_id
@@ -78,8 +102,9 @@ template(name="events_location_container")
             +events_location
     else
         +events_location
+
 //
 template(name="events_location")
-    span.purple-text.i.mdi-action-todo.medium
-    span.black-text
-        b(name="location" class="{{#if currentUser}}edit{{/if}}")= location
+    b.black-text.light Location: &nbsp;
+    span(name="location" class="{{#if currentUser}}edit{{/if}}")= location
+

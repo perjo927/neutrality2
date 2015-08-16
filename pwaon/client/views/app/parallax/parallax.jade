@@ -1,0 +1,7 @@
+//
+template(name="parallax")
+    .parallax-container.valign-wrapper
+        each eventss
+            unless location
+                .parallax.scrollfire.parallax
+                    img(src='#{img}', alt='#{alt}')

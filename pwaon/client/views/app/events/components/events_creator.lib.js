@@ -8,6 +8,6 @@ EventsCreator.createNewEvent = function (event) {
 EventsCreator.insertNewEvent = function (newEvents) {
     var collection = App.collections["eventss"];
     App.Collection.insert(collection, newEvents, function (id) {
-        console.debug(id);
+        //console.debug(id);
     });
 };
