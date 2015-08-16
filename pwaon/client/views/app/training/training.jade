@@ -1,0 +1,9 @@
+template(name="training")
+    each training
+        .parallax-container.valign-wrapper
+            .section.no-pad-bot
+                #training.container.section.scrollspy
+                    .row.center
+                        h5.header.cyan.col.s12= title
+            .parallax.scrollfire.training
+                img(src='#{img}', alt='#{alt}')
