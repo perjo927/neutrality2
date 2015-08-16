@@ -11,8 +11,6 @@ Template.hero.onRendered(function () {
 });
 
 
-
-
 // TODO: Refactor the mess
 /**/
 Template.hero_title_container.events({

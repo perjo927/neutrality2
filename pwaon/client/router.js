@@ -14,6 +14,7 @@ Router.route('/', {
             "videos": noParams,
             "consultation": noParams,
             "training": noParams,
+            "experiences": noParams,
             "work": noParams,
             "team": noParams,
             "navbar": noParams
@@ -32,6 +33,7 @@ Router.route('/', {
                     videos: c["videos"].find(),
                     consultation: c["consultation"].find(),
                     training: c["training"].find(),
+                    experiences: c["experiences"].find(),
                     work: c["work"].find(),
                     team: c["team"].find(),
                     navbar: c["navbar"].find()

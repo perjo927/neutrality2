@@ -18,6 +18,7 @@ ContentAreas =
         "videos",
         "consultation",
         "training",
+        "experiences",
         "work",
         "team",
         "navbar"

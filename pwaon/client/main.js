@@ -32,6 +32,8 @@ Session.setDefault("editingHeroModalConfirmationTitle", false);
 Session.setDefault("editingHeroModalConfirmationSubTitle", false);
 Session.setDefault("editingHeroModalConfirmationText", false);
 
+Session.setDefault("editingTrainingTitle", false);
+
 Session.setDefault("editingVideosTitle", false);
 Session.setDefault("editingVideosText", false);
 

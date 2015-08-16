@@ -4,6 +4,21 @@ template(name="training")
             .section.no-pad-bot
                 #training.container.section.scrollspy
                     .row.center
-                        h5.header.cyan.col.s12= title
+                        +training_title_container
             .parallax.scrollfire.training
                 img(src='#{img}', alt='#{alt}')
+
+//
+template(name="training_title_container")
+    if Session 'editingTrainingTitle'
+        if currentUser
+            .black
+                +InputHelper(attribute="title" document=this collection="training"
+                class='form-control center' placeholder=title id=this)
+        else
+            +training_title
+    else
+        +training_title
+//
+template(name="training_title")
+    h5.header.cyan.col.s12(name="title" class="{{#if currentUser}}edit{{/if}}")= title
