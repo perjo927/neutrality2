@@ -10,12 +10,34 @@ Template.experiences.onRendered(function () {
         {
             selector: fireSelector,
             offset: -1,
-            callback: "Template.intro.scrollFireContent()"
+            callback: "Template.experiences.scrollFireContent()"
         }
     ];
     Materialize.scrollFire(scrollFireOptions);
 });
 
+//
+Template.experiences.events({
+    "click .remove-item": function () {
+        if (Meteor.userId()) {
+            Materialize.toast(
+                '<span>Remove testimonial? &nbsp;</span>' +
+                '<span class="btn-flat pink-text" class="delete-item" ' +
+                'onclick= App.collections.experiences.remove(\'' +
+                this._id +
+                '\')>' +
+                ' REMOVE ' +
+                '</span>', 5000
+            );
+        }
+    }
+});
+
+Template.experiences_top.onRendered(function () {
+    this.$('.modal-trigger').leanModal();
+});
+
+/* */
 Template.experiences_bottom.onRendered(function () {
     this.$('.modal-trigger').leanModal();
 });
