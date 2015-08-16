@@ -1,8 +1,36 @@
 //
 template(name="experiences_modal")
-    div(id="experiences_modal-").modal.modal-fixed-footer
+    .modal.modal-fixed-footer(id="modal-#{_id}")
         .modal-content.center
-            h4.black-text= title
-            p= text
+            +experiences_modal_title_container
+            +experiences_modal_text_container
         .modal-footer
             a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+            
+            
+//
+template(name="experiences_modal_title_container")
+    if Session 'editingExperiencesTitle' eq=_id
+        if currentUser
+            +InputHelper(attribute="title" document=this collection="experiences"
+            class='form-control' placeholder=title id=this)
+        else
+            +experiences_modal_title
+    else
+        +experiences_modal_title
+//
+template(name="experiences_modal_title")
+    h4.black-text(name="title" class="{{#if currentUser}}edit{{/if}}")!= title
+//
+template(name="experiences_modal_text_container")
+    if Session 'editingExperiencesText' eq=_id
+        if currentUser
+            +InputHelper(attribute="text" document=this collection="experiences"
+            class='form-control' placeholder=text id=this)
+        else
+            +experiences_modal_text
+    else
+        +experiences_modal_text
+//
+template(name="experiences_modal_text")
+    p(name="text" class="{{#if currentUser}}edit{{/if}}")!= text

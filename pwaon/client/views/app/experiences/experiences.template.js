@@ -14,7 +14,9 @@ Template.experiences.onRendered(function () {
         }
     ];
     Materialize.scrollFire(scrollFireOptions);
+});
 
+Template.experiences_bottom.onRendered(function () {
     this.$('.modal-trigger').leanModal();
 });
 
