@@ -1,8 +1,6 @@
 var eventsTitle = {
     icon: "mdi-action-event",
-    title: "Events",
-    img: "/img/backgrounds/p3.jpg",
-    alt: "Events"
+    title: "Events"
 };
 
 var event1 =

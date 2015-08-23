@@ -77,6 +77,8 @@ Session.setDefault("editingHeroModalConfirmationTitle", false);
 Session.setDefault("editingHeroModalConfirmationSubTitle", false);
 Session.setDefault("editingHeroModalConfirmationText", false);
 
+Session.setDefault("editingParallaxTitle", false);
+
 Session.setDefault("editingTrainingTitle", false);
 
 Session.setDefault("editingVideosTitle", false);

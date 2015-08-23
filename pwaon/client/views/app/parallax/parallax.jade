@@ -1,7 +1,23 @@
 //
 template(name="parallax")
     .parallax-container.valign-wrapper
-        each eventss
-            unless location
-                .parallax.scrollfire.parallax
-                    img(src='#{img}', alt='#{alt}')
+        each parallax
+            +parallax_title_container
+            .parallax.scrollfire.parallax
+                img(src='#{img}')
+
+//
+template(name="parallax_title_container")
+    if Session 'editingParallaxTitle'
+        if currentUser
+            .black.center.parallax-title
+                +InputHelper(attribute="title" document=this collection="parallax"
+                class='form-control' placeholder=title id=this)
+        else
+            +parallax_title
+    else
+        +parallax_title
+
+//
+template(name="parallax_title")
+    h2.parallax-title.grey-text(name="title" class="{{#if currentUser}}edit{{/if}}")= title

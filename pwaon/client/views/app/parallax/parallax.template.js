@@ -15,3 +15,9 @@ Template.parallax.onRendered(function () {
     ];
     Materialize.scrollFire(options);
 });
+
+
+Template.parallax.events({
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingParallaxTitle"),
+    "click .edit": App.Template.Session.setHelper("editingParallaxTitle", "title", App.Template.Jquery.focus)
+});

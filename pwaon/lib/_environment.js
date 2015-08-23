@@ -19,6 +19,7 @@ ContentAreas =
         "consultation",
         "training",
         "experiences",
+        "parallax",
         "eventss",
         "footer",
         "navbar",

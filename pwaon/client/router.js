@@ -27,6 +27,7 @@ Router.route('/', {
             "consultation": noParams,
             "training": noParams,
             "experiences": noParams,
+            "parallax": noParams,
             "eventss": noParams,
             "footer": noParams,
             "sticky": noParams,
@@ -52,6 +53,7 @@ Router.route('/', {
                     consultation: c["consultation"].find(),
                     training: c["training"].find(),
                     experiences: c["experiences"].find(),
+                    parallax: c["parallax"].find(),
                     eventss: c["eventss"].find(),
                     sticky: c["sticky"].find(),
                     appointment: c["appointment"].find()

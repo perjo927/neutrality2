@@ -46,7 +46,6 @@ Template.experiences.events({
     'click .less-testimonials' : function (event, template) {
         Session.set("experiencesLength", 4);
         Session.set("experiencesThresholdReached", false);
-
     }
 });
 
