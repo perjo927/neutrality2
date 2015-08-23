@@ -1,26 +1,25 @@
 var navbar = {
     about: {
-        link: "about", //#infotainer
+        link: "about",
         text: "About"
     },
     videos: {
-        link: "videos", // #second-banner
+        link: "videos",
         text: "Videos"
     },
     consultation: {
-        link: "consultation", // contact
+        link: "consultation",
         text: "Consultation"
     },
     training: {
-        link: "training", // #third-banner
         text: "Training"
     },
     experiences: {
-        link: "experiences", // #experiences
+        link: "experiences",
         text: "Experiences"
     },
     eventss: {
-        link: "eventss", // #fourth-banner
+        link: "eventss",
         text: "Events"
     }
 

@@ -38,6 +38,8 @@ Router.route('/', {
     action: function(){
         var router = this;
         var params = router.params;
+
+        // TODO: Remove in release
         validatePin(params);
 
         var c = App.collections;

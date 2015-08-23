@@ -2,7 +2,34 @@
 template(name="footer_modal")
     #footer-modal.modal.modal-fixed-footer
         .modal-content.center
-            h4= readmore.title
-            p.black-text= readmore.text
+            +footer_modal_title_container
+            +footer_modal_text_container
         .modal-footer
             a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+
+//
+template(name="footer_modal_title_container")
+    if Session 'editingFooterTitle'
+        if currentUser
+            +InputHelper(attribute="title" document=this collection="footer"
+            class='form-control' placeholder=title id=this)
+        else
+            +footer_modal_title
+    else
+        +footer_modal_title
+//
+template(name="footer_modal_title")
+    h5(name="title" class="{{#if currentUser}}edit{{/if}}")= title
+//
+template(name="footer_modal_text_container")
+    if Session 'editingFooterText'
+        if currentUser
+            +InputHelper(attribute="text" document=this collection="footer"
+            class='form-control' placeholder=text id=this)
+        else
+            +footer_modal_text
+    else
+        +footer_modal_text
+//
+template(name="footer_modal_text")
+    p.text-lighten-4(name="text" class="{{#if currentUser}}edit{{/if}}")= text

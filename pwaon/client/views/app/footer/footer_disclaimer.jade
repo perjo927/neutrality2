@@ -2,7 +2,37 @@
 template(name="footer_disclaimer")
     #footer-disclaimer.modal.modal-fixed-footer
         .modal-content.center
-            h4.grey-text= disclaimer.title
-            p.grey-text= disclaimer.text
+            +footer_disclaimer_title_container
+            +footer_disclaimer_text_container
         .modal-footer
             a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+
+//
+template(name="footer_disclaimer_title_container")
+    if Session 'editingFooterDisclaimerTitle'
+        if currentUser
+            +InputHelper(attribute="disclaimer.title" document=this collection="footer"
+            class='form-control' placeholder=disclaimer.title id=this)
+        else
+            +footer_disclaimer_title
+    else
+        +footer_disclaimer_title
+
+//
+template(name="footer_disclaimer_title")
+    h4.grey-text(name="disclaimer.title" class="{{#if currentUser}}edit{{/if}}")= disclaimer.title
+
+//
+template(name="footer_disclaimer_text_container")
+    if Session 'editingFooterDisclaimerText'
+        if currentUser
+            +InputHelper(attribute="disclaimer.text" document=this collection="footer"
+            class='form-control' placeholder=disclaimer.text id=this)
+        else
+            +footer_disclaimer_text
+    else
+        +footer_disclaimer_text
+
+//
+template(name="footer_disclaimer_text")
+    p.grey-text(name="disclaimer.text" class="{{#if currentUser}}edit{{/if}}")= disclaimer.text

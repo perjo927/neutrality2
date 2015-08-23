@@ -46,12 +46,16 @@ Session.setDefault("editingEventsTitle", false);
 Session.setDefault("editingEventsMainTitle", false);
 Session.setDefault("editingEventsText", false);
 
-
 Session.setDefault("editingExperiencesIcon", false);
 Session.setDefault("editingExperiencesName", false);
 Session.setDefault("editingExperiencesTitle", false);
 Session.setDefault("editingExperiencesMainTitle", false);
 Session.setDefault("editingExperiencesText", false);
+
+Session.setDefault("editingFooterTitle", false);
+Session.setDefault("editingFooterText", false);
+Session.setDefault("editingFooterDisclaimerTitle", false);
+Session.setDefault("editingFooterDisclaimerText", false);
 
 Session.setDefault("editingConsultationModalImg", false);
 Session.setDefault("editingConsultationModalText", false);

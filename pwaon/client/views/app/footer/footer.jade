@@ -5,7 +5,6 @@ template(name="footer")
                 .row
                     each footer
                         +footer_top
-                        //+footer_links
                         +footer_bottom
                         +footer_modal
                         +footer_disclaimer
@@ -14,12 +13,43 @@ template(name="footer_top")
     .col.s3
         img.img-footer.circle.responsive-img(src='#{img}', alt='#{alt}')
     .col.s9
-        h5= title
-        p.text-lighten-4= text
+        +footer_title_container
+        +footer_text_container
         a.waves-effect.waves-light.btn.modal-trigger(href="#footer-modal") READ MORE
 
 
 //
+template(name="footer_title_container")
+    if Session 'editingFooterTitle'
+        if currentUser
+            +InputHelper(attribute="title" document=this collection="footer"
+            class='form-control' placeholder=title id=this)
+        else
+            +footer_title
+    else
+        +footer_title
+
+//
+template(name="footer_title")
+    h5(name="title" class="{{#if currentUser}}edit{{/if}}")= title
+
+//
+template(name="footer_text_container")
+    if Session 'editingFooterText'
+        if currentUser
+            +InputHelper(attribute="text" document=this collection="footer"
+            class='form-control' placeholder=text id=this)
+        else
+            +footer_text
+    else
+        +footer_text
+
+//
+template(name="footer_text")
+    p.text-lighten-4(name="text" class="{{#if currentUser}}edit{{/if}}")= overFlowText
+
+
+// *** //
 template(name="footer_bottom")
     .col.s12
         .footer-copyright.cyan.darken-2
