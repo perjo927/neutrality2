@@ -1,31 +1,28 @@
-var thisViewName = "sticky";
 
 //
-Template[thisViewName].onRendered(function () {
+Template.sticky.onRendered(function () {
     this.$('.modal-trigger').leanModal();
 });
 
 
 //
-Template[thisViewName].events({
+Template.sticky.events({
     "click .sticky-icon": function (ev, instance) {
         Session.set("externalLink", this);
     }
 });
 
 
-/* TODO: Better solution */
-var subViewName1 = "linked_content";
-
-Template[subViewName1].helpers({
+/* */
+Template.linked_content.helpers({
     "externalLink": function () {
         var el = Session.get("externalLink");
         return el;
     }
 });
 
-/**/
-Template[subViewName1].events({
+/* */
+Template.linked_content.events({
     "click #open-link": function (ev, instance) {
         ev.preventDefault();
         console.info(this.link);
@@ -35,9 +32,7 @@ Template[subViewName1].events({
 
 
 /* */
-var subViewName2 = "Facebook";
-
-Template[subViewName2 ].onRendered(function () {
+Template.Facebook.onRendered(function () {
     // Init Facebook plugin
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
