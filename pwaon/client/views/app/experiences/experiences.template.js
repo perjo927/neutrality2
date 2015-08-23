@@ -31,6 +31,7 @@ Template.experiences.events({
             );
         }
     },
+    // TODO: Refactor to generic
     'click .more-testimonials' : function (event, template) {
         var arrayLength = template.data.experiences.count();
         var experiencesLength = Session.get("experiencesLength");
@@ -50,13 +51,6 @@ Template.experiences.events({
 });
 
 
-Template.experiences_bottom.helpers({
-    "experiencesLimited": function () {
-        var experiences = this.experiences.fetch();
-        var experiencesLength = Session.get("experiencesLength");
-        return experiences.slice(0,experiencesLength);
-    }
-});
 
 /* */
 Template.experiences_top.onRendered(function () {
@@ -68,11 +62,15 @@ Template.experiences_bottom.onRendered(function () {
     this.$('.modal-trigger').leanModal();
 });
 
-
-
 Template.experiences_bottom.helpers({
     "overFlowText": function () {
         return this.text.substring(0,100) + " ... ";
+    },
+    // TODO: refactor to generic
+    "experiencesLimited": function () {
+        var experiences = this.experiences.fetch();
+        var experiencesLength = Session.get("experiencesLength");
+        return experiences.slice(0,experiencesLength);
     }
 });
 

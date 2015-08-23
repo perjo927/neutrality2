@@ -4,7 +4,20 @@ template(name="eventss")
             .row
                 +events_top
                 +events_bottom
+            .row
+                .center.pointer
+                    if Session 'eventsThresholdReached'
+                        .less-events
+                            h2.pink-text
+                                i.mdi-navigation-expand-less
+                            h6.expand.pink-text Collapse Events
+                    else
+                        .more-events
+                            h2.pink-text
+                                i.mdi-navigation-expand-more
+                            h6.expand.pink-text Get More Events
     +events_creator
+
 //
 template(name="events_top")
     .col.s12.center
@@ -55,7 +68,7 @@ template(name="events_main_title")
 // *** //
 template(name="events_bottom")
     ul.scrollfire.events
-        each eventss
+        each eventsLimited
             if location
                 li
                     .col.s12.m6.l4

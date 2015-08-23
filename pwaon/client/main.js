@@ -26,6 +26,9 @@ UI.body.rendered = function() {
 Session.setDefault("experiencesLength", 3+1); // +1 For the title, a bit messy yes
 Session.setDefault("experiencesThresholdReached", false);
 
+Session.setDefault("eventsLength", 3+1); // +1 For the title
+Session.setDefault("eventsThresholdReached", false);
+
 
 // TODO: Refactor each content area session helper somehow
 

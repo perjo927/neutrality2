@@ -30,9 +30,29 @@ Template.eventss.events({
                 '</span>', 5000
             );
         }
+    },
+    // TODO: Refactor to generic
+    'click .more-events' : function (event, template) {
+        var arrayLength = template.data.eventss.count();
+        var eventsLength = Session.get("eventsLength");
+        if (eventsLength < arrayLength) {
+            eventsLength += 3;
+
+            Session.set("eventsLength", eventsLength);
+            if (eventsLength >=  arrayLength) {
+                Session.set("eventsThresholdReached", true);
+            }
+        }
+    },
+    'click .less-events' : function (event, template) {
+        Session.set("eventsLength", 4);
+        Session.set("eventsThresholdReached", false);
     }
 });
 
+
+
+/* */
 Template.events_top.onRendered(function () {
     this.$('.modal-trigger').leanModal();
 });
@@ -45,6 +65,12 @@ Template.events_bottom.onRendered(function () {
 Template.events_bottom.helpers({
     "overFlowText": function () {
         return this.text.substring(0,100) + " ... ";
+    },
+    "eventsLimited": function () {
+        // TODO: refactor to generic
+        var eventss = this.eventss.fetch();
+        var eventsLength = Session.get("eventsLength");
+        return eventss.slice(0, eventsLength);
     }
 });
 
