@@ -21,3 +21,7 @@ ContentAreas.forEach(function (key) {
     App.collections[key].allow(userAccess());
 });
 
+
+Object.keys(Models).forEach(function (key) {
+    App.collections[key].allow(userAccess());
+});

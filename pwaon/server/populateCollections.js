@@ -1,18 +1,23 @@
-var ac = App.collections;
+var insertCollections = function (collections, container) {
+    for (var collection in collections) {
+        if (collections.hasOwnProperty(collection)) {
+            var viewModel = container[collection];
+            if (!!viewModel) {
+                var c = collections[collection];
 
-for (var collection in ac) {
-    if (ac.hasOwnProperty(collection)) {
-        var viewModel = VM.sections[collection];
-        if (!!viewModel) {
-            var c = ac[collection];
+                if (c.find().count() === 0) {
+                    viewModel.forEach(function (element, index, array) {
+                        c.insert(element);
+                    });
 
-            if (c.find().count() === 0) {
-                viewModel.forEach(function (element, index, array) {
-                    c.insert(element);
-                });
-
+                }
             }
         }
     }
-}
+};
+
+var ac = App.collections;
+
+insertCollections(ac, VM.sections);
+insertCollections(ac, Models);
 

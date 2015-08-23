@@ -31,3 +31,9 @@ ContentAreas =
 VM = {
     "sections": {}
 };
+
+Models = {
+    "consultationForms": [],
+    "consultationSteps": [],
+    "workshops": []
+};

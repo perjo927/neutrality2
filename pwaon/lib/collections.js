@@ -4,6 +4,10 @@ ContentAreas.forEach(function (area) {
     App.collections[area] = new Mongo.Collection(area);
 });
 
+Object.keys(Models).forEach(function (model) {
+    App.collections[model] = new Mongo.Collection(model);
+});
+
 
 /* LIB */
 App.Collection.insert = function (collection, document, callback) {

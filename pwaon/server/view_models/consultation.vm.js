@@ -1,8 +1,8 @@
 
 var consultationItems = {
     icon: "mdi-content-send",
-    title: "Consultation",
-    text: "Click here to contact Paul for consultation",
+    title: "Contact",
+    text: "Click here in order to contact Paul",
     modal: {
         title: "Contact Paul",
         image: "img/paul.jpg",

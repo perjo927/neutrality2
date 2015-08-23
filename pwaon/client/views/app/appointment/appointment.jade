@@ -1,27 +1,81 @@
 template(name="appointment")
     .fixed-action-btn.action-title
-        h6(class="#{actionButton.color}-text")= actionButton.text
+        h6.appointment-button.pointer.pink-text.modal-trigger(href="#appointment_modal")
+            | MAKE AN APPOINTMENT
     .fixed-action-btn.action-button
-        a.btn-floating.btn-large(class="#{actionButton.color}")
-            i.large(class="#{actionButton.icon}")
-        ul
-            each appointment
-                li
-                    a.btn-floating.modal-trigger.tooltipped(class="#{color}" href="#{link}"
-                    data-position="left" data-delay="10" data-tooltip="#{title}")
-                        i.large(class="#{icon}")
-                with modal
-                    +appointment_modal
+        a.btn-floating.btn-large.pink.modal-trigger(href="#appointment_modal")
+            i.large.mdi-action-alarm
+    +appointment_modal
 
-// TODO: Modals, tooltips
+
+// TODO: BREAK OUT ?
 //
 template(name="appointment_modal")
     #appointment_modal.modal.bottom-sheet
-        .modal-content.center
-            h4(class="#{color}-text")= title
-            p= text
-            p= text
-            p= text
-            p= text
+        .modal-content
+            .row
+                .center
+                    each appointment
+                        +appointment_modal_title_container
+                        +appointment_modal_text_container
+
+
+            .row
+                .col.s12.m6
+                    ul.collection.with-header
+                        li.collection-header
+                            h4 Consultation Forms
+                        each consultationForms
+                            li.collection-item
+                                a(href="#{link}" target="_blank")!= title
+                .col-s12.md-6
+                    ul.collection.with-header
+                        li.collection-header
+                            h4 To complete before session
+                        each consultationSteps
+                            li.collection-item
+                                a(href="#{link}" target="_blank")!= title
+                .col-s12.md-6
+                    ul.collection.with-header
+                        li.collection-header
+                            h4 Hosting an OTH Workshop
+                        each workshops
+                            li.collection-item
+                                a(href="#{link}" target="_blank")!= title
+                        li
+                            b &nbsp;&nbsp;&nbsp;&nbsp; We will get back to you by email or phone.
+
         .modal-footer
             a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+
+//
+template(name="appointment_modal_title_container")
+    if Session 'editingAppointmentModalTitle'
+        if currentUser
+            +InputHelper(attribute="title" document=this collection="appointment"
+            class='form-control' placeholder=title id=this)
+        else
+            +appointment_modal_title
+    else
+        +appointment_modal_title
+
+//
+template(name="appointment_modal_title")
+    h4.purple-text(name="title" class="{{#if currentUser}}edit{{/if}}")= title
+
+
+//
+template(name="appointment_modal_text_container")
+    if Session 'editingAppointmentModalText'
+        if currentUser
+            +InputHelper(attribute="text" document=this collection="appointment"
+            class='form-control' placeholder=text id=this)
+        else
+            +appointment_modal_text
+    else
+        +appointment_modal_text
+
+//
+template(name="appointment_modal_text")
+    p(name="text" class="{{#if currentUser}}edit{{/if}}")!= text
+

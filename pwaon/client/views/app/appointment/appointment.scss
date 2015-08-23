@@ -1,3 +1,9 @@
+.appointment-button {
+ &:hover{
+   text-shadow: 2px 2px 8px deeppink;
+ }
+}
+
 .action-button {
   bottom: 3rem;
   right: 2rem;

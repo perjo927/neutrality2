@@ -9,7 +9,7 @@ var navbar = {
     },
     consultation: {
         link: "consultation",
-        text: "Consultation"
+        text: "Contact"
     },
     training: {
         text: "Training"

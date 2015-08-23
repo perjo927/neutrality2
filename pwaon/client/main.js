@@ -31,6 +31,8 @@ Session.setDefault("eventsThresholdReached", false);
 
 
 // TODO: Refactor each content area session helper somehow
+Session.setDefault("editingAppointmentModalTitle", false);
+Session.setDefault("editingAppointmentModalText", false);
 
 Session.setDefault("editingConsultationIcon", false);
 Session.setDefault("editingConsultationText", false);

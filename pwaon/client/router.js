@@ -31,7 +31,10 @@ Router.route('/', {
             "eventss": noParams,
             "footer": noParams,
             "sticky": noParams,
-            "appointment": noParams
+            "appointment": noParams,
+            "consultationForms": noParams,
+            "consultationSteps": noParams,
+            "workshops": noParams
 
         });
     },
@@ -58,7 +61,10 @@ Router.route('/', {
                     parallax: c["parallax"].find(),
                     eventss: c["eventss"].find(),
                     sticky: c["sticky"].find(),
-                    appointment: c["appointment"].find()
+                    appointment: c["appointment"].find(),
+                    consultationForms: c["consultationForms"].find(),
+                    consultationSteps: c["consultationSteps"].find(),
+                    workshops: c["workshops"].find()
                 }
             }
         });
