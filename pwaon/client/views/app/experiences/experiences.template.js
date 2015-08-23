@@ -30,9 +30,36 @@ Template.experiences.events({
                 '</span>', 5000
             );
         }
+    },
+    'click .more-testimonials' : function (event, template) {
+        var arrayLength = template.data.experiences.count();
+        var experiencesLength = Session.get("experiencesLength");
+        if (experiencesLength < arrayLength) {
+            experiencesLength += 3;
+
+            Session.set("experiencesLength", experiencesLength);
+            if (experiencesLength >=  arrayLength) {
+                Session.set("experiencesThresholdReached", true);
+            }
+        }
+    },
+    'click .less-testimonials' : function (event, template) {
+        Session.set("experiencesLength", 4);
+        Session.set("experiencesThresholdReached", false);
+
     }
 });
 
+
+Template.experiences_bottom.helpers({
+    "experiencesLimited": function () {
+        var experiences = this.experiences.fetch();
+        var experiencesLength = Session.get("experiencesLength");
+        return experiences.slice(0,experiencesLength);
+    }
+});
+
+/* */
 Template.experiences_top.onRendered(function () {
     this.$('.modal-trigger').leanModal();
 });
@@ -41,6 +68,8 @@ Template.experiences_top.onRendered(function () {
 Template.experiences_bottom.onRendered(function () {
     this.$('.modal-trigger').leanModal();
 });
+
+
 
 Template.experiences_bottom.helpers({
     "overFlowText": function () {
