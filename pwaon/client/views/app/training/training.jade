@@ -1,12 +1,37 @@
 template(name="training")
-    each training
-        .parallax-container.valign-wrapper
-            .section.no-pad-bot
-                #training.container.section.scrollspy
-                    .row.center
-                        +training_title_container
+    .parallax-container.valign-wrapper
+        .section.no-pad-bot
+            #training.container.section.scrollspy
+                each training
+                    if isTitle
+                        .row.center
+                            +training_top
             .parallax.scrollfire.training
-                img(src='#{img}', alt='#{alt}')
+                //img(src='#{img}', alt='#{alt}')
+                img(src='/img/backgrounds/w1.jpg', alt='Training')
+    .container.section
+        .row
+            +training_bottom
+    hr
+
+//
+template(name="training_top")
+    +training_icon_container
+    +training_title_container
+    +training_text_container
+//
+template(name="training_icon_container")
+    if Session 'editingTrainingIcon'
+        if currentUser
+            +InputHelper(attribute="icon" document=this collection="training"
+            class='form-control' placeholder=icon id=this)
+        else
+            +training_icon
+    else
+        +training_icon
+//
+template(name="training_icon")
+    i.cyan-text(class="#{icon} medium {{#if currentUser}}edit{{/if}}" name="icon" )
 
 //
 template(name="training_title_container")
@@ -21,4 +46,72 @@ template(name="training_title_container")
         +training_title
 //
 template(name="training_title")
-    h5.header.cyan.col.s12(name="title" class="{{#if currentUser}}edit{{/if}}")= title
+    h4.header.cyan(name="title" class="{{#if currentUser}}edit{{/if}}")= title
+
+//
+template(name="training_text_container")
+    if Session 'editingTrainingText'
+        if currentUser
+            .black
+                +InputHelper(attribute="text" document=this collection="training"
+                class='form-control center' placeholder=text id=this)
+        else
+            +training_text
+    else
+        +training_text
+//
+template(name="training_text")
+    h5(name="text" class="cyan {{#if currentUser}}edit{{/if}}")= text
+
+// *** //
+//
+template(name="training_bottom")
+    ul.scrollfire.training
+        each training
+            if link
+                li
+                    .col.s4
+                        //a.waves-effect.waves-light.btn
+                            +resources_card_title_container
+                        .card.training-card.cyan.lighten-4
+                            .card-content
+                                span.card-title
+                                    +training_card_title_container
+                                .center
+                                    +training_card_text_container
+                                //.card-action
+                                    a.cyan-text(href="#{link}" target="_blank") READ MORE
+//
+template(name="training_card_title_container")
+    if Session 'editingTrainingCardTitle' eq=_id
+        if currentUser
+            .black-text
+                +InputHelper(attribute="title" document=this collection="training"
+                class='form-control' placeholder=title id=this)
+        else
+            +training_card_title
+    else
+        +training_card_title
+//
+template(name="training_card_title")
+    h6.black-text.center
+        b(name="title" class="{{#if currentUser}}edit{{/if}}")= title
+
+
+//
+template(name="training_card_text_container")
+    //if Session 'editingTrainingCardText' eq=_id
+        if currentUser
+            .black-text
+                +InputHelper(attribute="icon" document=this collection="training"
+                class='form-control' placeholder=text id=this)
+        else
+            +training_card_text
+    //else
+    +training_card_text
+
+//
+template(name="training_card_text")
+    a(href="#{link}" target="_blank")
+        h2.black-text.training-text(class="{{#if currentUser}}edit{{/if}} mdi-action-shopping-cart" name="text")
+        //!= text

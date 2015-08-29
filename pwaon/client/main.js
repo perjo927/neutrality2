@@ -95,6 +95,10 @@ Session.setDefault("editingResourcesCardTitle", false);
 Session.setDefault("editingResourcesCardIcon", false);
 
 Session.setDefault("editingTrainingTitle", false);
+Session.setDefault("editingTrainingIcon", false);
+Session.setDefault("editingTrainingTitle", false);
+Session.setDefault("editingTrainingText", false);
+Session.setDefault("editingTrainingCardText", false);
 
 Session.setDefault("editingWorkTitle", false);
 Session.setDefault("editingWorkImg", false);

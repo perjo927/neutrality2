@@ -1,15 +1,5 @@
 // TODO: SASS
 
-.btn-edit {
-  right: -2em;
-}
-
-#intro, {padding-top: 4rem;}
-
-
-input, textarea {
-  border-bottom: 1px solid #fff;
-}
 
 ////////////////////////
 
@@ -22,6 +12,17 @@ $color_banner: $white_90;
 $color_sticky: $color_theme;
 $color_sticky_icon: $white_90;
 
+
+.btn-edit {
+  right: -2em;
+}
+
+#intro, {padding-top: 4rem;}
+
+
+input, textarea {
+  border-bottom: 1px solid #fff;
+}
 
 .expand {
   margin-top: -1em;
@@ -48,12 +49,10 @@ $color_sticky_icon: $white_90;
 .button-collapse {
   color: $color_theme;
 }
-.parallax-container {
-  min-height: 380px;
-  max-height: 400px;
 
+.parallax-container {
+  //min-height: 380px;
   line-height: 0;
-  height: auto;
   color: $color_banner;
 
   .section {

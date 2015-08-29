@@ -47,9 +47,13 @@ template(name="appointment_modal")
                             h4 Hosting an OTH Workshop
                         each workshops
                             li.collection-item
-                                a(href="#{link}" target="_blank")!= title
+                                div
+                                    a(href="#{link}" target="_blank")!= title
+                                    a.secondary-content(href="#{link}" target="_blank")
+                                        i.mdi-content-forward.purple-text
                         li
-                            b &nbsp;&nbsp;&nbsp;&nbsp; We will get back to you by email or phone.
+                            span.mdi-content-forward
+                            b &nbsp; We will get back to you by email or phone.
 
         .modal-footer
             a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
