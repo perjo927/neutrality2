@@ -27,14 +27,20 @@ template(name="appointment_modal")
                             h4 Consultation Forms
                         each consultationForms
                             li.collection-item
-                                a(href="#{link}" target="_blank")!= title
+                                div
+                                    a(href="#{link}" target="_blank")!= title
+                                    a.secondary-content(href="#{link}" target="_blank")
+                                        i.mdi-content-forward.purple-text
                 .col-s12.md-6
                     ul.collection.with-header
                         li.collection-header
                             h4 To complete before session
                         each consultationSteps
                             li.collection-item
-                                a(href="#{link}" target="_blank")!= title
+                                div
+                                    a(href="#{link}" target="_blank")!= title
+                                    a.secondary-content(href="#{link}" target="_blank")
+                                        i.mdi-content-forward.purple-text
                 .col-s12.md-6
                     ul.collection.with-header
                         li.collection-header
