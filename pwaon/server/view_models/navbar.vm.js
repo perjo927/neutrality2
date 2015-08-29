@@ -3,9 +3,9 @@ var navbar = {
         link: "about",
         text: "About"
     },
-    videos: {
-        link: "videos",
-        text: "Videos"
+    resources: {
+        link: "resources",
+        text: "Resources"
     },
     consultation: {
         link: "consultation",

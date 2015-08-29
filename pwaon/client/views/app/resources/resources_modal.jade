@@ -1,0 +1,22 @@
+//
+template(name="resources_modal")
+    .modal.modal-fixed-footer(id="modal-#{_id}")
+        .modal-content.center
+            +resources_modal_title_container
+            +resources_modal_text_container
+        .modal-footer
+            a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+            
+
+//
+template(name="resources_modal_title_container")
+    +resources_modal_title
+//
+template(name="resources_modal_title")
+    h4.black-text(name="title" class="{{#if currentUser}}edit{{/if}}")!= title
+//
+template(name="resources_modal_text_container")
+    +resources_modal_text
+//
+template(name="resources_modal_text")
+    iframe(width='100%', height='475', scrolling='no', frameborder='no', src='#{link}')

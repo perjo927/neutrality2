@@ -1,0 +1,113 @@
+template(name="resources")
+    .parallax-container.valign-wrapper
+        .section.no-pad-bot
+            #resources.container.section.scrollspy
+                each resources
+                    if mainTitle
+                        .row.center
+                            +resources_top
+                .row
+                    +resources_bottom
+            .parallax.scrollfire.resources
+                +resources_img_container
+
+//
+template(name="resources_top")
+    +resources_icon_container
+    +resources_title_container
+
+//
+template(name="resources_icon_container")
+    if Session 'editingResourcesIcon'
+        if currentUser
+            +InputHelper(attribute="icon" document=this collection="resources"
+            class='form-control' placeholder=icon id=this)
+        else
+            +resources_icon
+    else
+        +resources_icon
+//
+template(name="resources_icon")
+    i.pink-text(class="#{icon} medium {{#if currentUser}}edit{{/if}}" name="icon" )
+
+//
+template(name="resources_title_container")
+    if Session 'editingResourcesTitle'
+        if currentUser
+            .black-text
+                +InputHelper(attribute='mainTitle' document=this collection="resources"
+                class='form-control center' placeholder=mainTitle id=this)
+        else
+            +resources_title
+    else
+        +resources_title
+
+//
+template(name="resources_title")
+    h4.header.col.s12.pink(name="mainTitle" class="{{#if currentUser}}edit{{/if}}")!= mainTitle
+
+//
+template(name="resources_img_container")
+    +resources_img
+
+//
+template(name="resources_img")
+    img(src='/img/backgrounds/p4.jpg', alt='Free resources' name="img")
+
+
+// *** //
+//
+template(name="resources_bottom")
+    ul.scrollfire.resources
+        each resources
+            if link
+                li
+                    .col.s12.m6.l4
+                        .card.white
+                            .card-content
+                                span.card-title
+                                    +resources_card_title_container
+                                br
+                                .center
+                                    +resources_card_icon_container
+                                br
+                            .card-action
+                                a.modal-trigger.cyan-text(href="#modal-#{_id}")
+                                    | CLICK HERE FOR MORE
+                +resources_modal
+
+//
+template(name="resources_card_title_container")
+    if Session 'editingResourcesCardTitle' eq=_id
+        if currentUser
+            .black-text
+                +InputHelper(attribute="title" document=this collection="resources"
+                class='form-control' placeholder=title id=this)
+        else
+            +resources_card_title
+    else
+        +resources_card_title
+//
+template(name="resources_card_title")
+    h5.black-text.center(name="title" class="{{#if currentUser}}edit{{/if}}")= title
+
+//
+template(name="resources_card_icon_container")
+    if Session 'editingResourcesCardIcon' eq=_id
+        if currentUser
+            .black-text
+                +InputHelper(attribute="icon" document=this collection="resources"
+                class='form-control' placeholder=icon id=this)
+        else
+            +resources_card_icon
+    else
+        +resources_card_icon
+//
+template(name="resources_card_icon")
+    unless currentUser
+        a.modal-trigger(href="#modal-#{_id}")
+            i.purple-text.large(class="#{icon}")
+    else
+        i.purple-text.large(class="#{icon} {{#if currentUser}}edit{{/if}}" name="icon")
+
+

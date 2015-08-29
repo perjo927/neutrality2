@@ -88,10 +88,13 @@ Session.setDefault("editingHeroModalConfirmationText", false);
 
 Session.setDefault("editingParallaxTitle", false);
 
-Session.setDefault("editingTrainingTitle", false);
+Session.setDefault("editingResourcesTitle", false);
+Session.setDefault("editingResourcesText", false);
+Session.setDefault("editingResourcesIcon", false);
+Session.setDefault("editingResourcesCardTitle", false);
+Session.setDefault("editingResourcesCardIcon", false);
 
-Session.setDefault("editingVideosTitle", false);
-Session.setDefault("editingVideosText", false);
+Session.setDefault("editingTrainingTitle", false);
 
 Session.setDefault("editingWorkTitle", false);
 Session.setDefault("editingWorkImg", false);

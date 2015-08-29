@@ -61,8 +61,8 @@ template(name="nav_items")
         name="about" class="{{#if currentUser}}edit{{/if}}")= about.text
 
     li
-        a(href='#{{#unless currentUser}}{{videos.link}}{{/unless}}'
-        name="videos" class="{{#if currentUser}}edit{{/if}}")= videos.text
+        a(href='#{{#unless currentUser}}{{resources.link}}{{/unless}}'
+        name="resources" class="{{#if currentUser}}edit{{/if}}")= resources.text
 
     li
         a(href='#{{#unless currentUser}}{{consultation.link}}{{/unless}}'

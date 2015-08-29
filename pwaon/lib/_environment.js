@@ -15,7 +15,7 @@ ContentAreas =
     [
         "hero",
         "intro",
-        "videos",
+        "resources",
         "consultation",
         "training",
         "experiences",
