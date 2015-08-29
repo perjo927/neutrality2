@@ -16,11 +16,36 @@ Template.training.onRendered(function () {
         }
     ];
     Materialize.scrollFire(scrollFireOptions);
+    this.$('.modal-trigger').leanModal();
 });
 
+//
+Template.training.events({
+    "click .remove-item": function () {
+        if (Meteor.userId()) {
+            Materialize.toast(
+                '<span>Remove course? &nbsp;</span>' +
+                '<span class="btn-flat pink-text" class="delete-item" ' +
+                'onclick= App.collections.training.remove(\'' +
+                this._id +
+                '\')>' +
+                ' REMOVE ' +
+                '</span>', 5000
+            );
+        }
+    }
+});
+
+/* */
 Template.training_title_container.events({
     "keypress input": App.Template.Session.toggleAfterKeyPress("editingTrainingTitle"),
     "click .edit": App.Template.Session.setHelper("editingTrainingTitle", "title", App.Template.Jquery.focus)
+});
+
+/* */
+Template.training_icon_container.events({
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingTrainingIcon"),
+    "click .edit": App.Template.Session.setHelper("editingTrainingIcon", "icon", App.Template.Jquery.focus)
 });
 
 /**/

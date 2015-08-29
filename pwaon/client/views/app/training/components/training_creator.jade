@@ -1,0 +1,22 @@
+template(name="training_creator")
+    #training-creator.modal.bottom-sheet
+        .modal-content
+            h4 Add course
+            .row
+                form#training-create-form.col.s12
+                    .row
+                        .input-field.col.s12
+                            input#training-create-title.validate(value='Title', type='text' pattern=".{3,100}"
+                            maxlength="100" required title="(3 to 100 characters)" name="title")
+                            label.active(for='training-create-title') Title
+                        .input-field.col.s12
+                            input#training-create-link.validate(value='Link', type='text' pattern=".{3,100}"
+                            maxlength="100" required title="(3 to 100 characters)" name="link")
+                            label.active(for='training-create-link') Link
+                        .col.s12.m12.center
+                            br
+                            a.modal-action.modal-close.waves-effect.waves-green.btn-flat.left(href="#") Cancel
+                            button.modal-action.modal-close.waves-effect.waves-green.btn.right(
+                            type='submit', name='action') Submit
+        .modal-footer
+            //hr

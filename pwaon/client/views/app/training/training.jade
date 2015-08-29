@@ -1,3 +1,6 @@
+// TODO: Add training !!
+
+//
 template(name="training")
     .parallax-container.valign-wrapper
         .section.no-pad-bot
@@ -9,9 +12,15 @@ template(name="training")
             .parallax.scrollfire.training
                 //img(src='#{img}', alt='#{alt}')
                 img(src='/img/backgrounds/w1.jpg', alt='Training')
+
+    .section
+        .row
+        +training_action_button
     .container.section
         .row
             +training_bottom
+
+    +training_creator
     hr
 
 //
@@ -19,6 +28,7 @@ template(name="training_top")
     +training_icon_container
     +training_title_container
     +training_text_container
+
 //
 template(name="training_icon_container")
     if Session 'editingTrainingIcon'
@@ -65,6 +75,13 @@ template(name="training_text")
 
 // *** //
 //
+template(name="training_action_button")
+    if currentUser
+        a.btn-floating.btn-large.btn-edit.waves-light.green.right.modal-trigger(href='#training-creator')
+            i.mdi-content-add Add
+
+
+//
 template(name="training_bottom")
     ul.scrollfire.training
         each training
@@ -74,6 +91,7 @@ template(name="training_bottom")
                         //a.waves-effect.waves-light.btn
                             +resources_card_title_container
                         .card.training-card.cyan.lighten-4
+                            +training_remove_button
                             .card-content
                                 span.card-title
                                     +training_card_title_container
@@ -81,6 +99,12 @@ template(name="training_bottom")
                                     +training_card_text_container
                                 //.card-action
                                     a.cyan-text(href="#{link}" target="_blank") READ MORE
+//
+template(name="training_remove_button")
+    if currentUser
+        i.remove-item.mdi-action-highlight-remove.left
+
+
 //
 template(name="training_card_title_container")
     if Session 'editingTrainingCardTitle' eq=_id
@@ -100,15 +124,15 @@ template(name="training_card_title")
 
 //
 template(name="training_card_text_container")
-    //if Session 'editingTrainingCardText' eq=_id
+    if Session 'editingTrainingCardText' eq=_id
         if currentUser
             .black-text
-                +InputHelper(attribute="icon" document=this collection="training"
-                class='form-control' placeholder=text id=this)
+                +InputHelper(attribute="link" document=this collection="training"
+                class='form-control' placeholder=link id=this)
         else
             +training_card_text
-    //else
-    +training_card_text
+    else
+        +training_card_text
 
 //
 template(name="training_card_text")
