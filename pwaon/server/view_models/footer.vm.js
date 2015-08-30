@@ -2,7 +2,7 @@
 
 var footer = {
     title:  "About the facilitator",
-    text: "Paul Wong is the founder of the Art of Neutrality #8482;, a consciousness " +
+    text: "Paul Wong is the founder of the Art of Neutrality&#8482;, a consciousness " +
         "program based on over 15 years of experience working with thousands of people globally ... ",
     img: "img/paul.jpg",
     alt: "Paul Wong",

@@ -46,7 +46,7 @@ template(name="footer_text_container")
 
 //
 template(name="footer_text")
-    p.text-lighten-4(name="text" class="{{#if currentUser}}edit{{/if}}")= overFlowText
+    p.text-lighten-4(name="text" class="{{#if currentUser}}edit{{/if}}")!= overFlowText
 
 
 // *** //
