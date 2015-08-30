@@ -6,7 +6,7 @@ template(name="navbar")
             .container
                 .nav-wrapper
                     // TODO: href="#navbar" ?
-                    a#logo-container.brand-logo(href='#top')
+                    a#logo-container.brand-logo(href='#navbar')
                         span.logo-icon(class="icon-yin_yang purple-text")
                         span.logo-name.purple-text Art of Neutrality
                     a.button-collapse(href='#', data-activates='nav-mobile')
@@ -59,23 +59,18 @@ template(name="nav_items")
     li
         a(href='#{{#unless currentUser}}{{about.link}}{{/unless}}'
         name="about" class="{{#if currentUser}}edit{{/if}}")= about.text
-
-    li
-        a(href='#{{#unless currentUser}}{{resources.link}}{{/unless}}'
-        name="resources" class="{{#if currentUser}}edit{{/if}}")= resources.text
-
     li
         a(href='#{{#unless currentUser}}{{consultation.link}}{{/unless}}'
         name="consultation" class="{{#if currentUser}}edit{{/if}}")= consultation.text
-
+    li
+        a(href='#{{#unless currentUser}}{{resources.link}}{{/unless}}'
+        name="resources" class="{{#if currentUser}}edit{{/if}}")= resources.text
     li
         a(href='#{{#unless currentUser}}{{training.link}}{{/unless}}'
         name="training" class="{{#if currentUser}}edit{{/if}}")= training.text
-
-    li
-        a(href='#{{#unless currentUser}}{{experiences.link}}{{/unless}}'
-        name="experiences" class="{{#if currentUser}}edit{{/if}}")= experiences.text
-
     li
         a(href='#{{#unless currentUser}}{{eventss.link}}{{/unless}}'
         name="eventss" class="{{#if currentUser}}edit{{/if}}")= eventss.text
+    li
+        a(href='#{{#unless currentUser}}{{experiences.link}}{{/unless}}'
+        name="experiences" class="{{#if currentUser}}edit{{/if}}")= experiences.text

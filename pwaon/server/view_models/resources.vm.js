@@ -1,6 +1,7 @@
 var resources1 = {
-    icon: "mdi-action-extension",
-    mainTitle: "Free resources"
+    icon: "mdi-action-wallet-giftcard",
+    mainTitle: "Free resources",
+    text: "Find lots of audio and video resources for free in just a click"
 };
 
 var resources2 = {

@@ -27,6 +27,12 @@ Template.resources_title_container.events({
 });
 
 /**/
+Template.resources_text_container.events({
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingResourcesText"),
+    "click .edit": App.Template.Session.setHelper("editingResourcesText", "text", App.Template.Jquery.focus)
+});
+
+/**/
 Template.resources_icon_container.events({
     "keypress input": App.Template.Session.toggleAfterKeyPress("editingResourcesIcon"),
     "click .edit": App.Template.Session.setHelper("editingResourcesIcon", "icon", App.Template.Jquery.focus)

@@ -12,6 +12,7 @@ var navbar = {
         text: "Contact"
     },
     training: {
+        link: "training",
         text: "Training"
     },
     experiences: {
