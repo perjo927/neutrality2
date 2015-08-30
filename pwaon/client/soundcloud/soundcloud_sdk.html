@@ -1,0 +1,28 @@
+<template name="soundcloud_sdk">
+    <script>
+        var that = this;
+
+        Meteor.call("parseAssets", "clientId", function (err,res) {
+            if(!!err) {
+                //
+            } else {
+                var clientId = res;
+                var rootUrl = Meteor.absoluteUrl();
+                var redirectUri = rootUrl + "callback";
+
+                // initialize client with app credentials
+                that.SC.initialize({
+                    client_id: clientId,
+                    redirect_uri: redirectUri
+                });
+
+                // initiate auth popup
+                that.SC.connect(function() {
+                    that.SC.get('/me', function(me) {
+                        console.log('Hello, ', me);
+                    });
+                });
+            }
+        });
+    </script>
+</template>

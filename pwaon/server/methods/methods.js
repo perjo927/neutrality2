@@ -2,7 +2,8 @@ Meteor.methods({
     "parseAssets": function (assets) {
         // TODO: Better guarding
         if (assets === "clientId" ) { // && Meteor.userId() ?
-            return Server.Methods.ParseAssets("clientId")
+            var clientId = Server.Methods.ParseAssets("clientId");
+            return clientId;
         }
     },
     "processEnv": function(environmentVariable) {
