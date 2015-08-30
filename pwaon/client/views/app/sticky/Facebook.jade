@@ -1,0 +1,10 @@
+//
+template(name="Facebook")
+   .fb-page(
+   data-href='#{this.link}'
+   data-hide-cover='false',
+   data-show-facepile='true',
+   data-show-posts='true')
+      .fb-xfbml-parse-ignore
+         blockquote(cite='#{this.link}')
+            a(href='#{this.link}')

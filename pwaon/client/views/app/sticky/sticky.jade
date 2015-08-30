@@ -1,48 +1,29 @@
 template(name="sticky")
-    #fb-root
     .row.sticky-row
         .sticky-social
             .offset-s1
                 each sticky
                     .col.s1
                         // Modal Trigger
-                        a.modal-trigger(href='#link_modal' class="white-text")
+                        a.modal-trigger(href='#sticky_modal-#{_id}' class="white-text")
                             i.sticky-icon(class="icon-#{icon}" data-link="#{link}")
-        +linked_content
+    each sticky
+        +sticky_modal
 
 //
-template(name="linked_content")
-    with externalLink
-        // Material Modal Structure
-        #link_modal.modal.modal-fixed-footer
-            .modal-content.center
-                h4 #{title}
-                +UI.dynamic template=title data=this
-            .modal-footer
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+template(name="sticky_modal")
+    div(id="sticky_modal-#{_id}").modal.modal-fixed-footer
+        .modal-content.center
+            h4= title
+            +UI.dynamic template=title data=this
+        .modal-footer
+            a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
 
-// TODO: Fire more than once
-template(name="Facebook")
-    .fb-page(
-    data-href='#{this.link}'
-    data-hide-cover='false',
-    data-show-facepile='true',
-    data-show-posts='true')
-        .fb-xfbml-parse-ignore
-            blockquote(cite='#{this.link}')
-                a(href='#{this.link}')
 
-template(name="YouTube")
-    br
-    | Filter
-    br
-    iframe(width='100%', height='475', src='#{this.link}',  frameborder='0', allowfullscreen='')
-
+// *** //
+//
 template(name="Google-Plus")
     br
-
-template(name="SoundCloud")
-    iframe(width='100%', height='475', scrolling='no', frameborder='no', src='#{this.link}')
 
 template(name="LinkedIn")
     br
@@ -53,6 +34,3 @@ template(name="Instagram")
 template(name="Pinterest")
     br
 
-template(name="Twitter")
-    |Twitter
-    br

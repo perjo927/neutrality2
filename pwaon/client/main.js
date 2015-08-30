@@ -1,10 +1,5 @@
-Session.setDefault("externalLink", {
-    color: "white",
-    title: "Facebook",
-    icon: "facebook-squared",
-    link: "https://www.facebook.com/energymedicineheals"
 
-});
+// TODO: Remove when released
 Session.setDefault("environment", "development");
 Session.setDefault("isUnlocked", false); // TODO: Remove and validate server side
 

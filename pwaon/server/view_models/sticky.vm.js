@@ -20,22 +20,21 @@ var sticky3 =
     };
 
 var sticky4 =
-    {
-        title: "LinkedIn",
-        icon: "linkedin-squared",
-        link: "http://www.linkedin.com"
-    };
-
-var sticky5 =
 {
     title: "Twitter",
     icon: "twitter-squared",
     link: "https://twitter.com/_energymedicine"
 };
 
-
+// TODO: Needed ?
+//var sticky5 =
+//{
+//    title: "LinkedIn",
+//    icon: "linkedin-squared",
+//    link: "http://www.linkedin.com"
+//};
 /* */
 
 VM.sections["sticky"] = [
-    sticky1, sticky2, sticky3, sticky4, sticky5
+    sticky1, sticky2, sticky3, sticky4 //, sticky5
 ];
