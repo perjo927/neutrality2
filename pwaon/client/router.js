@@ -140,4 +140,23 @@ Router.route('/callback', {
     }
 });
 
+// YouTube
+Router.route('/youtube', {
+    name: "youtube_sdk",
+    loadingTemplate: "loading",
+    layoutTemplate: "youtube_app",
+    onBeforeAction: function () {
+        if (!Meteor.userId()) {
+            Router.go('home');
+        } else {
+            this.next();
+        }
+    },
+    action: function(){
+        var router = this;
+        router.render('youtube_sdk', {});
+    }
+});
+
+
 // TODO: 404, etc

@@ -18,6 +18,7 @@
         var widget;
         var player;
         function onYouTubeIframeAPIReady() {
+            console.debug("onYouTubeIframeAPIReady");
             widget = new YT.UploadWidget('widget', {
                 width: 500,
                 events: {
@@ -29,11 +30,13 @@
 
         // 4. This function is called when a video has been successfully uploaded.
         function onUploadSuccess(event) {
+            console.debug("onUploadSuccess");
             alert('Video ID ' + event.data.videoId + ' was uploaded and is currently being processed.');
         }
 
         // 5. This function is called when a video has been successfully processed.
         function onProcessingComplete(event) {
+            console.debug("onProcessingComplete");
             player = new YT.Player('player', {
                 height: 390,
                 width: 640,
