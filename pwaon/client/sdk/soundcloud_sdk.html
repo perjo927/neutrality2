@@ -1,10 +1,15 @@
 <template name="soundcloud_sdk">
     <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
     <script>
+        var rootUrl = Meteor.call("processEnv", "ROOT_URL");
+        console.debug("ROOT URL", rootUrl);
+        var clientId = Meteor.call("parseAssets", "clientId");
+        console.debug("Client id", clientId);
+
         // initialize client with app credentials
         SC.initialize({
-            client_id: 'YOUR_CLIENT_ID',
-            redirect_uri: 'http://example.com/callback'
+            client_id: clientId,
+            redirect_uri: rootUrl + "callback"
         });
 
         // initiate auth popup

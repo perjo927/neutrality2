@@ -1,4 +1,10 @@
 Meteor.methods({
+    "parseAssets": function (assets) {
+        // TODO: Better guarding
+        if (assets === "clientId" ) { // && Meteor.userId() ?
+            return Server.Methods.ParseAssets("clientId")
+        }
+    },
     "processEnv": function(environmentVariable) {
         check(environmentVariable, String);
         var processEnvVar = process.env[environmentVariable];
