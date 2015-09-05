@@ -1,6 +1,4 @@
 Template.soundcloud_sdk.onRendered(function () {
-    console.log(this, arguments, window);
-
     /*
 
      avatar_url: "https://i1.sndcdn.com/avatars-000015174076-8ktv09-large.jpg"
@@ -30,18 +28,24 @@ Template.soundcloud_sdk.onRendered(function () {
      website_title: "PREYBIRD Productions | Official Web Site"
 
      */
+
+    // update user's profile description
+//                that.SC.connect(function() {
+//                    SC.put('/me', {
+//                                user: {description: 'I am using the SoundCloud API!'}
+//                    });
+//                });
 });
 
 Template.soundcloud_sdk.helpers({
-    "logThis": function () {
-        console.log(this,arguments,window);
-        return;
+    "userName": function () {
+        var s = Session.get("SC");
+        return s.first_name;
     }
 });
 
 Template.soundcloud_sdk.events({
-    "click button": function () {
-        console.log(this,arguments,window);
-        return;
+    "click #record": function () {
+        console.log(window.SC, Session.get("SC"));
     }
 });

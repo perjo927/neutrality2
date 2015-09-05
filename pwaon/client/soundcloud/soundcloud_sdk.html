@@ -1,4 +1,23 @@
 <template name="soundcloud_sdk">
+    <nav class="pink">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center white-text">SoundCloud Uploader</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="container section center">
+            <h2>Welcome {{#if Session 'SC'}} {{userName}}{{/if}}</h2>
+        </div>
+
+        <a id="record" class="waves-effect waves-light btn red">
+            <i class="material-icons right"></i>Record
+        </a>
+    </div>
+
+
     <script>
         var that = this;
 
@@ -20,14 +39,7 @@
                 // initiate auth popup
                 that.SC.connect(function() {
                     that.SC.get('/me', function(me) {
-                        console.log('Hello, ', me);
-                    });
-                });
-
-                // update user's profile description
-                that.SC.connect(function() {
-                    SC.put('/me', {
-                                user: {description: 'I am using the SoundCloud API!'}
+                        Session.set("SC", me);
                     });
                 });
             }

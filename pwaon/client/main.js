@@ -18,6 +18,9 @@ UI.body.rendered = function() {
 };
 
 //
+Session.setDefault("SC", null);
+
+//
 Session.setDefault("experiencesLength", 3+1); // +1 For the title, a bit messy yes
 Session.setDefault("experiencesThresholdReached", false);
 
