@@ -1,4 +1,4 @@
-var fireSelector = ".scrollfire" + "." + "parallax";
+var fireSelector = ".scrollfire" + "." + "parallax-img";
 
 Template.parallax.scrollFireContent = function () {
     Materialize.fadeInImage(fireSelector);
