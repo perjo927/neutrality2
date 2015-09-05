@@ -4,7 +4,7 @@ Admin = {};
 
 
 Admin.onValidationDone = function (isValid, errorMessage, formContainer) {
-    var successMessage = "Du &auml;r inloggad.";
+    var successMessage = "You are now signed in.";
 
     var email = formContainer["email"],
         password = formContainer["password"];
