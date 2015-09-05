@@ -77,3 +77,50 @@ Template.soundcloud_sdk.events({
     }
 });
 
+
+/*
+
+ In order to update a sounds metadata, you create a client and call the put method, passing in the path
+ of the track resource and the properties you want to update.
+
+ You can update the track artwork using the artwork_data parameter. Please note that at this time
+ it is not possible to update the actual track audio file.
+
+ For a full list of properties that can be set on a sound resource, see the /tracks endpoint reference.
+
+*/
+
+// connect and update track data
+//SC.connect(function() {
+//    SC.get('/tracks/290', function(track) {
+//        SC.put(track.permalink_url, { track: {
+//            description: 'This track was recorded in Berlin',
+//            genre: 'Electronic'
+//        }});
+//    });
+//});
+
+
+/*
+ Once a set has been created,
+ you can continue to add sounds to it by updating the tracks property.
+ */
+
+//var tracks = [290, 291, 292];
+//SC.connect(function() {
+//    SC.get('/me/playlists', { limit: 1 }, function(playlist) {
+//        SC.put(playlist.uri, { playlist: { tracks: tracks } });
+//    });
+//});
+
+/*
+
+ To get a list of tracks in a set, send a GET request to the /playlists endpoint with the set id.
+
+ */
+
+//SC.get('/playlists/1234323', function(playlist) {
+//    for (var i = 0; i < playlist.tracks.length; i++) {
+//        console.log(playlist.tracks[i].length);
+//    }
+//});
