@@ -44,8 +44,36 @@ Template.soundcloud_sdk.helpers({
     }
 });
 
+//
 Template.soundcloud_sdk.events({
     "click #record": function () {
-        console.log(window.SC, Session.get("SC"));
+        var me = Session.get("SC");
+        var sc = window.SC;
+
+        var soundTitle = $("#sound_name")[0].value;
+        if (soundTitle === "") {
+            soundTitle = "Recording from Art of Neutrality at " + new Date().toJSON().slice(0,10);
+        }
+
+        console.debug(soundTitle);
+
+        // TODO
+        // If successful, your track will immediately be queued up for encoding.
+        // You check the state property of the track resource to check its progress.
+        // Once the state is finished it is ready to be embedded or streamed.
+        sc.record({
+            start: function() {
+                window.setTimeout(function() {
+                    sc.recordStop();
+                    sc.recordUpload({
+                        track: { title: soundTitle }
+                    });
+                }, 5000);
+            }
+        });
+    },
+    'form submit': function (event, template) {
+        event.preventDefault();
     }
 });
+

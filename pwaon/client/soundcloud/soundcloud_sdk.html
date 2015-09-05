@@ -9,12 +9,25 @@
 
     <div class="row">
         <div class="container section center">
-            <h2>Welcome {{#if Session 'SC'}} {{userName}}{{/if}}</h2>
-        </div>
+            <h2>Welcome {{#if Session 'SC'}} {{userName}} {{/if}}</h2>
 
-        <a id="record" class="waves-effect waves-light btn red">
-            <i class="material-icons right"></i>Record
-        </a>
+                <!--{{#if Session 'SC'}}-->
+
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12 center">
+                            <input placeholder="" id="sound_name" type="text" class="validate">
+                            <label for="sound_name">Sound Name</label>
+                        </div>
+                        <a id="record" class="waves-effect waves-light btn red center">
+                            <i class="material-icons right"></i>Record
+                        </a>
+                    </div>
+                </form>
+
+
+                    <!--{{/if}}-->
+        </div>
     </div>
 
 
