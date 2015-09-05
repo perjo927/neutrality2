@@ -2,7 +2,7 @@ var fireSelector = ".scrollfire.resources";
 
 
 Template.resources.scrollFireContent = function () {
-    Materialize.showStaggeredList(fireSelector);
+    //Materialize.showStaggeredList(fireSelector);
     Materialize.fadeInImage(fireSelector);
 };
 
