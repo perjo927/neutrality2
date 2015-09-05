@@ -109,13 +109,13 @@ Router.route('/soundcloud', {
     name: "soundcloud_sdk",
     loadingTemplate: "loading",
     layoutTemplate: "soundcloud_app",
-    //onBeforeAction: function () {
-    //    if (Meteor.userId()) {
-    //        Router.go('home');
-    //    } else {
-    //        this.next();
-    //    }
-    //},
+    onBeforeAction: function () {
+        if (!Meteor.userId()) {
+            Router.go('home');
+        } else {
+            this.next();
+        }
+    },
     action: function(){
         var router = this;
         router.render('soundcloud_sdk', {});
@@ -127,13 +127,13 @@ Router.route('/callback', {
     name: "soundcloud_callback",
     loadingTemplate: "loading",
     layoutTemplate: "soundcloud_app",
-    //onBeforeAction: function () {
-    //    if (Meteor.userId()) {
-    //        Router.go('home');
-    //    } else {
-    //        this.next();
-    //    }
-    //},
+    onBeforeAction: function () {
+        if (!Meteor.userId()) {
+            Router.go('home');
+        } else {
+            this.next();
+        }
+    },
     action: function(){
         var router = this;
         router.render('soundcloud_callback', {});

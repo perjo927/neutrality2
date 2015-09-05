@@ -23,6 +23,13 @@
                         console.log('Hello, ', me);
                     });
                 });
+
+                // update user's profile description
+                that.SC.connect(function() {
+                    SC.put('/me', {
+                                user: {description: 'I am using the SoundCloud API!'}
+                    });
+                });
             }
         });
     </script>

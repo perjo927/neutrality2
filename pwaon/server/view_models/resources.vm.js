@@ -9,7 +9,7 @@ var resources2 = {
     title: "Free Videos",
     alt: "Videos",
     link: "https://www.youtube.com/embed/videoseries?list=PL44F2F92C7C671168"
-    // TODO: Link to a video collection directly name free resources directly related to the website content
+    // TODO: Link to a video collection directly named free resources directly related to the website content
 };
 
 var resources3 = {

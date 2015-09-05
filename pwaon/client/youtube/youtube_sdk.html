@@ -1,8 +1,26 @@
 <template name="youtube_sdk">
+    <nav class="pink">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center white-text">YouTube Uploader</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            </ul>
+        </div>
+    </nav>
+
     <!-- 1. The 'widget' div element contains the upload widget.
         The 'player' div element contains the player IFrame. -->
-    <div id="widget"></div>
-    <div id="player"></div>
+    <div class="row">
+        <div class="container section center">
+            <div id="widget"></div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="container section center">
+            <div id="player"></div>
+        </div>
+    </div>
+
 
     <script>
         var that = this;
