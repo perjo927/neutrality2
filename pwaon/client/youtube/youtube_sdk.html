@@ -5,6 +5,8 @@
     <div id="player"></div>
 
     <script>
+        var that = this;
+
         // 2. Asynchronously load the Upload Widget and Player API code.
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
@@ -17,8 +19,8 @@
         // related to the widget.
         var widget;
         var player;
+
         function onYouTubeIframeAPIReady() {
-            console.debug("onYouTubeIframeAPIReady");
             widget = new YT.UploadWidget('widget', {
                 width: 500,
                 events: {
@@ -30,13 +32,15 @@
 
         // 4. This function is called when a video has been successfully uploaded.
         function onUploadSuccess(event) {
-            console.debug("onUploadSuccess");
-            alert('Video ID ' + event.data.videoId + ' was uploaded and is currently being processed.');
+            var message = 'Video ID ' + event.data.videoId + ' was uploaded and is currently being processed.';
+            that.Materialize.toast(message, 5000, 'purple');
         }
 
         // 5. This function is called when a video has been successfully processed.
         function onProcessingComplete(event) {
-            console.debug("onProcessingComplete");
+            var message = 'Your video has been processed and is ready to be viewed.';
+            that.Materialize.toast(message, 5000, 'pink');
+
             player = new YT.Player('player', {
                 height: 390,
                 width: 640,
