@@ -16,7 +16,7 @@ var resources3 = {
     icon: "mdi-av-volume-up",
     title: "Free Audio",
     alt: "Audio",
-    link: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/29135465&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"
+    link: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/223087324&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"
     // TODO: Link to a soundset directly name free resources directly related to the website content
 };
 
@@ -24,7 +24,7 @@ var resources4 = {
     icon: "mdi-action-question-answer",
     title: "OTH Audio FAQs",
     alt: "Audio FAQ",
-    link: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/29135465&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"
+    link: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/223087324&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"
     // TODO: Link to a soundset directly name free resources directly related to the website content
 };
 
