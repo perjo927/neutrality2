@@ -84,7 +84,7 @@ template(name="experiences_bottom")
                             .card-content.black-text
                                 +experiences_name_container
                                 p
-                                    i= overFlowText
+                                    i!= overFlowText
                             .card-action
                                 a.modal-trigger.cyan-text(href="#modal-#{_id}")
                                     | READ MORE

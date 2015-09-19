@@ -80,7 +80,8 @@ template(name="events_bottom")
                                 +events_location_container
                                 br
                                 p
-                                    i= overFlowText
+                                    i!= overFlowText
+
                             .card-action
                                 a.modal-trigger.cyan-text(href="#modal-#{_id}")
                                     | READ MORE

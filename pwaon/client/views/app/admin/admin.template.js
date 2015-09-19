@@ -18,9 +18,8 @@ Template.admin.events({
 
         App.UI.validateForm(formFields, formContainer, function (isValid, error) {
             var errorMessage =
-                "F&ouml;ljande formul&auml;r hade felaktig data: "
-                + error
-                + ". Var god f&ouml;rs&ouml;k igen.";
+                //+ error
+                "Please try again";
 
             Admin.onValidationDone(isValid, errorMessage, formContainer);
         });

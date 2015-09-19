@@ -10,6 +10,10 @@ template(name="admin")
             form#admin-login.col.s12
                 .row
                     unless currentUser
+                        .row.center
+                            button.btn.waves-effect.waves-light.green.btn-submit(type='submit', name='action')
+                                | Log in
+                                i.mdi-content-send.right.white-text
                         .input-field.col.s12.m6
                             i.mdi-communication-email.prefix.black-text
                             input#email.validate.black-text(type='email' name='email' minlength="5"
@@ -20,9 +24,7 @@ template(name="admin")
                             input#password.validate(type='password' name='password' minlength="6"
                             maxlength="20" pattern=".{6,20}" required title="(6-20 characters)")
                             label.black-text(for='password') Password
-                        button.btn.waves-effect.waves-light.green.btn-submit.hide(type='submit', name='action')
-                            | Log in
-                            i.mdi-content-send.right.white-text
+
         if currentUser
             .row.center
                 a.waves-effect.waves-light.btn.orange(href="soundcloud" )

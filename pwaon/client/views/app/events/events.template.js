@@ -64,7 +64,7 @@ Template.events_bottom.onRendered(function () {
 
 Template.events_bottom.helpers({
     "overFlowText": function () {
-        return this.text.substring(0,100) + " ... ";
+        return this.text.substring(0, 100) + " ... ";
     },
     "eventsLimited": function () {
         // TODO: refactor to generic
