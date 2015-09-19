@@ -24,7 +24,9 @@ Template.admin.events({
 
             Admin.onValidationDone(isValid, errorMessage, formContainer);
         });
+    },
+    "click #log-out": function (event,template) {
+        Meteor.logout();
+        Materialize.toast("You are now signed out.", 5000, 'black');
     }
 });
-
-

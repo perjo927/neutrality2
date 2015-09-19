@@ -91,13 +91,7 @@ Router.route('/admin', {
     name: "admin",
     loadingTemplate: "loading",
     layoutTemplate: "admin_app",
-    onBeforeAction: function () {
-        if (Meteor.userId()) {
-            Router.go('home');
-        } else {
-            this.next();
-        }
-    },
+
     action: function(){
         var router = this;
         router.render('admin', {});

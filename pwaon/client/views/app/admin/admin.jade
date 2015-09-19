@@ -2,20 +2,33 @@ template(name="admin")
     .container
         .row
             h1.center Admin
+            if currentUser
+                .center
+                    a#log-out.btn.waves-effect.waves-light.purple
+                        | Sign out
         .row
             form#admin-login.col.s12
                 .row
-                    .input-field.col.s6
-                        i.mdi-communication-email.prefix.black-text
-                        input#email.validate.black-text(type='email' name='email' minlength="5"
-                        maxlength="40" required title="Vänligen ange en giltig e-post-adress")
-                        label.black-text(for='email') Email
-                    .input-field.col.s6
-                        i.mdi-content-flag.prefix.black-text
-                        input#password.validate(type='password' name='password' minlength="6"
-                        maxlength="20" pattern=".{6,20}" required title="(6 till 20 tecken)")
-                        label.black-text(for='password') L&ouml;senord
-                    .col.s3.right
-                        button.btn.waves-effect.waves-light.black.btn-submit(type='submit', name='action')
-                            | Skicka
+                    unless currentUser
+                        .input-field.col.s12.m6
+                            i.mdi-communication-email.prefix.black-text
+                            input#email.validate.black-text(type='email' name='email' minlength="5"
+                            maxlength="40" required title="Please supply a valid email address")
+                            label.black-text(for='email') Email
+                        .input-field.col.s12.m6
+                            i.mdi-content-flag.prefix.black-text
+                            input#password.validate(type='password' name='password' minlength="6"
+                            maxlength="20" pattern=".{6,20}" required title="(6-20 characters)")
+                            label.black-text(for='password') Password
+                        button.btn.waves-effect.waves-light.green.btn-submit.hide(type='submit', name='action')
+                            | Log in
                             i.mdi-content-send.right.white-text
+        if currentUser
+            .row.center
+                a.waves-effect.waves-light.btn.orange(href="soundcloud" )
+                    i.material-icons.right cloud
+                    | Upload to SoundCloud
+                a.waves-effect.waves-light.btn.red(href="youtube")
+                    i.material-icons.right videocam
+                    | Upload to YouTube
+
