@@ -1,17 +1,5 @@
 
-// TODO: Remove when released
-Session.setDefault("environment", "development");
-Session.setDefault("isUnlocked", false); // TODO: Remove and validate server side
 
-// TODO: Remove when released
-(function setEnvironment() {
-    Meteor.apply("processEnv", ["NODE_ENV"], function(err,res) {
-        if(!!res) {
-            console.debug("NODE_ENV is",res);
-            Session.set("environment", res);
-        }
-    });
-})();
 
 UI.body.rendered = function() {
 

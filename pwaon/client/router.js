@@ -1,15 +1,3 @@
-// TODO: Remove after release
-var validatePin = function (params) {
-    if (params.query.hasOwnProperty("pin")) {
-        var pin = params.query.pin;
-
-        Meteor.call("validatePin", pin, function(err,res){
-            if(!!res) {
-                Session.set("isUnlocked", res);
-            }
-        });
-    }
-};
 
 
 Router.route('/', {
@@ -41,9 +29,6 @@ Router.route('/', {
     action: function(){
         var router = this;
         var params = router.params;
-
-        // TODO: Remove in release
-        validatePin(params);
 
         var c = App.collections;
 

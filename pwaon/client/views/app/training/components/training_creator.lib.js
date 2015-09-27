@@ -8,6 +8,5 @@ TrainingCreator.createNewTraining = function (event) {
 TrainingCreator.insertNewTraining = function (newTraining) {
     var collection = App.collections["training"];
     App.Collection.insert(collection, newTraining, function (id) {
-        console.debug(id); // TODO : REMOVE
     });
 };

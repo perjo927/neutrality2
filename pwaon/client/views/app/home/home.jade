@@ -1,21 +1,11 @@
 template(name='home')
-    // TODO: Remove
-    unless isUnlocked
-        .row
-            form#pin.col.s12.center
-                .row
-                    .input-field.col.s6
-                        i.mdi-content-create.prefix
-                        input#pin_code(type='text' name='pin')
-                        label(for='pin_code') PIN Code
-    else
-        +hero
-        +intro
-        +consultation
-        +resources
-        +training
-        +parallax
-        +eventss
-        +experiences
-        +sticky
-        +appointment
+    +hero
+    +intro
+    +consultation
+    +resources
+    +training
+    +parallax
+    +eventss
+    +experiences
+    +sticky
+    +appointment
