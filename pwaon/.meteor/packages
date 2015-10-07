@@ -4,9 +4,8 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 francocatena:compass
-materialize:materialize
+materialize:materialize@=0.97.0
 appcache
 fourseven:scss
 email
@@ -19,3 +18,17 @@ accounts-password
 yann:input-helper
 msavin:jetsetter
 erasaur:session-helper
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
