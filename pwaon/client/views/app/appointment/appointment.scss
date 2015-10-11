@@ -1,6 +1,16 @@
+$appointmentShadow: 2px 2px 8px deeppink;
+
+.appointment-text {
+  letter-spacing: -0.5px;
+  color: deeppink;
+  &:hover{
+    text-shadow: $appointmentShadow;
+  }
+}
+
 .appointment-button {
  &:hover{
-   text-shadow: 2px 2px 8px deeppink;
+   text-shadow: $appointmentShadow;
  }
 }
 
@@ -18,7 +28,7 @@
 }
 
 
-
+// MEDIA
 @media only screen and(max-width : 600px) {
 
   .fixed-action-btn.action-title {

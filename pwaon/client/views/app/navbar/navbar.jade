@@ -41,11 +41,12 @@ template(name="nav_container")
                 .black-text
                     +InputHelper(attribute=affectedProperty document=this collection="navbar"
                     class='form-control' id=this)
-
             else
                 +nav_items
+                +nav_appointment
         else
             +nav_items
+            +nav_appointment
 
 //
 template(name="nav_items_side")
@@ -73,3 +74,9 @@ template(name="nav_items")
     li
         a(href='#{{#unless currentUser}}{{experiences.link}}{{/unless}}'
         name="experiences" class="{{#if currentUser}}edit{{/if}}")= experiences.text
+
+//
+template(name="nav_appointment")
+    li
+        a.appointment-text.modal-trigger(href='#{{#unless currentUser}}{{appointment.link}}{{/unless}}'
+        name="appointment" class="{{#if currentUser}}edit{{/if}}")= appointment.text

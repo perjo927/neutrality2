@@ -22,8 +22,11 @@ var navbar = {
     eventss: {
         link: "eventss",
         text: "Events"
+    },
+    appointment: {
+        link: "appointment_modal",
+        text: "MAKE AN APPOINTMENT"
     }
-
 };
 
 VM.sections["navbar"] = [
