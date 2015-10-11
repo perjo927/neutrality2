@@ -1,0 +1,15 @@
+//
+template(name="opt-in")
+    // Material Modal Structure
+    .container
+        each hero
+            .row
+                #hero_modal
+                    i.large.green-text(class="#{modal.icon}")
+                    +hero_modal_confirmation_title_container
+                    +hero_modal_confirmation_subtitle_container
+                    +hero_modal_confirmation_text_container
+            .row.center
+                a.waves-effect.waves-light.btn.green(href="" )
+                    i.material-icons.right home
+                    | Home

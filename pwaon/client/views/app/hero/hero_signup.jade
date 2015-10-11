@@ -2,17 +2,38 @@
 //
 template(name="hero_signup")
     row
-        form.col.s12
+        form.col.s12.moonray_forms(action='http://moonraymarketing.com/form_processor.php', method='post', _lpchecked='1')
             .row
                 .input-field.col.s12.purple-text
-                    input#signup_firstname.validate(type='text' name='signup_firstname'
+                    input#firstname.validate(type='text' name='firstname'
                     minlength="3" maxlength="30" pattern=".{3,30}"
                     required title="(3 to 30 characters)")
-                    label(for='signup_firstname') First Name
+                    label(for='firstname') First Name
                 .input-field.col.s12.purple-text
-                    input#signup_email.validate(type='email' name='signup_email'
+                    input#email.validate(type='email' name='email'
                     required title="Please enter a valid email address")
-                    label(for='signup_email') Email
-            button.btn.waves-effect.waves-light(type='submit', name='action')
+                    label(for='email') Email
+
+                // TODO: Fix parameters via JS
+                input(type='hidden', name='uid', value='p2c2393f2')
+                input#contact_id972(type='hidden', name='contact_id', value='')
+                input(type='hidden', name='redirect', value='http://pwaon.meteor.com/thanks/')
+                input(type='hidden', name='tags', value='27;')
+                input(type='hidden', name='sequence', value='2;')
+                input(type='hidden', name='owner_', value='1')
+                input#afft_972(type='hidden', name='afft_', value='')
+                input#sess_972(type='hidden', name='sess_', value='')
+                input#ref_972(type='hidden', name='ref_', value='')
+                input#own_972(type='hidden', name='own_', value='')
+                input(type='hidden', name='state', value='')
+                input(type='hidden', name='country', value='')
+                input(type='hidden', name='RYoutube_136', value='')
+                input(type='hidden', name='RURL_135', value='Direct')
+                input(type='hidden', name='IPAddress_134', value='112.202.16.244')
+                input(type='hidden', name='city', value='')
+                input(type='hidden', name='RState_137', value='')
+                input(type='hidden', name='RCountry_138', value='')
+            //input(type='submit', value='', name='submit')
+            button.btn.waves-effect.waves-light(type='submit', name='submit')
                 | Submit
                 i.mdi-content-send.right

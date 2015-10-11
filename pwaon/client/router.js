@@ -119,6 +119,36 @@ Router.route('/callback', {
     }
 });
 
+
+// Thanks
+Router.route('/thanks', {
+    name: "thanks",
+    loadingTemplate: "loading",
+    layoutTemplate: "app",
+    waitOn: function() {
+        var noParams = false;
+
+        return CreateSubscriptions({
+            "hero": noParams
+        });
+    },
+    action: function() {
+        var router = this;
+        var params = router.params;
+
+        var c = App.collections;
+
+        router.render('opt-in', {
+            data: function () {
+                return {
+                    hero: c["hero"].find()
+                }
+            }
+        });
+    }
+});
+
+
 // YouTube
 Router.route('/youtube', {
     name: "youtube_sdk",
