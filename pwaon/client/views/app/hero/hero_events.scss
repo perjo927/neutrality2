@@ -1,0 +1,11 @@
+@import '{}/client/style/lib/colors';
+
+
+.hero-events-close {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: $pink;
+  opacity: 0.8;
+  color: white;
+}

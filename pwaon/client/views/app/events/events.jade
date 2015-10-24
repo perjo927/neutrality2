@@ -15,6 +15,7 @@ template(name="eventss")
                         .more-events
                             h2.pink-text
                                 i.mdi-navigation-expand-more
+                            // TODO: if more events
                             h6.expand.pink-text Get More Events
     +events_creator
 
@@ -81,6 +82,7 @@ template(name="events_bottom")
                                 br
                                 p
                                     i!= overFlowText
+                                +events_link_container
 
                             .card-action
                                 a.modal-trigger.cyan-text(href="#modal-#{_id}")
@@ -121,3 +123,22 @@ template(name="events_location")
     b.black-text.light Location: &nbsp;
     span(name="location" class="{{#if currentUser}}edit{{/if}}")= location
 
+
+//
+template(name="events_link_container")
+    if Session 'editingEventsLink' eq=_id
+        if currentUser
+            +InputHelper(attribute="link" document=this collection="eventss"
+            class='form-control' placeholder=link id=this)
+        else
+            +events_link
+    else
+        +events_link
+
+//
+template(name="events_link")
+    p
+        small
+            i
+                a(href="#{link}" target="_blank" name="link" class="{{#if currentUser}}edit{{/if}}")
+                    | For more information, click here:

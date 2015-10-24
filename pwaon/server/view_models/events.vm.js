@@ -7,21 +7,24 @@ var event1 =
 {
     title: "Event #1",
     location: "TBA",
-    text:   "Text about event #1"
-
+    text:   "Text about event #1",
+    link: "http://www.artofneutrality.com"
 };
+
 var event2 =
 {
     title: "Event #2",
     location: "TBA",
-    text:   "Text about event #2"
+    text:   "Text about event #2",
+    link: "http://www.artofneutrality.com"
 };
 
 var event3 =
 {
     title: "Event #3",
     location: "TBA",
-    text:   "Text about event #3"
+    text:   "Text about event #3",
+    link: "http://www.artofneutrality.com"
 };
 
 

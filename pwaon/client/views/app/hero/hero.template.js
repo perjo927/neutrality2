@@ -1,17 +1,16 @@
-// TODO: Move to Lib + ES6
-
 var fireSelector = ".scrollfire.hero";
-
 
 Template.hero.onRendered(function () {
     this.$(fireSelector).parallax().css("opacity", "0");
     Materialize.fadeInImage(fireSelector);
 
     this.$('.modal-trigger').leanModal();
+    Meteor.setTimeout(()=> {
+        $('#hero_events').openModal();
+    } , 4000);
 });
 
 
-// TODO: Refactor the mess
 /**/
 Template.hero_title_container.events({
     "keypress input": App.Template.Session.toggleAfterKeyPress("editingHeroTitle"),

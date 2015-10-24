@@ -1,0 +1,26 @@
+// TODO: Make editable (?)
+
+//
+template(name="hero_events")
+   #hero_events.modal
+      .modal-content.center
+         a.hero-events-close.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') &times; Close
+         h4.black-text Upcoming Events
+         hr
+         each eventsLimited
+            +hero_event
+//
+template(name="hero_event")
+   if location
+      .row
+         .card.grey.lighten-4
+            .card-title
+               h5.pink-text= title
+            .card-content
+               p
+                  b.purple-text= location
+               p.black-text!= overFlowText
+               p
+                  small
+                     i
+                        a(href="#{link}" target="_blank" ) For more information, click here:
