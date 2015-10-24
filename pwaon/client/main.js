@@ -31,6 +31,7 @@ Session.setDefault("editingConsultationModalTitle", false);
 Session.setDefault("editingEventsIcon", false);
 Session.setDefault("editingEventsLocation", false);
 Session.setDefault("editingEventsLink", false);
+Session.setDefault("editingEventsDate", false);
 Session.setDefault("editingEventsTitle", false);
 Session.setDefault("editingEventsMainTitle", false);
 Session.setDefault("editingEventsText", false);

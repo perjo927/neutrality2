@@ -3,7 +3,11 @@ template(name="events_modal")
     .modal.modal-fixed-footer(id="modal-#{_id}")
         .modal-content.center
             +events_modal_title_container
+            +events_modal_date_container
+            br
+            +events_modal_location_container
             +events_modal_text_container
+            +events_modal_link_container
         .modal-footer
             a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
 //
@@ -19,6 +23,7 @@ template(name="events_modal_title_container")
 //
 template(name="events_modal_title")
     h4.black-text(name="title" class="{{#if currentUser}}edit{{/if}}")!= title
+
 //
 template(name="events_modal_text_container")
     if Session 'editingEventsText' eq=_id
@@ -32,3 +37,55 @@ template(name="events_modal_text_container")
 //
 template(name="events_modal_text")
     p(name="text" class="{{#if currentUser}}edit{{/if}}")!= text
+
+//
+template(name="events_modal_location_container")
+    if Session 'editingEventsLocation' eq=_id
+        if currentUser
+            +InputHelper(attribute="location" document=this collection="eventss"
+            class='form-control' placeholder=location id=this)
+        else
+            +events_modal_location
+    else
+        +events_modal_location
+
+//
+template(name="events_modal_location")
+    b.black-text.light Location: &nbsp;
+    span(name="location" class="{{#if currentUser}}edit{{/if}}")= location
+
+//
+template(name="events_modal_date_container")
+    if Session 'editingEventsDate' eq=_id
+        if currentUser
+            +InputHelper(attribute="date" document=this collection="eventss"
+            class='form-control' placeholder=date id=this)
+        else
+            +events_modal_date
+    else
+        +events_modal_date
+//
+template(name="events_modal_date")
+    b.black-text.light Date: &nbsp;
+    span(name="date" class="{{#if currentUser}}edit{{/if}}")= date
+
+
+//
+template(name="events_modal_link_container")
+    if Session 'editingEventsLink' eq=_id
+        if currentUser
+            +InputHelper(attribute="link" document=this collection="eventss"
+            class='form-control' placeholder=link id=this)
+        else
+            +events_modal_link
+    else
+        +events_modal_link
+//
+template(name="events_modal_link")
+    p
+        small
+            i
+                a(href="{{#unless currentUser}}#{link}{{/unless}}"
+                target="_blank" name="link"
+                class="{{#if currentUser}}edit{{/if}}")
+                    | For more information, click here:

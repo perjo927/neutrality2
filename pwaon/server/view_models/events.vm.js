@@ -8,7 +8,8 @@ var event1 =
     title: "Event #1",
     location: "TBA",
     text:   "Text about event #1",
-    link: "http://www.artofneutrality.com"
+    link: "http://www.artofneutrality.com",
+    date: "TBA"
 };
 
 var event2 =
@@ -16,7 +17,8 @@ var event2 =
     title: "Event #2",
     location: "TBA",
     text:   "Text about event #2",
-    link: "http://www.artofneutrality.com"
+    link: "http://www.artofneutrality.com",
+    date: "TBA"
 };
 
 var event3 =
@@ -24,7 +26,8 @@ var event3 =
     title: "Event #3",
     location: "TBA",
     text:   "Text about event #3",
-    link: "http://www.artofneutrality.com"
+    link: "http://www.artofneutrality.com",
+    date: "TBA"
 };
 
 

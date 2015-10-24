@@ -7,7 +7,7 @@ Template.hero.onRendered(function () {
     this.$('.modal-trigger').leanModal();
     Meteor.setTimeout(()=> {
         $('#hero_events').openModal();
-    } , 4000);
+    } , 3000);
 });
 
 

@@ -78,11 +78,13 @@ template(name="events_bottom")
                             .card-content.black-text
                                 +events_title_container
                                 br
+                                +events_date_container
+                                br
                                 +events_location_container
                                 br
-                                p
-                                    i!= overFlowText
-                                +events_link_container
+                                +events_text_container
+                                if link
+                                    +events_link_container
 
                             .card-action
                                 a.modal-trigger.cyan-text(href="#modal-#{_id}")
@@ -106,7 +108,6 @@ template(name="events_title")
     span.black-text
         b(name="title" class="{{#if currentUser}}edit{{/if}}")= title
 
-
 //
 template(name="events_location_container")
     if Session 'editingEventsLocation' eq=_id
@@ -123,6 +124,37 @@ template(name="events_location")
     b.black-text.light Location: &nbsp;
     span(name="location" class="{{#if currentUser}}edit{{/if}}")= location
 
+//
+template(name="events_date_container")
+    if Session 'editingEventsDate' eq=_id
+        if currentUser
+            +InputHelper(attribute="date" document=this collection="eventss"
+            class='form-control' placeholder=date id=this)
+        else
+            +events_date
+    else
+        +events_date
+
+//
+template(name="events_date")
+    b.black-text.light Date: &nbsp;
+    span(name="date" class="{{#if currentUser}}edit{{/if}}")= date
+
+
+//
+template(name="events_text_container")
+    if Session 'editingEventsText' eq=_id
+        if currentUser
+            +InputHelper(attribute="text" document=this collection="eventss"
+            class='form-control' placeholder=text id=this)
+        else
+            +events_text
+    else
+        +events_text
+//
+template(name="events_text")
+    p(name="text" class="{{#if currentUser}}edit{{/if}}")
+        i!= overFlowText
 
 //
 template(name="events_link_container")
@@ -140,5 +172,7 @@ template(name="events_link")
     p
         small
             i
-                a(href="#{link}" target="_blank" name="link" class="{{#if currentUser}}edit{{/if}}")
+                a(href="{{#unless currentUser}}#{link}{{/unless}}"
+                target="_blank" name="link"
+                class="{{#if currentUser}}edit{{/if}}")
                     | For more information, click here:

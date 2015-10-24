@@ -15,12 +15,98 @@ template(name="hero_event")
       .row
          .card.grey.lighten-4
             .card-title
-               h5.pink-text= title
+               +hero_event_title_container
             .card-content
-               p
-                  b.purple-text= location
-               p.black-text!= overFlowText
-               p
-                  small
-                     i
-                        a(href="#{link}" target="_blank" ) For more information, click here:
+               +hero_event_date_container
+               +hero_event_location_container
+               +hero_event_text_container
+               +hero_event_link_container
+
+//
+template(name="hero_event_title_container")
+   if Session 'editingEventsTitle' eq=_id
+      if currentUser
+         .black-text
+            +InputHelper(attribute="title" document=this collection="eventss"
+            class='form-control' placeholder=title id=this)
+      else
+         +hero_event_title
+   else
+      +hero_event_title
+
+//
+template(name="hero_event_title")
+   h5.pink-text(name="title" class="{{#if currentUser}}edit{{/if}}")= title
+
+//
+template(name="hero_event_location_container")
+   if Session 'editingEventsLocation' eq=_id
+      if currentUser
+         .black-text
+            +InputHelper(attribute="location" document=this collection="eventss"
+            class='form-control' placeholder=location id=this)
+      else
+         +hero_event_location
+   else
+      +hero_event_location
+
+//
+template(name="hero_event_location")
+   p
+      b
+         span.black-text Location: &nbsp;
+         span.purple-text(name="location" class="{{#if currentUser}}edit{{/if}}")= location
+
+//
+template(name="hero_event_date_container")
+   if Session 'editingEventsDate' eq=_id
+      if currentUser
+         .black-text
+            +InputHelper(attribute="date" document=this collection="eventss"
+            class='form-control' placeholder=date id=this)
+      else
+         +hero_event_date
+   else
+      +hero_event_date
+//
+template(name="hero_event_date")
+   b
+      span.black-text Date: &nbsp;
+      span.blue-text(name="date" class="{{#if currentUser}}edit{{/if}}")= date
+
+//
+template(name="hero_event_text_container")
+   if Session 'editingEventsText' eq=_id
+      if currentUser
+         .black-text
+            +InputHelper(attribute="text" document=this collection="eventss"
+            class='form-control' placeholder=text id=this)
+      else
+         +hero_event_text
+   else
+      +hero_event_text
+
+//
+template(name="hero_event_text")
+   p.black-text(name="text" class="{{#if currentUser}}edit{{/if}}")!= text
+
+//
+template(name="hero_event_link_container")
+   if Session 'editingEventsLink' eq=_id
+      if currentUser
+         .black-text
+            +InputHelper(attribute="link" document=this collection="eventss"
+            class='form-control' placeholder=link id=this)
+      else
+         +hero_event_link
+   else
+      +hero_event_link
+//
+template(name="hero_event_link")
+   p
+      small
+         i
+            a(href="{{#unless currentUser}}#{link}{{/unless}}"
+            target="_blank" name="link"
+            class="{{#if currentUser}}edit{{/if}}")
+               | For more information, click here:

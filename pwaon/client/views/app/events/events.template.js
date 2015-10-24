@@ -63,13 +63,24 @@ Template.events_bottom.onRendered(function () {
 });
 
 Template.events_bottom.helpers({
-    "overFlowText": function () {
-        return this.text.substring(0, 100) + " ... ";
-    },
     "eventsLimited": function () {
         // TODO: refactor to generic
         var eventss = this.eventss.fetch();
         var eventsLength = Session.get("eventsLength");
+        return eventss.slice(0, eventsLength);
+    }
+});
+
+Template.events_text.helpers({
+    overFlowText() {
+        let clippedText = this.text.substring(0, 100);
+        return `${clippedText} ... `;
+    },
+    eventsLimited() {
+        // TODO: Make global generic method
+        // TODO: limit to certain number requested by PO
+        let eventss = this.eventss.fetch();
+        let eventsLength = Session.get("eventsLength");
         return eventss.slice(0, eventsLength);
     }
 });
@@ -88,7 +99,6 @@ Template.events_main_title_container.events({
     "click .edit": App.Template.Session.setHelper("editingEventsMainTitle", "title", App.Template.Jquery.focus)
 });
 
-
 /* */
 Template.events_title_container.events({
     "click .edit": App.Template.Session.setHelperById("editingEventsTitle", App.Template.Jquery.focus),
@@ -96,7 +106,25 @@ Template.events_title_container.events({
 });
 
 /* */
+Template.events_date_container.events({
+    "click .edit": App.Template.Session.setHelperById("editingEventsDate", App.Template.Jquery.focus),
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsDate")
+});
+
+/* */
 Template.events_location_container.events({
     "click .edit": App.Template.Session.setHelperById("editingEventsLocation", App.Template.Jquery.focus),
     "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsLocation")
+});
+
+/* */
+Template.events_link_container.events({
+    "click .edit": App.Template.Session.setHelperById("editingEventsLink", App.Template.Jquery.focus),
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsLink")
+});
+
+/* */
+Template.events_text_container.events({
+    "click .edit": App.Template.Session.setHelperById("editingEventsText", App.Template.Jquery.focus),
+    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsText")
 });
