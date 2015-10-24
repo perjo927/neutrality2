@@ -15,14 +15,14 @@ var cStep3 =
     title: "Payment Link",
     link: "http://www.artofneutrality.com/payment/"
 };
-
-var cStep4 =
-{
-    title: "Instructions and Preparation Prior to Session",
-    link: "http://www.artofneutrality.com/"
-};
+//
+//var cStep4 =
+//{
+//    title: "Instructions and Preparation Prior to Session",
+//    link: "http://www.artofneutrality.com/"
+//};
 
 /**/
 Models["consultationSteps"] = [
-    cStep1, cStep2, cStep3, cStep4
+    cStep1, cStep2, cStep3//, cStep4
 ];

@@ -1,3 +1,7 @@
-.card .card-content {
-  min-height: 10em;
+.experiences-card {
+  height: 240px;
+
+  .card-content {
+    min-height: 12rem;
+  }
 }
