@@ -8,6 +8,7 @@ Router.route('/', {
         var noParams = false;
 
         return CreateSubscriptions({
+            "contentareas": noParams,
             "navbar": noParams,
             "hero": noParams,
             "intro": noParams,
@@ -32,10 +33,14 @@ Router.route('/', {
 
         var c = App.collections;
 
+        // Session.get("experiencesLength", c["experiences"].find().count(); // TODO
+        Session.set("eventsCount", c["eventss"].find().count());
+
         router.render('home', {
             data: function () {
                 // TODO: refactor
                 return {
+                    contentareas: c["contentareas"].findOne(),
                     navbar: c["navbar"].find(),
                     hero: c["hero"].find(),
                     intro: c["intro"].find(),
@@ -44,7 +49,7 @@ Router.route('/', {
                     training: c["training"].find(),
                     experiences: c["experiences"].find(),
                     parallax: c["parallax"].find(),
-                    eventss: c["eventss"].find(),
+                    eventss: c["eventss"].find({}, { sort : {dateFrom: -1}, limit: Session.get("eventsLength") }),
                     sticky: c["sticky"].find(),
                     appointment: c["appointment"].find(),
                     consultationForms: c["consultationForms"].find(),

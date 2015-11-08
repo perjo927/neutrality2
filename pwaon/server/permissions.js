@@ -20,7 +20,7 @@ var userAccess = function () {
 ContentAreas.forEach(function (key) {
     App.collections[key].allow(userAccess());
 });
-
+App.collections["contentareas"].allow(userAccess());
 
 Object.keys(Models).forEach(function (key) {
     App.collections[key].allow(userAccess());

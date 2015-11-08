@@ -29,8 +29,15 @@ ContentAreas =
 
 
 VM = {
-    "sections": {}
+    "sections": {
+    }
 };
+
+VM["contentareas"] = ContentAreas.reduce((o,v,i) => {
+    o[v] = {};
+    return o;
+}, {}) ;
+
 
 Models = {
     "consultationForms": [],

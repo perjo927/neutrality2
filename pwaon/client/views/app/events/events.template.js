@@ -17,6 +17,12 @@ Template.eventss.onRendered(function () {
 });
 
 //
+Template.eventss.helpers({
+    getContentAreas() {
+        console.log(this);
+    }
+});
+//
 Template.eventss.events({
     "click .remove-item": function () {
         if (Meteor.userId()) {
@@ -33,19 +39,21 @@ Template.eventss.events({
     },
     // TODO: Refactor to generic
     'click .more-events' : function (event, template) {
-        var arrayLength = template.data.eventss.count();
+        var arrayLength = Session.get("eventsCount");
         var eventsLength = Session.get("eventsLength");
+
         if (eventsLength < arrayLength) {
             eventsLength += 3;
-
             Session.set("eventsLength", eventsLength);
+
             if (eventsLength >=  arrayLength) {
                 Session.set("eventsThresholdReached", true);
             }
         }
     },
     'click .less-events' : function (event, template) {
-        Session.set("eventsLength", 4);
+        let length = Session.set("eventsLength");
+        Session.set("eventsLength", 3 );
         Session.set("eventsThresholdReached", false);
     }
 });
@@ -81,10 +89,9 @@ Template.events_text.helpers({
         // TODO: limit to certain number requested by PO
         let eventss = this.eventss.fetch();
         let eventsLength = Session.get("eventsLength");
-        return eventss.slice(0, eventsLength);
+        return eventss;//.slice(0, eventsLength);
     }
 });
-
 
 /* */
 Template.events_icon_container.events({
@@ -106,9 +113,44 @@ Template.events_title_container.events({
 });
 
 /* */
+Template.events_date.onRendered(() => {
+    this.$(".event_pickdate").each(function() {
+        if (this.name === "events_date_from" ) {
+            let pickerFrom = EventsCreator.createPicker(
+                this.id,
+                setDate = moment(this.dateFrom).toDate(),
+                update = true,
+                type = "dateFrom",
+                data = this.dataset
+            );
+        } else {
+            let pickerTo = EventsCreator.createPicker(
+                this.id,
+                setDate = moment(this.dateTo).toDate(),
+                update = true,
+                type = "dateTo",
+                data = this.dataset
+            );
+        }
+    });
+});
+
+Template.events_date.helpers({
+    getDateFrom() {
+        return EventUtility.getDate(this.dateFrom);
+    },
+    getDateTo() {
+        return EventUtility.getDate(this.dateTo);
+    },
+    getDates() {
+        return EventUtility.getDates(this.dateFrom, this.dateTo);
+    }
+});
+
+/* TODO: fix */
 Template.events_date_container.events({
-    "click .edit": App.Template.Session.setHelperById("editingEventsDate", App.Template.Jquery.focus),
-    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsDate")
+//    "click .edit": App.Template.Session.setHelperById("editingEventsDate", App.Template.Jquery.focus),
+//    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsDate")
 });
 
 /* */

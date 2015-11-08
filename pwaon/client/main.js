@@ -9,12 +9,11 @@ UI.body.rendered = function() {
 Session.setDefault("SC", null);
 
 //
-Session.setDefault("experiencesLength", 3+1); // +1 For the title, a bit messy yes
+Session.setDefault("experiencesLength", 3+1); // +1 For the title, a bit messy yes TODO: Fix
 Session.setDefault("experiencesThresholdReached", false);
 
-Session.setDefault("eventsLength", 3+1); // +1 For the title
+Session.setDefault("eventsLength", 3);
 Session.setDefault("eventsThresholdReached", false);
-
 
 // TODO: Refactor each content area session helper somehow
 Session.setDefault("editingAppointmentModalTitle", false);
@@ -31,7 +30,6 @@ Session.setDefault("editingConsultationModalTitle", false);
 Session.setDefault("editingEventsIcon", false);
 Session.setDefault("editingEventsLocation", false);
 Session.setDefault("editingEventsLink", false);
-Session.setDefault("editingEventsDate", false);
 Session.setDefault("editingEventsTitle", false);
 Session.setDefault("editingEventsMainTitle", false);
 Session.setDefault("editingEventsText", false);

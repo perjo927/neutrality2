@@ -14,7 +14,9 @@ $color_sticky_icon: $white_90;
   right: -2em;
 }
 
-#intro, {padding-top: 4rem;}
+#intro {
+  padding-top: 4rem;
+}
 
 
 input, textarea {
@@ -69,6 +71,7 @@ input, textarea {
   width: 100%;
   height: 3rem;
   font-size: 2rem;
+  // TODO: Prefixes
   //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
   transition: all 0.3s ease-in-out;
 
@@ -76,16 +79,19 @@ input, textarea {
     opacity: 0.7;
     height: 4rem;
     font-size: 3rem;
+    // TODO: Prefixes, mixin
     //Instead of the line below you could use @includetransition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
     transition: all 0.5s ease-in-out;
   }
 }
 .sticky-icon {
   cursor: pointer;
+  // TODO: Prefixes
   transition: text-shadow 0.3s ease-in-out; //
 
   &:hover {
     text-shadow: 0 0 3rem rgba($color_sticky_icon, .9);
+    // TODO: Prefixes
     transition: text-shadow 0.3s ease-in-out; //
   }
 }

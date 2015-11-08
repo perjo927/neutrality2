@@ -1,8 +1,10 @@
 // Runs in both client and server contexts
 
+/* TASKS */
 ContentAreas.forEach(function (area) {
     App.collections[area] = new Mongo.Collection(area);
 });
+App.collections["contentareas"] = new Mongo.Collection("contentareas");
 
 Object.keys(Models).forEach(function (model) {
     App.collections[model] = new Mongo.Collection(model);
@@ -13,7 +15,7 @@ Object.keys(Models).forEach(function (model) {
 App.Collection.insert = function (collection, document, callback) {
     collection.insert(document, function (error, id) {
         if (!!error) {
-            console.error(error);
+            //console.error(error);
         } else {
             //console.info(id);
             if (!!callback) {

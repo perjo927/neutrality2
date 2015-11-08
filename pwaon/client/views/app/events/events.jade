@@ -15,18 +15,17 @@ template(name="eventss")
                         .more-events
                             h2.pink-text
                                 i.mdi-navigation-expand-more
-                            // TODO: if more events
+                            // TODO: Fix with mongo limit
                             h6.expand.pink-text Get More Events
     +events_creator
 
 //
 template(name="events_top")
     .col.s12.center
-        each eventss
-            unless location
-                +events_icon_container
-                +events_main_title_container
-                +events_action_button
+        with contentareas.eventss
+            +events_icon_container
+            +events_main_title_container
+            +events_action_button
 //
 template(name="events_action_button")
     if currentUser
@@ -40,26 +39,28 @@ template(name="events_remove_button")
 //
 template(name="events_icon_container")
     if Session 'editingEventsIcon'
-        if currentUser
-            +InputHelper(attribute="icon" document=this collection="eventss"
-            class='form-control' placeholder=icon id=this)
-        else
+        //if currentUser
+        //    +InputHelper(attribute="icon" document=this collection="contentareas.eventss
+        //    class='form-control' placeholder=icon id=this)
+        //else
             +events_icon
+        +events_icon
     else
         +events_icon
 
 //
 template(name="events_icon")
-    i.pink-text(class="#{icon} medium {{#if currentUser}}edit{{/if}}" name="icon" )
+    i.pink-text(class="#{icon} medium {{#if currentUser}}edit{{/if}}" name="icon")
 
 //
 template(name="events_main_title_container")
     if Session 'editingEventsMainTitle'
-        if currentUser
-            +InputHelper(attribute="title" document=this collection="eventss"
-            class='form-control' placeholder=title id=this)
-        else
-            +events_main_title
+        //if currentUser
+        //    +InputHelper(attribute="title" document=this collection="eventss"
+        //    class='form-control' placeholder=title id=this)
+        //else
+        //    +events_main_title
+        +events_main_title
     else
         +events_main_title
 //
@@ -69,27 +70,26 @@ template(name="events_main_title")
 // *** //
 template(name="events_bottom")
     ul.scrollfire.events
-        each eventsLimited
-            if location
-                li
-                    .col.s12.m6.l4
-                        .card.event-card.white
-                            +events_remove_button
-                            .card-content.black-text
-                                +events_title_container
-                                br
-                                +events_date_container
-                                br
-                                +events_location_container
-                                br
-                                +events_text_container
-                                if link
-                                    +events_link_container
+        each eventss
+            li
+                .col.s12.m6.l4
+                    .card.event-card.white
+                        +events_remove_button
+                        .card-content.black-text
+                            +events_title_container
+                            br
+                            +events_date_container
+                            br
+                            +events_location_container
+                            br
+                            +events_text_container
+                            if link
+                                +events_link_container
 
-                            .card-action
-                                a.modal-trigger.cyan-text(href="#modal-#{_id}")
-                                    | READ MORE
-                +events_modal
+                        .card-action
+                            a.modal-trigger.cyan-text(href="#modal-#{_id}")
+                                | READ MORE
+            +events_modal
 
 //
 template(name="events_title_container")
@@ -138,7 +138,14 @@ template(name="events_date_container")
 //
 template(name="events_date")
     b.black-text.light Date: &nbsp;
-    span(name="date" class="{{#if currentUser}}edit{{/if}}")= date
+    if currentUser
+        input.event_pickdate(type="text" value="#{getDateFrom}" id="events_date_from_#{_id}" name="events_date_from"
+        data-id="#{_id}")
+        input.event_pickdate(type="text" value="#{getDateTo}" id="events_date_to_#{_id}" name="events_date_to"
+        data-id="#{_id}")
+    else
+        span= getDates
+        //span(name="date" class="{{#if currentUser}}edit{{/if}}")= date
 
 
 //

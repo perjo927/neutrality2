@@ -5,21 +5,23 @@ template(name="events_creator")
             .row
                 form#events-create-form.col.s12
                     .row
-                        .input-field.col.s12.m9
+                        .input-field.col.s12.m8
                             input#events-create-title.validate(value='Title', type='text' pattern=".{3,100}"
                             maxlength="100" required title="(3 to 100 characters)" name="title")
                             label.active(for='events-create-title') Title
-                        // TODO: Datepicker
-                        .input-field.col.s12.m3
-                            input#events-create-date.validate(value='Date', type='text' pattern=".{3,25}"
-                            maxlength="25" required title="(3 to 35 characters)" name="date")
-                            label.active(for='events-create-date') Date
+                        .input-field.col.s6.m2
+                            input#datepicker_from(type="text" name="dateFrom")
+                            label.active(for='datepicker_from') From (date)
+                        .input-field.col.s6.m2
+                            input#datepicker_to(type="text" name="dateTo")
+                            label.active(for='datepicker_to') To (date)
                         .input-field.col.s12.m6
                             input#events-create-location.validate(value='Location', type='text' pattern=".{3,50}"
                             maxlength="50" required title="(3 to 50 characters)" name="location")
                             label.active(for='events-create-location') Location
                         .input-field.col.s12.m6
-                            input#events-create-link.validate(value='Link', type='text' pattern=".{7,100}"
+                            input#events-create-link.validate(value='http://', type='text' pattern=".{7,100}"
+                            placeholder = "http://"
                             maxlength="100" required title="(7 to 100 characters)" name="link")
                             label.active(for='events-create-link') Link
                         .input-field.col.s12
