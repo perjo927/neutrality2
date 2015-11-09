@@ -1,6 +1,5 @@
 var fireSelector = ".scrollfire" + "." + "eventss";
 
-
 Template.eventss.scrollFireContent = function () {
     Materialize.showStaggeredList(fireSelector);
 };
@@ -37,7 +36,19 @@ Template.eventss.events({
             );
         }
     },
-    // TODO: Refactor to generic
+    "click .archive-item": function () {
+        if (Meteor.userId()) {
+            Materialize.toast(
+                `<span>Archive event? &nbsp;</span>
+                <span class="btn-flat pink-text" class="past-item"
+                onclick="App.collections.eventss.update('${this._id}', {$set: {archived: true}})">
+                 ARCHIVE
+                </span>`,
+                5000
+            );
+        }
+    },
+    // TODO: Refactor to generic (for experiences)
     'click .more-events' : function (event, template) {
         var arrayLength = Session.get("eventsCount");
         var eventsLength = Session.get("eventsLength");
@@ -70,26 +81,10 @@ Template.events_bottom.onRendered(function () {
     this.$('.modal-trigger').leanModal();
 });
 
-Template.events_bottom.helpers({
-    "eventsLimited": function () {
-        // TODO: refactor to generic
-        var eventss = this.eventss.fetch();
-        var eventsLength = Session.get("eventsLength");
-        return eventss.slice(0, eventsLength);
-    }
-});
-
 Template.events_text.helpers({
     overFlowText() {
         let clippedText = this.text.substring(0, 100);
         return `${clippedText} ... `;
-    },
-    eventsLimited() {
-        // TODO: Make global generic method
-        // TODO: limit to certain number requested by PO
-        let eventss = this.eventss.fetch();
-        let eventsLength = Session.get("eventsLength");
-        return eventss;//.slice(0, eventsLength);
     }
 });
 
@@ -121,6 +116,7 @@ Template.events_date.onRendered(() => {
                 setDate = moment(this.dateFrom).toDate(),
                 update = true,
                 type = "dateFrom",
+                name = this.name,
                 data = this.dataset
             );
         } else {
@@ -129,6 +125,7 @@ Template.events_date.onRendered(() => {
                 setDate = moment(this.dateTo).toDate(),
                 update = true,
                 type = "dateTo",
+                name = this.name,
                 data = this.dataset
             );
         }
@@ -147,11 +144,6 @@ Template.events_date.helpers({
     }
 });
 
-/* TODO: fix */
-Template.events_date_container.events({
-//    "click .edit": App.Template.Session.setHelperById("editingEventsDate", App.Template.Jquery.focus),
-//    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsDate")
-});
 
 /* */
 Template.events_location_container.events({

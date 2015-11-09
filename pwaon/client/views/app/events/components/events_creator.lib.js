@@ -41,9 +41,9 @@ EventUtility = class EventMaker {
         return `${from} - ${to}`;
     }
 
-    createPicker(id, setDate = new Date(), update = false, type = undefined, data = undefined){
+    createPicker(id, setDate = new Date(), update = false, type = undefined, name = undefined, data = undefined){
         if (!!data) {
-            var eventDateData = `${type}${data.id}`;
+            var eventDateData = `${name}${data.id}`;
             if (this.pickers.indexOf(eventDateData) === -1 ) {
                 this.pickers.push(eventDateData);
                 var that = this;

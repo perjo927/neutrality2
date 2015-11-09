@@ -15,7 +15,6 @@ template(name="eventss")
                         .more-events
                             h2.pink-text
                                 i.mdi-navigation-expand-more
-                            // TODO: Fix with mongo limit
                             h6.expand.pink-text Get More Events
     +events_creator
 
@@ -35,10 +34,18 @@ template(name="events_action_button")
 template(name="events_remove_button")
     if currentUser
         i.remove-item.mdi-action-highlight-remove.left
+//
+template(name="events_archive_button")
+    if currentUser
+        if archived
+            i.tiny.archive-item.right.material-icons.red-text restore
+        else
+            i.tiny.archive-item.right.material-icons.green-text schedule
 
 //
 template(name="events_icon_container")
     if Session 'editingEventsIcon'
+        // TODO: fix
         //if currentUser
         //    +InputHelper(attribute="icon" document=this collection="contentareas.eventss
         //    class='form-control' placeholder=icon id=this)
@@ -55,6 +62,7 @@ template(name="events_icon")
 //
 template(name="events_main_title_container")
     if Session 'editingEventsMainTitle'
+        // TODO: fix
         //if currentUser
         //    +InputHelper(attribute="title" document=this collection="eventss"
         //    class='form-control' placeholder=title id=this)
@@ -75,6 +83,7 @@ template(name="events_bottom")
                 .col.s12.m6.l4
                     .card.event-card.white
                         +events_remove_button
+                        +events_archive_button
                         .card-content.black-text
                             +events_title_container
                             br
@@ -126,14 +135,7 @@ template(name="events_location")
 
 //
 template(name="events_date_container")
-    if Session 'editingEventsDate' eq=_id
-        if currentUser
-            +InputHelper(attribute="date" document=this collection="eventss"
-            class='form-control' placeholder=date id=this)
-        else
-            +events_date
-    else
-        +events_date
+    +events_date
 
 //
 template(name="events_date")
@@ -145,8 +147,6 @@ template(name="events_date")
         data-id="#{_id}")
     else
         span= getDates
-        //span(name="date" class="{{#if currentUser}}edit{{/if}}")= date
-
 
 //
 template(name="events_text_container")

@@ -56,19 +56,20 @@ template(name="events_modal_location")
 
 //
 template(name="events_modal_date_container")
-    if Session 'editingEventsDate' eq=_id
-        if currentUser
-            +InputHelper(attribute="date" document=this collection="eventss"
-            class='form-control' placeholder=date id=this)
-        else
-            +events_modal_date
-    else
-        +events_modal_date
+    +events_modal_date
+
 //
 template(name="events_modal_date")
     b.black-text.light Date: &nbsp;
-    span(name="date" class="{{#if currentUser}}edit{{/if}}")= date
-
+    if currentUser
+        input.events_modal_pickdate(type="text" value="#{getDateFrom}" id="events_modal_date_from_#{_id}"
+        name="events_modal_date_from"
+        data-id="#{_id}")
+        input.events_modal_pickdate(type="text" value="#{getDateTo}" id="events_modal_date_to_#{_id}"
+        name="events_modal_date_to"
+        data-id="#{_id}")
+    else
+        span= getDates
 
 //
 template(name="events_modal_link_container")
