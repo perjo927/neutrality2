@@ -49,7 +49,14 @@ Router.route('/', {
                     training: c["training"].find(),
                     experiences: c["experiences"].find(),
                     parallax: c["parallax"].find(),
-                    eventss: c["eventss"].find({}, { sort : {dateFrom: -1}, limit: Session.get("eventsLength") }),
+                    eventss: c["eventss"].find(
+                        {
+                            archived: Session.get("eventsHistory")
+                        },
+                        {
+                            sort : {dateFrom: -1 },
+                            limit: Session.get("eventsLength")
+                        }),
                     sticky: c["sticky"].find(),
                     appointment: c["appointment"].find(),
                     consultationForms: c["consultationForms"].find(),

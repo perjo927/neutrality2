@@ -1,5 +1,3 @@
-// TODO: Make editable (?)
-
 //
 template(name="hero_events")
    #hero_events.modal
@@ -7,7 +5,7 @@ template(name="hero_events")
          a.hero-events-close.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') &times; Close
          h4.black-text Upcoming Events
          hr
-         each eventsLimited
+         each eventss
             +hero_event
 //
 template(name="hero_event")
@@ -59,20 +57,18 @@ template(name="hero_event_location")
 
 //
 template(name="hero_event_date_container")
-   if Session 'editingEventsDate' eq=_id
-      if currentUser
-         .black-text
-            +InputHelper(attribute="date" document=this collection="eventss"
-            class='form-control' placeholder=date id=this)
-      else
-         +hero_event_date
-   else
       +hero_event_date
 //
 template(name="hero_event_date")
-   b
-      span.black-text Date: &nbsp;
-      span.blue-text(name="date" class="{{#if currentUser}}edit{{/if}}")= date
+   b.black-text Date: &nbsp;
+   .black-text
+      if currentUser
+         input.hero_event_pickdate(type="text" value="#{getDateFrom}" id="hero_event_date_from_#{_id}"
+         name="hero_event_date_from" data-id="#{_id}")
+         input.hero_event_pickdate(type="text" value="#{getDateTo}" id="hero_event_date_to_#{_id}"
+         name="hero_event_date_to" data-id="#{_id}")
+      else
+         span= getDates
 
 //
 template(name="hero_event_text_container")

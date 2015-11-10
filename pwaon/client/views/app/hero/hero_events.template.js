@@ -1,20 +1,4 @@
 
-Template.hero_event.helpers({
-    es6() { return "foo"; },
-    "es7": () => "bar"
-});
-
-//
-Template.hero_events.helpers({
-    eventsLimited() {
-        // TODO: Make global generic method
-        // TODO: limit to certain number requested by PO
-        let eventss = this.eventss.fetch();
-        let eventsLength = Session.get("eventsLength");
-        return eventss.slice(0, eventsLength);
-    }
-});
-
 //
 Template.hero_event.helpers({
     overFlowText() {
@@ -32,7 +16,43 @@ let registerEditableInputById = (identifier) => {
 };
 
 Template.hero_event_title_container.events(registerEditableInputById("editingEventsTitle"));
-Template.hero_event_date_container.events(registerEditableInputById("editingEventsDate"));
 Template.hero_event_location_container.events(registerEditableInputById("editingEventsLocation"));
 Template.hero_event_text_container.events(registerEditableInputById("editingEventsText"));
 Template.hero_event_link_container.events(registerEditableInputById("editingEventsLink"));
+
+//
+Template.hero_event_date.onRendered(() => {
+    this.$(".hero_event_pickdate").each(function() {
+        if (this.name === "hero_event_date_from" ) {
+            let pickerFrom = EventsCreator.createPicker(
+                this.id,
+                setDate = moment(this.dateFrom).toDate(),
+                update = true,
+                type = "dateFrom",
+                name = this.name,
+                data = this.dataset
+            );
+        } else {
+            let pickerTo = EventsCreator.createPicker(
+                this.id,
+                setDate = moment(this.dateTo).toDate(),
+                update = true,
+                type = "dateTo",
+                name = this.name,
+                data = this.dataset
+            );
+        }
+    });
+});
+
+Template.hero_event_date.helpers({
+    getDateFrom() {
+        return EventUtility.getDate(this.dateFrom);
+    },
+    getDateTo() {
+        return EventUtility.getDate(this.dateTo);
+    },
+    getDates() {
+        return EventUtility.getDates(this.dateFrom, this.dateTo);
+    }
+});

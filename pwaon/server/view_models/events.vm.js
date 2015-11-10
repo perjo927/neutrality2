@@ -14,7 +14,7 @@ var event1 =
     link: "http://www.artofneutrality.com",
     dateFrom: 1446984211668,
     dateTo: 1446984211669,
-    archived: "false"
+    archived: false
 };
 
 var event2 =
@@ -25,7 +25,7 @@ var event2 =
     link: "http://www.artofneutrality.com",
     dateFrom: 1446984211668,
     dateTo: 1446984211669,
-    archived: "false"
+    archived: false
 };
 
 var event3 =
@@ -36,7 +36,7 @@ var event3 =
     link: "http://www.artofneutrality.com",
     dateFrom: 1446984211668,
     dateTo: 1446984211669,
-    archived: "false"
+    archived: false
 };
 
 

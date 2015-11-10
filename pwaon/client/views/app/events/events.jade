@@ -25,6 +25,34 @@ template(name="events_top")
             +events_icon_container
             +events_main_title_container
             +events_action_button
+
+//
+template(name="events_main_title_container")
+    if Session 'editingEventsMainTitle'
+        // TODO: fix
+        //if currentUser
+        //    +InputHelper(attribute="title" document=this collection="eventss"
+        //    class='form-control' placeholder=title id=this)
+        //else
+        //    +events_main_title
+        +events_main_title
+    else
+        +events_main_title
+
+//
+template(name="events_main_title")
+    h4.pink-text(name="title" class="{{#if currentUser}}edit{{/if}}")= title
+    +events_history
+
+//
+template(name="events_history")
+    .pink-text
+        if Session 'eventsHistory'
+            h6.center.events-current
+                i &#8594; View Current Events
+        else
+            h6.center.events-history
+                i &#8594; View Historical events
 //
 template(name="events_action_button")
     if currentUser
@@ -59,23 +87,8 @@ template(name="events_icon_container")
 template(name="events_icon")
     i.pink-text(class="#{icon} medium {{#if currentUser}}edit{{/if}}" name="icon")
 
-//
-template(name="events_main_title_container")
-    if Session 'editingEventsMainTitle'
-        // TODO: fix
-        //if currentUser
-        //    +InputHelper(attribute="title" document=this collection="eventss"
-        //    class='form-control' placeholder=title id=this)
-        //else
-        //    +events_main_title
-        +events_main_title
-    else
-        +events_main_title
-//
-template(name="events_main_title")
-    h4.pink-text(name="title" class="{{#if currentUser}}edit{{/if}}")= title
 
-// *** //
+//
 template(name="events_bottom")
     ul.scrollfire.events
         each eventss

@@ -1,6 +1,4 @@
-
-
-
+//
 UI.body.rendered = function() {
 
 };
@@ -12,6 +10,7 @@ Session.setDefault("SC", null);
 Session.setDefault("experiencesLength", 3+1); // +1 For the title, a bit messy yes TODO: Fix
 Session.setDefault("experiencesThresholdReached", false);
 
+Session.setDefault("eventsHistory", false);
 Session.setDefault("eventsLength", 3);
 Session.setDefault("eventsThresholdReached", false);
 

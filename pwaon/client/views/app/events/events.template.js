@@ -38,11 +38,13 @@ Template.eventss.events({
     },
     "click .archive-item": function () {
         if (Meteor.userId()) {
+            const archiveText = (this.archived) ? "Un-Archive" : "Archive";
+
             Materialize.toast(
-                `<span>Archive event? &nbsp;</span>
+                `<span>${archiveText} event? &nbsp;</span>
                 <span class="btn-flat pink-text" class="past-item"
-                onclick="App.collections.eventss.update('${this._id}', {$set: {archived: true}})">
-                 ARCHIVE
+                onclick="App.collections.eventss.update('${this._id}', {$set: {archived: ${!this.archived}}})">
+                 ${archiveText}
                 </span>`,
                 5000
             );
@@ -85,6 +87,15 @@ Template.events_text.helpers({
     overFlowText() {
         let clippedText = this.text.substring(0, 100);
         return `${clippedText} ... `;
+    }
+});
+
+Template.events_history.events({
+    "click .events-history": () => {
+        Session.set("eventsHistory", true)
+    },
+    "click .events-current": () => {
+        Session.set("eventsHistory", false)
     }
 });
 

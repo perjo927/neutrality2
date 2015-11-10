@@ -1,4 +1,4 @@
-/* */
+//
 Template.events_modal_date.onRendered(() => {
     this.$(".events_modal_pickdate").each(function() {
         if (this.name === "events_modal_date_from" ) {
