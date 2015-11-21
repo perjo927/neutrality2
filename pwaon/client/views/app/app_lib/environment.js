@@ -4,7 +4,10 @@ App.Utils.getPropertyOrDescendantProperty = function (obj, desc) {
         return obj[desc];
     }
     var arr = desc.split(".");
-    while(arr.length && (obj = obj[arr.shift()]));
+    while(arr.length) {
+        var prop = arr.shift();
+        obj = obj[prop];
+    }
     return obj;
 };
 
@@ -68,6 +71,19 @@ App.Template.Jquery.focus = function (that, event, template) {
 };
 
 App.Template["Session"] = {};
+
+App.Template.registerEditableInput = (identifier, name) => {
+    return {
+        "keypress input": App.Template.Session.toggleAfterKeyPress(identifier),
+        "click .edit": App.Template.Session.setHelper(identifier, name, App.Template.Jquery.focus)
+    };
+};
+App.Template.registerEditableInputById = (identifier) => {
+    return {
+        "keypress input": App.Template.Session.toggleAfterKeyPress(identifier),
+        "click .edit": App.Template.Session.setHelperById(identifier, App.Template.Jquery.focus)
+    };
+};
 
 App.Template.Session.getHelper = function (variable) {
     return function () {

@@ -7,19 +7,6 @@ Template.hero_event.helpers({
     }
 });
 
-// TODO: Make global
-let registerEditableInputById = (identifier) => {
-    return {
-        "keypress input": App.Template.Session.toggleAfterKeyPress(identifier),
-        "click .edit": App.Template.Session.setHelperById(identifier, App.Template.Jquery.focus)
-    };
-};
-
-Template.hero_event_title_container.events(registerEditableInputById("editingEventsTitle"));
-Template.hero_event_location_container.events(registerEditableInputById("editingEventsLocation"));
-Template.hero_event_text_container.events(registerEditableInputById("editingEventsText"));
-Template.hero_event_link_container.events(registerEditableInputById("editingEventsLink"));
-
 //
 Template.hero_event_date.onRendered(() => {
     this.$(".hero_event_pickdate").each(function() {
@@ -56,3 +43,9 @@ Template.hero_event_date.helpers({
         return EventUtility.getDates(this.dateFrom, this.dateTo);
     }
 });
+
+
+Template.hero_event_title_container.events(App.Template.registerEditableInputById("editingEventsTitle"));
+Template.hero_event_location_container.events(App.Template.registerEditableInputById("editingEventsLocation"));
+Template.hero_event_text_container.events(App.Template.registerEditableInputById("editingEventsText"));
+Template.hero_event_link_container.events(App.Template.registerEditableInputById("editingEventsLink"));

@@ -1,14 +1,9 @@
-// TODO: SASS
-
 @import '{}/client/style/lib/colors';
 
-
-// TODO: global material variables
-$color_theme: $purple; // TODO: color("deep-purple", "darken-1");
+$color_theme: $purple;
 $color_banner: $white_90;
 $color_sticky: $color_theme;
 $color_sticky_icon: $white_90;
-
 
 .btn-edit {
   right: -2em;
@@ -95,20 +90,6 @@ input, textarea {
     transition: text-shadow 0.3s ease-in-out; //
   }
 }
-
-// MEDIA QUERIES
-
-
-// TODO:
-//@media #{$small-and-down} {
-//  // styles for small screens and down //
-//}
-//@media #{$medium-and-up} {
-//  // styles for medium screens and larger //
-//}
-//@media #{$large-and-up} {
-//  // styles for large screens and up //
-//}
 
 
 

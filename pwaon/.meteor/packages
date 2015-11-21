@@ -15,7 +15,6 @@ msavin:mongol
 accounts-base
 markdown
 accounts-password
-yann:input-helper
 msavin:jetsetter
 erasaur:session-helper
 standard-minifiers
@@ -36,3 +35,4 @@ http
 ecmascript
 richsilv:pikaday
 momentjs:moment
+preybird:input-helper

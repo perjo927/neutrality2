@@ -28,14 +28,12 @@ template(name="events_top")
 
 //
 template(name="events_main_title_container")
-    if Session 'editingEventsMainTitle'
-        // TODO: fix
-        //if currentUser
-        //    +InputHelper(attribute="title" document=this collection="eventss"
-        //    class='form-control' placeholder=title id=this)
-        //else
-        //    +events_main_title
-        +events_main_title
+    if Session 'editingEventsMainTitle' eq=_id
+        if currentUser
+            +InputHelper(attribute="eventss.title" document=this collection="contentareas"
+            class='form-control' placeholder=title id=this)
+        else
+            +events_main_title
     else
         +events_main_title
 
@@ -53,11 +51,13 @@ template(name="events_history")
         else
             h6.center.events-history
                 i &#8594; View Historical events
+
 //
 template(name="events_action_button")
     if currentUser
         a.btn-floating.btn-large.btn-edit.waves-light.green.right.modal-trigger(href='#events-creator')
             i.mdi-content-add Add
+
 //
 template(name="events_remove_button")
     if currentUser
@@ -72,14 +72,12 @@ template(name="events_archive_button")
 
 //
 template(name="events_icon_container")
-    if Session 'editingEventsIcon'
-        // TODO: fix
-        //if currentUser
-        //    +InputHelper(attribute="icon" document=this collection="contentareas.eventss
-        //    class='form-control' placeholder=icon id=this)
-        //else
+    if Session 'editingEventsIcon' eq=_id
+        if currentUser
+            +InputHelper(attribute="eventss.icon" document=this collection="contentareas"
+            class='form-control' placeholder=icon id=this)
+        else
             +events_icon
-        +events_icon
     else
         +events_icon
 

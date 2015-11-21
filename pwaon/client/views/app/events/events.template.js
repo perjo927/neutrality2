@@ -100,25 +100,6 @@ Template.events_history.events({
 });
 
 /* */
-Template.events_icon_container.events({
-    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsIcon"),
-    "click .edit": App.Template.Session.setHelper("editingEventsIcon", "icon", App.Template.Jquery.focus)
-});
-
-
-/* */
-Template.events_main_title_container.events({
-    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsMainTitle"),
-    "click .edit": App.Template.Session.setHelper("editingEventsMainTitle", "title", App.Template.Jquery.focus)
-});
-
-/* */
-Template.events_title_container.events({
-    "click .edit": App.Template.Session.setHelperById("editingEventsTitle", App.Template.Jquery.focus),
-    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsTitle")
-});
-
-/* */
 Template.events_date.onRendered(() => {
     this.$(".event_pickdate").each(function() {
         if (this.name === "events_date_from" ) {
@@ -155,21 +136,15 @@ Template.events_date.helpers({
     }
 });
 
-
+// TODO: Fix
 /* */
-Template.events_location_container.events({
-    "click .edit": App.Template.Session.setHelperById("editingEventsLocation", App.Template.Jquery.focus),
-    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsLocation")
-});
+Template.events_icon_container.events(App.Template.registerEditableInputById("editingEventsIcon"));
+Template.events_main_title_container.events(App.Template.registerEditableInputById("editingEventsMainTitle"));
 
-/* */
-Template.events_link_container.events({
-    "click .edit": App.Template.Session.setHelperById("editingEventsLink", App.Template.Jquery.focus),
-    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsLink")
-});
 
-/* */
-Template.events_text_container.events({
-    "click .edit": App.Template.Session.setHelperById("editingEventsText", App.Template.Jquery.focus),
-    "keypress input": App.Template.Session.toggleAfterKeyPress("editingEventsText")
-});
+
+
+Template.events_title_container.events(App.Template.registerEditableInputById("editingEventsTitle"));
+Template.events_location_container.events(App.Template.registerEditableInputById("editingEventsLocation"));
+Template.events_link_container.events(App.Template.registerEditableInputById("editingEventsLink"));
+Template.events_text_container.events(App.Template.registerEditableInputById("editingEventsText"));

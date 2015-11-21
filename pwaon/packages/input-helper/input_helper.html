@@ -1,0 +1,32 @@
+<template name="InputHelper">
+    {{#if collection}}
+        {{#with document}}
+          <input type="text" name="{{../name}}" id="{{_id}}" class="input-helper-yann {{../class}}"
+                 value="{{value ../attribute}}" title="" required="">
+        {{/with}}
+    {{/if}}
+
+    {{#if this.session}}
+      {{#if this.select}}
+      <select class="input-helper-yann {{class}}">
+        {{#each this.select}}
+            <option value="{{value}}" {{selected_value this.name}}>{{name}}</option>
+        {{/each}}
+      </select>
+      {{/if}}
+      {{#if this.options}}
+        {{#each options}}
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" class="input-helper-yann {{class}}" value="{{this.value}}" {{selected this.value}}>
+                {{this.name}}
+              </label>
+            </div>
+          {{/each}}
+      {{/if}}
+      {{#if isBase}}
+        <input type="text" name="{{name}}" id="" class="input-helper-yann {{class}}"
+               value="{{value this.session}}" title="" required="">
+      {{/if}}
+    {{/if}}
+</template>

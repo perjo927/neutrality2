@@ -1,10 +1,19 @@
 // Runs in both client and server contexts
 
-/* TASKS */
+ContentArea = function (doc) {
+    _.extend(this, doc);
+};
+_.extend(ContentArea.prototype, {
+    _id: this._id
+});
+
+App.collections["contentareas"] = new Mongo.Collection("contentareas", {
+    transform: (doc) => new ContentArea(doc)
+});
+
 ContentAreas.forEach(function (area) {
     App.collections[area] = new Mongo.Collection(area);
 });
-App.collections["contentareas"] = new Mongo.Collection("contentareas");
 
 Object.keys(Models).forEach(function (model) {
     App.collections[model] = new Mongo.Collection(model);
