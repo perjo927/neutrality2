@@ -33,7 +33,7 @@ Router.route('/', {
 
         var c = App.collections;
 
-         Session.get("experiencesCount", c["experiences"].find().count());
+        Session.set("experiencesCount", c["experiences"].find().count());
         Session.set("eventsCount", c["eventss"].find().count());
 
         router.render('home', {
@@ -50,7 +50,7 @@ Router.route('/', {
                     parallax: c["parallax"].find(),
                     experiences: c["experiences"].find(
                         {
-                            archived: Session.get("eventsHistory")
+                            archived: Session.get("experiencesHistory")
                         },
                         {
                             limit: Session.get("experiencesLength"),
@@ -62,7 +62,7 @@ Router.route('/', {
                             archived: Session.get("eventsHistory")
                         },
                         {
-                            sort : {dateFrom: -1 },
+                            sort : {dateFrom: 1 },
                             limit: Session.get("eventsLength")
                         }),
                     sticky: c["sticky"].find(),

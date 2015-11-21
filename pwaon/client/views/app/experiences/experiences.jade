@@ -28,10 +28,10 @@ template(name="experiences_top")
 
 //
 template(name="experiences_icon_container")
-    if Session 'editingExperiencesIcon'
+    if Session 'editingExperiencesIcon' eq=_id
         if currentUser
             .black-text.center
-                +InputHelper(attribute="experiences.icon" document=this collection="experiences"
+                +InputHelper(attribute="experiences.icon" document=this collection="contentareas"
                 class='form-control' placeholder=icon id=this)
         else
             +experiences_icon
@@ -44,9 +44,9 @@ template(name="experiences_icon")
 
 //
 template(name="experiences_main_title_container")
-    if Session 'editingExperiencesMainTitle'
+    if Session 'editingExperiencesMainTitle' eq=_id
         if currentUser
-            +InputHelper(attribute="experiences.text" document=this collection="experiences"
+            +InputHelper(attribute="experiences.text" document=this collection="contentareas"
             class='form-control' placeholder=text id=this)
         else
             +experiences_main_title
@@ -56,17 +56,18 @@ template(name="experiences_main_title_container")
 //
 template(name="experiences_main_title")
     h4.pink-text(name="text" class="{{#if currentUser}}edit{{/if}}")= text
-    +experiences_history
+    if currentUser
+        +experiences_history
 
 //
 template(name="experiences_history")
     .pink-text
         if Session 'experiencesHistory'
             h6.center.experiences-current
-                i &#8594; View Current testimonials
+                i &#8594; View Current Testimonials
         else
             h6.center.experiences-history
-                i &#8594; View archived testimonials
+                i &#8594; View Archived Testimonials
 
 
 //

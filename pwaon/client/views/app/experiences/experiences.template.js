@@ -93,6 +93,6 @@ Template.experiences_history.events({
 
 
 /* */
-Template.experiences_main_title_container.events(App.Template.registerEditableInput("editingExperiencesMainTitle", "title"));
-Template.experiences_icon_container.events(App.Template.registerEditableInput("editingExperiencesIcon", "icon"));
+Template.experiences_main_title_container.events(App.Template.registerEditableInputById("editingExperiencesMainTitle"));
+Template.experiences_icon_container.events(App.Template.registerEditableInputById("editingExperiencesIcon"));
 Template.experiences_name_container.events(App.Template.registerEditableInputById("editingExperiencesName"));

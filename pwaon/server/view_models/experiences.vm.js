@@ -1,7 +1,6 @@
 
 var experienceTitle =
 {
-    isTitle: true,
     icon: "mdi-social-mood",
     color: "pink",
     text: "Experiences"
