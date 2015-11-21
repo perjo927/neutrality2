@@ -26,9 +26,26 @@ template(name="events_top")
             +events_main_title_container
             +events_action_button
 
+
+//
+template(name="events_icon_container")
+    if Session 'editingEventsIcon'
+        if currentUser
+            +InputHelper(attribute="eventss.icon" document=this collection="contentareas"
+            class='form-control' placeholder=icon id=this)
+        else
+            +events_icon
+    else
+        +events_icon
+
+//
+template(name="events_icon")
+    i.pink-text(class="#{icon} medium {{#if currentUser}}edit{{/if}}" name="icon")
+
+
 //
 template(name="events_main_title_container")
-    if Session 'editingEventsMainTitle' eq=_id
+    if Session 'editingEventsMainTitle'
         if currentUser
             +InputHelper(attribute="eventss.title" document=this collection="contentareas"
             class='form-control' placeholder=title id=this)
@@ -70,21 +87,6 @@ template(name="events_archive_button")
         else
             i.tiny.archive-item.right.material-icons.green-text schedule
 
-//
-template(name="events_icon_container")
-    if Session 'editingEventsIcon' eq=_id
-        if currentUser
-            +InputHelper(attribute="eventss.icon" document=this collection="contentareas"
-            class='form-control' placeholder=icon id=this)
-        else
-            +events_icon
-    else
-        +events_icon
-
-//
-template(name="events_icon")
-    i.pink-text(class="#{icon} medium {{#if currentUser}}edit{{/if}}" name="icon")
-
 
 //
 template(name="events_bottom")
@@ -95,6 +97,7 @@ template(name="events_bottom")
                     .card.event-card.white
                         +events_remove_button
                         +events_archive_button
+
                         .card-content.black-text
                             +events_title_container
                             br

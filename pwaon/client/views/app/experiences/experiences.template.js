@@ -1,4 +1,4 @@
-var fireSelector = ".scrollfire" + "." + "experiences";
+var fireSelector = ".scrollfire.experiences";
 
 
 Template.experiences.scrollFireContent = function () {
@@ -21,9 +21,9 @@ Template.experiences.events({
     "click .remove-item": function () {
         if (Meteor.userId()) {
             Materialize.toast(
-                '<span>Remove testimonial? &nbsp;</span>' +
+                '<span>Remove event? &nbsp;</span>' +
                 '<span class="btn-flat pink-text" class="delete-item" ' +
-                'onclick= App.collections.experiences.remove(\'' +
+                'onclick= App.experiences.eventss.remove(\'' +
                 this._id +
                 '\')>' +
                 ' REMOVE ' +
@@ -31,25 +31,39 @@ Template.experiences.events({
             );
         }
     },
+    "click .archive-item": function () {
+        if (Meteor.userId()) {
+            const archiveText = (this.archived) ? "Un-Archive" : "Archive";
+
+            Materialize.toast(
+                `<span>${archiveText} event? &nbsp;</span>
+                <span class="btn-flat pink-text" class="past-item"
+                onclick="App.collections.experiences.update('${this._id}', {$set: {archived: ${!this.archived}}})">
+                 ${archiveText}
+                </span>`,
+                5000
+            );
+        }
+    },
     // TODO: Refactor to generic
     'click .more-testimonials' : function (event, template) {
-        var arrayLength = template.data.experiences.count();
+        var arrayLength = Session.get("experiencesCount");
         var experiencesLength = Session.get("experiencesLength");
+
         if (experiencesLength < arrayLength) {
             experiencesLength += 3;
-
             Session.set("experiencesLength", experiencesLength);
+
             if (experiencesLength >=  arrayLength) {
                 Session.set("experiencesThresholdReached", true);
             }
         }
     },
     'click .less-testimonials' : function (event, template) {
-        Session.set("experiencesLength", 4);
+        Session.set("experiencesLength", 3);
         Session.set("experiencesThresholdReached", false);
     }
 });
-
 
 
 /* */
@@ -63,32 +77,22 @@ Template.experiences_bottom.onRendered(function () {
 });
 
 Template.experiences_bottom.helpers({
-    "overFlowText": function () {
-        return this.text.substring(0,100) + " ... ";
+    overFlowText() {
+        return App.Template.overFlowText(this.text, 100);
+    }
+});
+
+Template.experiences_history.events({
+    "click .experiences-history": () => {
+        Session.set("experiencesHistory", true)
     },
-    // TODO: refactor to generic
-    "experiencesLimited": function () {
-        var experiences = this.experiences.fetch();
-        var experiencesLength = Session.get("experiencesLength");
-        return experiences.slice(0,experiencesLength);
+    "click .experiences-current": () => {
+        Session.set("experiencesHistory", false)
     }
 });
 
 
 /* */
-Template.experiences_main_title_container.events({
-    "keypress input": App.Template.Session.toggleAfterKeyPress("editingExperiencesMainTitle"),
-    "click .edit": App.Template.Session.setHelper("editingExperiencesMainTitle", "text", App.Template.Jquery.focus)
-});
-
-/* */
-Template.experiences_icon_container.events({
-    "keypress input": App.Template.Session.toggleAfterKeyPress("editingExperiencesIcon"),
-    "click .edit": App.Template.Session.setHelper("editingExperiencesIcon", "text", App.Template.Jquery.focus)
-});
-
-/* */
-Template.experiences_name_container.events({
-    "click .edit": App.Template.Session.setHelperById("editingExperiencesName", App.Template.Jquery.focus),
-    "keypress input": App.Template.Session.toggleAfterKeyPress("editingExperiencesName")
-});
+Template.experiences_main_title_container.events(App.Template.registerEditableInput("editingExperiencesMainTitle", "title"));
+Template.experiences_icon_container.events(App.Template.registerEditableInput("editingExperiencesIcon", "icon"));
+Template.experiences_name_container.events(App.Template.registerEditableInputById("editingExperiencesName"));

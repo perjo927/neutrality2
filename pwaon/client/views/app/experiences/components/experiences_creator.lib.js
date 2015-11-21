@@ -2,6 +2,8 @@ ExperiencesCreator = {};
 
 ExperiencesCreator.createNewExperience = function (event) {
     var newExperience = App.UI.parseForm(event);
+    newExperience.priority = 0;
+    newExperience.archived = false;
     return newExperience;
 };
 

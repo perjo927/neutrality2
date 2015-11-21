@@ -1,7 +1,11 @@
-.experiences-card {
-  height: 240px;
+.experiences-card{
+  min-height: 280px;
 
   .card-content {
-    min-height: 12rem;
+    min-height: 15rem;
   }
+}
+
+.experiences-history, .experiences-current {
+  cursor: pointer;
 }

@@ -1,4 +1,4 @@
-var fireSelector = ".scrollfire" + "." + "eventss";
+var fireSelector = ".scrollfire.eventss";
 
 Template.eventss.scrollFireContent = function () {
     Materialize.showStaggeredList(fireSelector);
@@ -65,8 +65,7 @@ Template.eventss.events({
         }
     },
     'click .less-events' : function (event, template) {
-        let length = Session.set("eventsLength");
-        Session.set("eventsLength", 3 );
+        Session.set("eventsLength", 3);
         Session.set("eventsThresholdReached", false);
     }
 });
@@ -85,8 +84,7 @@ Template.events_bottom.onRendered(function () {
 
 Template.events_text.helpers({
     overFlowText() {
-        let clippedText = this.text.substring(0, 100);
-        return `${clippedText} ... `;
+        return App.Template.overFlowText(this.text, 100);
     }
 });
 
@@ -136,14 +134,9 @@ Template.events_date.helpers({
     }
 });
 
-// TODO: Fix
 /* */
-Template.events_icon_container.events(App.Template.registerEditableInputById("editingEventsIcon"));
-Template.events_main_title_container.events(App.Template.registerEditableInputById("editingEventsMainTitle"));
-
-
-
-
+Template.events_icon_container.events(App.Template.registerEditableInput("editingEventsIcon", "icon"));
+Template.events_main_title_container.events(App.Template.registerEditableInput("editingEventsMainTitle", "title"));
 Template.events_title_container.events(App.Template.registerEditableInputById("editingEventsTitle"));
 Template.events_location_container.events(App.Template.registerEditableInputById("editingEventsLocation"));
 Template.events_link_container.events(App.Template.registerEditableInputById("editingEventsLink"));

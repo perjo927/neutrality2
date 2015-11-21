@@ -136,3 +136,8 @@ App.Template.Session.toggleAfterKeyPress = function (variable) {
         }
     }
 };
+
+App.Template.overFlowText = (text, length) => {
+    let clippedText = text.substring(0, length);
+    return `${clippedText} ... `;
+};

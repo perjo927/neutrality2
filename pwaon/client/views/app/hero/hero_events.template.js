@@ -2,8 +2,7 @@
 //
 Template.hero_event.helpers({
     overFlowText() {
-        let clippedText = this.text.substring(0, 100);
-        return `${clippedText} ... `;
+        return App.Template.overFlowText(this.text, 100);
     }
 });
 
