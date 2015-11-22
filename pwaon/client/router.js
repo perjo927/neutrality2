@@ -199,12 +199,12 @@ Router.route('/videos', {
         return CreateSubscriptions({
             "contentareas": noParams,
             "navbar": noParams,
-            "footer": noParams,
             "sticky": noParams,
             "appointment": noParams,
             "consultationForms": noParams,
             "consultationSteps": noParams,
-            "workshops": noParams
+            "workshops": noParams,
+            "videos": noParams
         });
     },
     action(){
@@ -212,8 +212,8 @@ Router.route('/videos', {
         var params = router.params;
         var c = App.collections;
 
-        router.render('home', {
-            data: function () {
+        router.render('videos', {
+            data() {
                 return {
                     contentareas: c["contentareas"].findOne(),
                     navbar: c["navbar"].find(),
@@ -223,23 +223,16 @@ Router.route('/videos', {
                     appointment: c["appointment"].find(),
                     consultationForms: c["consultationForms"].find(),
                     consultationSteps: c["consultationSteps"].find(),
-                    workshops: c["workshops"].find()
+                    workshops: c["workshops"].find(),
+                    videos: c["videos"].find()
                 }
             }
         });
         router.render('navbar', {
             to: "navbar",
-            data: function () {
+            data() {
                 return {
                     navbar: c["navbar"].find()
-                }
-            }
-        });
-        router.render('footer', {
-            to: "footer",
-            data: function () {
-                return {
-                    footer: c["footer"].find()
                 }
             }
         });

@@ -9,7 +9,8 @@ var resources2 = {
     icon: "mdi-action-theaters",
     title: "Free Videos",
     alt: "Videos",
-    link: "https://www.youtube.com/embed/videoseries?list=PL44F2F92C7C671168"
+    link: "videos"
+    //link: "https://www.youtube.com/embed/videoseries?list=PL44F2F92C7C671168"
     // TODO: Link to a video collection directly named free resources directly related to the website content
     // TODO: fix with binding
 };

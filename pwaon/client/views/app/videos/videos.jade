@@ -4,4 +4,27 @@ template(name='videos')
     +appointment
 
 template(name="video_list")
-    h2 Videos
+    with contentareas.videos
+        i.center.purple-text.large(class="#{icon}")
+        h2.center= title
+
+
+    // TODO: categories, get from videos, or from categories?
+
+    each videos
+        +video_frame
+
+template(name="video_frame")
+    .row
+        .col.s12.m6
+            .card.grey.lighten-1
+                .card-content.white-text
+                    span.card-title= title
+                    p
+                        b= category
+                    p
+                        each keywords
+                            span= keyword
+
+                .card-action
+                    a(href="#{link}") Watch video

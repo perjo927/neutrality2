@@ -3,6 +3,7 @@ template(name="resources")
         .section.no-pad-bot
             #resources.container.section.scrollspy
                 each resources
+                    // TODO: Fix with contentareas
                     if mainTitle
                         .row.center
                             +resources_top
@@ -77,14 +78,19 @@ template(name="resources_img")
 template(name="resources_bottom")
     ul.scrollfire.resources
         each resources
+            // TODO: Fix with contentareas
             if link
                 li
                     .col.s4
                         +resources_card_icon_container
                         +resources_card_title_container
                         .center
-                            a.modal-trigger.cyan-text(href="#modal-#{_id}") GO!
-                +resources_modal
+                            unless external
+                                a.modal-trigger.cyan-text(href="#modal-#{_id}") GO!
+                            else
+                                a.cyan-text(href="#{link}") GO!
+                unless external
+                    +resources_modal
 
 //
 template(name="resources_card_title_container")

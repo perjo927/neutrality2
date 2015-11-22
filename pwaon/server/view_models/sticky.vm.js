@@ -7,10 +7,12 @@ var sticky1 =
 
 var sticky2 =
     {
+        external: true,
         title: "YouTube",
         icon: "youtube",
-        //link: "/videos" // TODO: wtf
-        link: "https://www.youtube.com/embed/videoseries?list=PL44F2F92C7C671168" // "/videos"
+        link: "videos"
+        //,
+        //link: "https://www.youtube.com/embed/videoseries?list=PL44F2F92C7C671168" // "/videos"
     };
 
 var sticky3 =

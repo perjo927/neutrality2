@@ -1,3 +1,5 @@
+// TODO: show staggered list
+
 Template.videos.onRendered(() => {
 });
 

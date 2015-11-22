@@ -10,7 +10,6 @@ const insertCollections = function (collections, container) {
             var viewModel = container[collection];
             if (!!viewModel) {
                 var c = collections[collection];
-                //console.log(collection);
                 if (c.find().count() === 0) {
                     viewModel.forEach(function (element, index, array) {
                         c.insert(element);

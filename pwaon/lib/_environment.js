@@ -24,7 +24,8 @@ ContentAreas =
         "footer",
         "navbar",
         "sticky",
-        "appointment"
+        "appointment",
+        "videos"
     ];
 
 
