@@ -60,13 +60,14 @@ template(name="hero_event_date_container")
       +hero_event_date
 //
 template(name="hero_event_date")
-   b.black-text Date: &nbsp;
-   .black-text
+   p.black-text
+      b Date: &nbsp;
       if currentUser
-         input.hero_event_pickdate(type="text" value="#{getDateFrom}" id="hero_event_date_from_#{_id}"
-         name="hero_event_date_from" data-id="#{_id}")
-         input.hero_event_pickdate(type="text" value="#{getDateTo}" id="hero_event_date_to_#{_id}"
-         name="hero_event_date_to" data-id="#{_id}")
+         .black-text
+            input.hero_event_pickdate(type="text" value="#{getDateFrom}" id="hero_event_date_from_#{_id}"
+            name="hero_event_date_from" data-id="#{_id}")
+            input.hero_event_pickdate(type="text" value="#{getDateTo}" id="hero_event_date_to_#{_id}"
+            name="hero_event_date_to" data-id="#{_id}")
       else
          span= getDates
 

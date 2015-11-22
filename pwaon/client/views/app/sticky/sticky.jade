@@ -5,9 +5,14 @@ template(name="sticky")
             .offset-s1
                 each sticky
                     .col.s2
-                        // Modal Trigger
-                        a.modal-trigger(href='#sticky_modal-#{_id}' class="white-text")
-                            i.sticky-icon(class="icon-#{icon}" data-link="#{link}")
+                        // TODO
+                        if external
+                            a.white-text(href="#{link}" target="_blank")
+                                i.sticky-icon(class="icon-#{icon}")
+                        else
+                            // Modal Trigger
+                            a.white-text.modal-trigger(href='#sticky_modal-#{_id}')
+                                i.sticky-icon(class="icon-#{icon}" data-link="#{link}")
     each sticky
         +sticky_modal
 

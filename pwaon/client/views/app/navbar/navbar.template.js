@@ -17,7 +17,7 @@ Template.navbar.events({
     }
 });
 
-/**/
+/* TODO: Refactor */
 Template.nav_items.events({
     "click .edit": App.Template.Session.setDesignatedCollectionPropertyFromClickName(
         "editingNavbar", "text", App.Template.Jquery.focus)
