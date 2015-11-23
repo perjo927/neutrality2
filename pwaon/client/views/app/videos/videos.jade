@@ -4,27 +4,56 @@ template(name='videos')
     +appointment
 
 template(name="video_list")
-    with contentareas.videos
-        i.center.purple-text.large(class="#{icon}")
-        h2.center= title
+    .container
+        with contentareas.videos
+            .row.center
+                i.purple-text.medium(class="#{icon}")
+                h2.videos-title= title
 
+        +videos_menu
 
-    // TODO: categories, get from videos, or from categories?
+        .row
+            each videos
+                +video_frame
 
-    each videos
-        +video_frame
-
-template(name="video_frame")
+//
+template(name="videos_menu")
     .row
-        .col.s12.m6
-            .card.grey.lighten-1
-                .card-content.white-text
-                    span.card-title= title
-                    p
-                        b= category
-                    p
-                        each keywords
-                            span= keyword
+        form.col.s12
+            .row
+                +videos_search
+                +videos_categories
 
-                .card-action
-                    a(href="#{link}") Watch video
+//
+template(name="videos_search")
+    .input-field.col.s12.m6.l4
+        i.videos-search.medium.material-icons.prefix search
+        input#videos-search.validate(type="text")
+        label(for="videos-search") Search
+
+// TODO: Bind to real categories (videos.vm.js) and iterate + bind to session
+template(name="videos_categories")
+    .input-field.col.s12.m6.l8
+        select(multiple="")
+            option(value="" disabled="," selected="") Choose category
+            option(value="1") All videos
+            option(value="2") Fears & Phobias
+            option(value="3") Natural Pain Relief
+            option(value="4") Natural Weight Loss
+        label Choose category
+
+//
+template(name="video_frame")
+    .col.s12.m6.l4
+        .card.black.lighten-2
+            .card-content.white-text
+                span.card-title= title
+                p
+                    b= category
+                p
+                    each keywords
+                        span= keyword
+
+            .card-action
+                // TODO: target="_blank" ?
+                a(href="#{link}") Watch video
