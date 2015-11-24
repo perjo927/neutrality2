@@ -1,0 +1,32 @@
+//
+template(name="videos_creator")
+    #videos-creator.modal.bottom-sheet
+        .modal-content
+            h4 Add video
+            .row
+                form#videos-create-form.col.s12
+                    .row
+                        .input-field.col.s12
+                            input#videos-create-title.validate(value='Title', type='text' pattern=".{3,100}"
+                            maxlength="100" required title="(3 to 100 characters)" name="title")
+                            label.active(for='videos-create-title') Title
+                        .input-field.col.s12
+                            textarea#videos-create-keywords.materialize-textarea.validate(value="Keywords"
+                            name='keywords' minlength="10" maxlength="200"
+                            required title="(10 to 200 characters)")
+                            label(for='videos-create-keywords') Keywords
+                        .input-field.col.s6
+                            input#videos-create-category.validate(value='Category', type='text' pattern=".{3,50}"
+                            maxlength="50" required title="(3 to 50 characters)" name="category")
+                            label.active(for='videos-create-category') Category
+                        .input-field.col.s6
+                            input#videos-create-link.validate(value='Link', type='text' pattern=".{3,50}"
+                            maxlength="50" required title="(3 to 50 characters)" name="link")
+                            label.active(for='videos-create-link') Link
+                        .col.s12.m12.center
+                            br
+                            a.modal-action.modal-close.waves-effect.waves-green.btn-flat.left(href="#") Cancel
+                            button.modal-action.modal-close.waves-effect.waves-green.btn.right(
+                            type='submit', name='action') Submit
+        .modal-footer
+            //hr

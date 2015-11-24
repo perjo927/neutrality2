@@ -1,6 +1,5 @@
 var fireSelector = ".scrollfire.resources";
 
-
 Template.resources.scrollFireContent = function () {
     Materialize.fadeInImage(fireSelector);
 };

@@ -3,7 +3,7 @@ template(name="resources")
         .section.no-pad-bot
             #resources.container.section.scrollspy
                 each resources
-                    // TODO: Fix with contentareas
+                    // TODO: Fix with contentareas (!)
                     if mainTitle
                         .row.center
                             +resources_top
@@ -122,8 +122,13 @@ template(name="resources_card_icon_container")
 template(name="resources_card_icon")
     .center
         unless currentUser
-            a.modal-trigger(href="#modal-#{_id}")
-                i.purple-text.hoverable.large(class="#{icon}")
+            if external
+                a(href="#{link}")
+                    i.purple-text.hoverable.large(class="#{icon}")
+            else
+                a.modal-trigger(href="#modal-#{_id}")
+                    i.purple-text.hoverable.large(class="#{icon}")
+
         else
             i.purple-text.hoverable.large(class="#{icon} {{#if currentUser}}edit{{/if}}" name="icon")
 

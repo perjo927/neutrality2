@@ -1,6 +1,5 @@
 var fireSelector = ".scrollfire.experiences";
 
-
 Template.experiences.scrollFireContent = function () {
     Materialize.showStaggeredList(fireSelector);
 };

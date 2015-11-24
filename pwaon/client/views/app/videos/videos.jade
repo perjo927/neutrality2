@@ -7,14 +7,66 @@ template(name="video_list")
     .container
         with contentareas.videos
             .row.center
-                i.purple-text.medium(class="#{icon}")
-                h2.videos-title= title
+                +videos_icon_container
+                +videos_main_title_container
+                +videos_action_button
 
         +videos_menu
 
         .row
-            each videos
-                +video_frame
+            ul.scrollfire.videos
+                each videos
+                    li
+                        +video_frame
+    +videos_creator
+
+//
+template(name="videos_icon_container")
+    +videos_icon
+
+//
+template(name="videos_icon")
+    // TODO: Make editable
+    i.purple-text.medium(class="#{icon}")
+
+//
+template(name="videos_main_title_container")
+    +videos_main_title
+
+//
+template(name="videos_main_title")
+    // TODO: Make editable
+    h2.videos-title= title
+    if currentUser
+        +videos_history
+
+//
+template(name="videos_history")
+    .pink-text
+        if Session 'videosHistory'
+            h6.center.videos-current
+                i &#8594; View Current Videos
+        else
+            h6.center.videos-history
+                i &#8594; View Archived Videos
+
+//
+template(name="videos_action_button")
+    if currentUser
+        a.btn-floating.btn-large.btn-edit.waves-light.green.right.modal-trigger(href='#videos-creator')
+            i.mdi-content-add Add
+//
+template(name="videos_remove_button")
+    if currentUser
+        i.remove-item.mdi-action-highlight-remove.left
+//
+template(name="videos_archive_button")
+    if currentUser
+        if archived
+            i.tiny.archive-item.right.material-icons.red-text restore
+        else
+            i.tiny.archive-item.right.material-icons.green-text schedule
+
 
 //
 template(name="videos_menu")
@@ -31,7 +83,7 @@ template(name="videos_search")
         input#videos-search.validate(type="text")
         label(for="videos-search") Search
 
-// TODO: Bind to real categories (videos.vm.js) and iterate + bind to session
+// TODO: Bind to real categories (videos.vm.js) / fetch from items and iterate + bind to session
 template(name="videos_categories")
     .input-field.col.s12.m6.l8
         select(multiple="")
@@ -52,7 +104,7 @@ template(name="video_frame")
                     b= category
                 p
                     each keywords
-                        span= keyword
+                        span= this
 
             .card-action
                 // TODO: target="_blank" ?
