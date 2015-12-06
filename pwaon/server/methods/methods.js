@@ -1,16 +1,46 @@
 Meteor.methods({
-    "parseAssets": function (assets) {
-        // TODO: Better guarding
-        if (assets === "clientId" ) { // && Meteor.userId() ?
-            var clientId = Server.Methods.ParseAssets("clientId");
-            return clientId;
+    "parseAssets": function (auth, asset) {
+        check(arguments, [Match.Any]);
+
+        if (!!auth._id) {
+            auth = auth._id;
         }
+        if (auth !== Meteor.userId() ) {
+            console.error("Bad ID");
+            return null;
+        }
+        return Server.Methods.ParseAssets(asset);
     },
+
     "processEnv": function(environmentVariable) {
         check(environmentVariable, String);
         var processEnvVar = process.env[environmentVariable];
         return processEnvVar;
     },
+
+    "searchVideo": function(text) {
+        YoutubeApi.search.list({
+            part: "id",
+            type: "video",
+            maxResults: 5,
+            q: text
+        }, Meteor.bindEnvironment(function (err, res) {
+            if (!!err) {
+                console.log(err);
+            } else {
+                console.log(res);
+            }
+            App.collections["videos"].remove({});
+            App.collections["videos"].insert(res, (e,r) => {
+                if (!!e) {
+                    console.log(e);
+                } else {
+                    console.log(r);
+                }
+            });
+        }));
+    },
+
     "sendEmail": function (email, message, subject) {
         check([email, message, subject], [String]);
 

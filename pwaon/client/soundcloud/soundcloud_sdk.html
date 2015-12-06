@@ -44,8 +44,7 @@
     <script>
         var that = this;
 
-        // TODO: Authentication works in prod, not in localhost
-        Meteor.call("parseAssets", "clientId", function (err,res) {
+        Meteor.call("parseAssets", {{currentUser}}, "clientId", function (err,res) {
             if(!!err) {
                 //
             } else {

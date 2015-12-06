@@ -18,4 +18,12 @@ Meteor.startup(function () {
     Accounts.config({
         forbidClientAccountCreation: true
     });
+    YoutubeApi.authenticate({
+        type: 'key',
+        key: Server.Methods.ParseAssets("web").browser_key
+    });
+    //YoutubeApi.authenticate({
+    //    type: 'oauth',
+    //    key: Server.Methods.ParseAssets("web").client_id
+    //});
 });

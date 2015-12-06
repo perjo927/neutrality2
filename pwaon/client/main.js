@@ -6,6 +6,7 @@ UI.body.rendered = function() {
 //
 Session.setDefault("urlPrefix", "");
 
+
 //
 Session.setDefault("SC", null);
 
