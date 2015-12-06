@@ -20,9 +20,10 @@ Meteor.methods({
 
     "searchVideo": function(text) {
         YoutubeApi.search.list({
-            part: "id",
+            channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
+            part: "snippet",
             type: "video",
-            maxResults: 5,
+            maxResults: 6,
             q: text
         }, Meteor.bindEnvironment(function (err, res) {
             if (!!err) {

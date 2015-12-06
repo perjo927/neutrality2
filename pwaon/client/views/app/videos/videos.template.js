@@ -26,7 +26,7 @@ Template.video_list.onRendered(() => {
         {
             selector: fireSelector,
             offset: -1,
-            callback: "Template.videos.scrollFireContent()"
+            callback: "Template._videos.scrollFireContent()"
         }
     ];
     Materialize.scrollFire(scrollFireOptions);
