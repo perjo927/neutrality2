@@ -86,16 +86,15 @@ template(name="videos_search")
             input#videos-search.validate(type="text")
             label(for="videos-search") Search
 
-// TODO: Bind to real categories (videos.vm.js) / fetch from items and iterate + bind to session
+// TODO: Bind to real categories from channels
 template(name="videos_categories")
     .input-field.col.s12.m6.l8
-        select(multiple="")
+        select.browser-default
             option(value="" disabled="," selected="") Choose category
-            option(value="1") All videos
-            option(value="2") Fears & Phobias
-            option(value="3") Natural Pain Relief
-            option(value="4") Natural Weight Loss
-        label Choose category
+            option(value="All videos") All videos
+            option(value="Fears & Phobias") Fears & Phobias
+            option(value="Natural Pain Relief") Natural Pain Relief
+            option(value="Natural Weight Loss") Natural Weight Loss
 
 //
 template(name="video_frame")

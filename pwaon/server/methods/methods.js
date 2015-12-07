@@ -23,20 +23,36 @@ Meteor.methods({
             channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
             part: "snippet",
             type: "video",
-            maxResults: 6,
+            maxResults: 4,
             q: text
         }, Meteor.bindEnvironment(function (err, res) {
             if (!!err) {
                 console.log(err);
             } else {
-                console.log(res);
             }
             App.collections["videos"].remove({});
             App.collections["videos"].insert(res, (e,r) => {
                 if (!!e) {
                     console.log(e);
                 } else {
-                    console.log(r);
+                }
+            });
+        }));
+        YoutubeApi.search.list({
+            channelId: "UCPmIqJvZg7SCel4aWEGdtVg",
+            part: "snippet",
+            type: "video",
+            maxResults: 5,
+            q: text
+        }, Meteor.bindEnvironment(function (err, res) {
+            if (!!err) {
+                console.log(err);
+            } else {
+            }
+            App.collections["videos"].insert(res, (e,r) => {
+                if (!!e) {
+                    console.log(e);
+                } else {
                 }
             });
         }));

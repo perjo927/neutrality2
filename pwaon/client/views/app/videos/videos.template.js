@@ -18,7 +18,7 @@ Template._videos.onRendered(() => {
     this.$('.modal-trigger').leanModal();
 
     // TODO
-    search("Paul Wong");
+    search(" ");
 });
 
 Template.video_list.onRendered(() => {
@@ -35,13 +35,19 @@ Template.video_list.onRendered(() => {
 Template.videos_search.events({
     'click .videos-search': () => App.Template.Jquery.focus({_id: "videos-search"}),
     'keypress #videos-search': (event, template) => {
+        // TODO: Filter for every keypress
         if (event.which === 13) {
         }
-        console.log(event.which)
-
     },
     'submit form': (event, template) => {
         event.preventDefault();
         search(event.target[0].value)
+    }
+});
+
+Template.videos_categories.events({
+    'change select': (event, template) => {
+        console.log(event.target.value);
+        // TODO
     }
 });
