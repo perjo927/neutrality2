@@ -18,7 +18,7 @@ Template._videos.onRendered(() => {
     this.$('.modal-trigger').leanModal();
 
     // TODO
-    search(" ");
+    search("all", 50, 50);
 });
 
 Template.video_list.onRendered(() => {
@@ -41,13 +41,13 @@ Template.videos_search.events({
     },
     'submit form': (event, template) => {
         event.preventDefault();
-        search(event.target[0].value)
+        search(event.target[0].value, 6, 6);
     }
 });
 
 Template.videos_categories.events({
     'change select': (event, template) => {
-        console.log(event.target.value);
+        console.log(event.target.value, 6, 6);
         // TODO
     }
 });

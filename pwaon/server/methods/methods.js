@@ -18,14 +18,9 @@ Meteor.methods({
         return processEnvVar;
     },
 
-    "searchVideo": function(text) {
-        YoutubeApi.search.list({
-            channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
-            part: "snippet",
-            type: "video",
-            maxResults: 4,
-            q: text
-        }, Meteor.bindEnvironment(function (err, res) {
+    "searchVideo": function(text, count1, count2) {
+
+        let callback1 = Meteor.bindEnvironment(function (err, res) {
             if (!!err) {
                 console.log(err);
             } else {
@@ -37,14 +32,9 @@ Meteor.methods({
                 } else {
                 }
             });
-        }));
-        YoutubeApi.search.list({
-            channelId: "UCPmIqJvZg7SCel4aWEGdtVg",
-            part: "snippet",
-            type: "video",
-            maxResults: 5,
-            q: text
-        }, Meteor.bindEnvironment(function (err, res) {
+        });
+
+        let callback2 = Meteor.bindEnvironment(function (err, res) {
             if (!!err) {
                 console.log(err);
             } else {
@@ -55,7 +45,43 @@ Meteor.methods({
                 } else {
                 }
             });
-        }));
+        });
+
+        let func = "search";
+
+        if (text === "all") {
+
+            YoutubeApi[func].list({
+                channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
+                part: "snippet",
+                order: "date",
+                maxResults: count1
+            }, callback1);
+            YoutubeApi[func].list({
+                channelId: "UCPmIqJvZg7SCel4aWEGdtVg",
+                part: "snippet",
+                order: "date",
+                maxResults: count2
+            }, callback2);
+
+        } else {
+            YoutubeApi[func].list({
+                channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
+                part: "snippet",
+                type: "video",
+                order: "relevance",
+                maxResults: count1,
+                q: text
+            }, callback1);
+            YoutubeApi[func].list({
+                channelId: "UCPmIqJvZg7SCel4aWEGdtVg",
+                part: "snippet",
+                type: "video",
+                order: "relevance",
+                maxResults: count2,
+                q: text
+            }, callback2);
+        }
     },
 
     "sendEmail": function (email, message, subject) {
