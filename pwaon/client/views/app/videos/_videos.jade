@@ -3,6 +3,7 @@ template(name='_videos')
     +sticky
     +appointment
 
+//
 template(name="video_list")
     .container
         with contentareas.videos
@@ -77,6 +78,12 @@ template(name="videos_menu")
             .row
                 +videos_search
                 +videos_categories
+            if Session 'allVideos'
+                .row
+                    p
+                        with videos
+                            h5.center.videos-more
+                                a More videos
 
 //
 template(name="videos_search")
@@ -92,9 +99,9 @@ template(name="videos_categories")
         select.browser-default
             option(value="" disabled="," selected="") Choose category
             option(value="all") All videos
-            option(value="Fears & Phobias") Fears & Phobias
-            option(value="Natural Pain Relief") Natural Pain Relief
-            option(value="Natural Weight Loss") Natural Weight Loss
+            option(value="fear") Fears & Phobias
+            option(value="pain") Natural Pain Relief
+            option(value="weight") Natural Weight Loss
 
 //
 template(name="video_frame")

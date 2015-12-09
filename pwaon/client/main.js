@@ -6,6 +6,9 @@ UI.body.rendered = function() {
 //
 Session.setDefault("urlPrefix", "");
 
+//
+Session.setDefault("allVideos", true);
+
 
 //
 Session.setDefault("SC", null);

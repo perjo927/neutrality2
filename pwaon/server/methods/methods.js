@@ -18,23 +18,10 @@ Meteor.methods({
         return processEnvVar;
     },
 
-    "searchVideo": function(text, count1, count2) {
+    // TODO: refactor with lists
+    "searchVideo": function(text, count1, count2, nextPageTokens) {
 
-        let callback1 = Meteor.bindEnvironment(function (err, res) {
-            if (!!err) {
-                console.log(err);
-            } else {
-            }
-            App.collections["videos"].remove({});
-            App.collections["videos"].insert(res, (e,r) => {
-                if (!!e) {
-                    console.log(e);
-                } else {
-                }
-            });
-        });
-
-        let callback2 = Meteor.bindEnvironment(function (err, res) {
+        let callback = Meteor.bindEnvironment(function (err, res) {
             if (!!err) {
                 console.log(err);
             } else {
@@ -46,41 +33,57 @@ Meteor.methods({
                 }
             });
         });
+
 
         let func = "search";
 
+        App.collections["videos"].remove({});
+
         if (text === "all") {
 
-            YoutubeApi[func].list({
+            let search1 = {
                 channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
                 part: "snippet",
                 order: "date",
                 maxResults: count1
-            }, callback1);
-            YoutubeApi[func].list({
+            },
+                search2 = {
                 channelId: "UCPmIqJvZg7SCel4aWEGdtVg",
                 part: "snippet",
                 order: "date",
                 maxResults: count2
-            }, callback2);
+            };
+
+            if (!!nextPageTokens) {
+                // TODO: each
+                search1["pageToken"] = nextPageTokens[0];
+                search2["pageToken"] = nextPageTokens[1];
+            }
+
+            YoutubeApi[func].list(search1, callback);
+            YoutubeApi[func].list(search2, callback);
 
         } else {
-            YoutubeApi[func].list({
+
+            let search1 = {
                 channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
                 part: "snippet",
                 type: "video",
                 order: "relevance",
                 maxResults: count1,
                 q: text
-            }, callback1);
-            YoutubeApi[func].list({
-                channelId: "UCPmIqJvZg7SCel4aWEGdtVg",
+            },
+                search2 = {
+                channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
                 part: "snippet",
                 type: "video",
                 order: "relevance",
                 maxResults: count2,
                 q: text
-            }, callback2);
+            };
+
+            YoutubeApi[func].list(search1, callback);
+            YoutubeApi[func].list(search2, callback);
         }
     },
 

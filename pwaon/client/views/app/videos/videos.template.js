@@ -41,13 +41,37 @@ Template.videos_search.events({
     },
     'submit form': (event, template) => {
         event.preventDefault();
+        Session.set("allVideos", false);
+        if (event.target[0].value === "all") {
+            Session.set("allVideos", true);
+        }
         search(event.target[0].value, 6, 6);
+    }
+});
+
+Template.videos_menu.events({
+    'click .videos-more': (event, template) => {
+        let tokens = [];
+        template.data.videos.forEach((element,index,array) => {
+           tokens.unshift(element.nextPageToken);
+        });
+        Session.set("allVideos", true);
+
+        // TODO
+        search("all", 50, 50, tokens)
     }
 });
 
 Template.videos_categories.events({
     'change select': (event, template) => {
-        console.log(event.target.value, 6, 6);
+        let counts = [6, 6];
+        Session.set("allVideos", false);
+
+        if (event.target.value === "all") {
+            Session.set("allVideos", true);
+            counts = [50, 50];
+        }
+        search(event.target.value, counts[0], counts[1]);
         // TODO
     }
 });
