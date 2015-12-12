@@ -1,12 +1,12 @@
 'use strict';
 
-const getPropertyOrDescendantProperty = function (obj, desc) {
+var getPropertyOrDescendantProperty = function (obj, desc) {
   if (desc.indexOf(".") === -1) {
     return obj[desc];
   }
   var arr = desc.split(".");
   while(arr.length) {
-    let prop = arr.shift();
+    var prop = arr.shift();
     try {
       obj = obj[prop].findOne();
     }
@@ -40,7 +40,7 @@ Template.InputHelper.events ({
 
     if (data.collection) {
       modifier[data.attribute] = value;
-      let collection = App.collections[data.collection];
+      var collection = App.collections[data.collection];
       collection.update ({_id: data.document._id}, {$set: modifier});
     } else if (data.session) {
       Session.set (data.session, value);
@@ -67,7 +67,7 @@ Template.InputHelper.helpers ({
 
       var arr = field.split(".");
       while(arr.length) {
-        let property = arr.shift();
+        var property = arr.shift();
         if (!obj.hasOwnProperty(property)) {
           continue;
         }
