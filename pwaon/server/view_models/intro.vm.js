@@ -1,6 +1,6 @@
 
 var introTitle = {
-    mdTitle: "<strong>Art of Neutrality</strong> is a leading edge technology for reducing physical pain and stress.",
+    mdTitle: "<strong>Art of Neutrality</strong> is a leading edge technology for reducing physical pain and stress."
 };
 
 
@@ -171,7 +171,7 @@ var introText3 = {
             " This work is about deep personal transformation and releasing the unconsciousness, human conditioning " +
             "(suffering) of the heart. All suffering is due to suffering in our current lifetime, conditioning by our " +
             "parents, ancestors, society/cultural and collective influences. The intent of this work is to release the " +
-            "conditioning of the heart and connect to the full spectrum of all of the energies of the heart – love," +
+            "conditioning of the heart and connect to the full spectrum of all of the energies of the heart ï¿½ love," +
             " compassion, gratitude, peace, harmony, joy, oneness. The average person typically carries so much" +
             " suffering that they are accessing only 0-1% of available heart energies. Children between age of 0-4 " +
             "typically access 80-100%. Highly self-realized people, which are very few in current times, " +

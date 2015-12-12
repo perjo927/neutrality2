@@ -5,7 +5,7 @@
 # but you can also edit it by hand.
 
 francocatena:compass
-materialize:materialize@=0.97.0
+materialize:materialize@=0.97.3
 appcache
 fourseven:scss
 email
@@ -37,3 +37,4 @@ richsilv:pikaday
 momentjs:moment
 preybird:input-helper
 renaldo:youtube-api
+es5-shim

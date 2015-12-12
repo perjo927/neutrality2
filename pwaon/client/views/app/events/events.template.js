@@ -100,23 +100,33 @@ Template.events_history.events({
 /* */
 Template.events_date.onRendered(() => {
     this.$(".event_pickdate").each(function() {
+        let update = true,
+            name = this.name,
+            data = this.dataset;
+
         if (this.name === "events_date_from" ) {
+            let setDate = moment(this.dateFrom).toDate(),
+                type = "dateFrom";
+
             let pickerFrom = EventsCreator.createPicker(
                 this.id,
-                setDate = moment(this.dateFrom).toDate(),
-                update = true,
-                type = "dateFrom",
-                name = this.name,
-                data = this.dataset
+                setDate,
+                update,
+                type,
+                name,
+                data
             );
         } else {
+            let setDate = moment(this.dateTo).toDate(),
+                type = "dateTo";
+
             let pickerTo = EventsCreator.createPicker(
                 this.id,
-                setDate = moment(this.dateTo).toDate(),
-                update = true,
-                type = "dateTo",
-                name = this.name,
-                data = this.dataset
+                setDate,
+                update,
+                type,
+                name,
+                data
             );
         }
     });

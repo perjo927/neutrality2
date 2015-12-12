@@ -50,7 +50,7 @@ function addToPlaylist(id, startPos, endPos) {
     var details = {
         videoId: id,
         kind: 'youtube#video'
-    }
+    };
     if (startPos != undefined) {
         details['startAt'] = startPos;
     }

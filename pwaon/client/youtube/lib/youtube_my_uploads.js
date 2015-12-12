@@ -38,7 +38,7 @@ function requestVideoPlaylist(playlistId, pageToken) {
         nextPageToken = response.result.nextPageToken;
         var nextVis = nextPageToken ? 'visible' : 'hidden';
         $('#next-button').css('visibility', nextVis);
-        prevPageToken = response.result.prevPageToken
+        prevPageToken = response.result.prevPageToken;
         var prevVis = prevPageToken ? 'visible' : 'hidden';
         $('#prev-button').css('visibility', prevVis);
 
