@@ -92,8 +92,6 @@ Router.route('/', {
 });
 
 //
-//
-
 Router.route('/admin', {
     name: "admin",
     loadingTemplate: "loading",
@@ -212,6 +210,8 @@ Router.route('/videos', {
         var params = router.params;
         var c = App.collections;
 
+        Session.set("videosCount", c["videos"].find().count());
+
         router.render('videos', {
             data() {
                 return {
@@ -224,7 +224,13 @@ Router.route('/videos', {
                     consultationForms: c["consultationForms"].find(),
                     consultationSteps: c["consultationSteps"].find(),
                     workshops: c["workshops"].find(),
-                    videos: c["videos"].find()
+                    videos: c["videos"].find(
+                        {},
+                        {
+                            limit: Session.get("videosLength"),
+                            sort: { publishedAt: -1 }
+                        }
+                    )
                 }
             }
         });
@@ -238,5 +244,8 @@ Router.route('/videos', {
         });
     }
 });
+
+// TODO:
+// Route videos for seo / server-side-rendering
 
 // TODO: 404, etc

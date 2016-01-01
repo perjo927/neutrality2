@@ -14,26 +14,29 @@ Meteor.methods({
 
     "processEnv": function(environmentVariable) {
         check(environmentVariable, String);
-        var processEnvVar = process.env[environmentVariable];
+        let processEnvVar = process.env[environmentVariable];
         return processEnvVar;
     },
 
-    // TODO: refactor with lists
-    "searchVideo": function(text, count1, count2, nextPageTokens) {
+    // TODO: refactor with lists for the channels ... or wait until there's only one channel
+    //"searchVideo": function(text, count1, count2, pageTokens) {
+    "searchVideo": function(text, count1, count2) {
 
         let callback = Meteor.bindEnvironment(function (err, res) {
             if (!!err) {
                 console.log(err);
             } else {
+                res.items.forEach((element, index, array) => {
+                    element["publishedAt"] = element.snippet.publishedAt;
+                    App.collections["videos"].insert(element, (e,r) => {
+                        if (!!e) {
+                            console.log(e);
+                        } else {
+                        }
+                    });
+                })
             }
-            App.collections["videos"].insert(res, (e,r) => {
-                if (!!e) {
-                    console.log(e);
-                } else {
-                }
-            });
         });
-
 
         let func = "search";
 
@@ -54,16 +57,17 @@ Meteor.methods({
                 maxResults: count2
             };
 
-            if (!!nextPageTokens) {
-                // TODO: each
-                search1["pageToken"] = nextPageTokens[0];
-                search2["pageToken"] = nextPageTokens[1];
-            }
-
+            // TODO: Not needed currently
+            //if (!!pageTokens) {
+            //    // TODO: each
+            //    search1.pageToken = (!!pageTokens[0] ) ? pageTokens[0] : null;
+            //    search2.pageToken = (!!pageTokens[1] ) ? pageTokens[1] : null;
+            //}
             YoutubeApi[func].list(search1, callback);
             YoutubeApi[func].list(search2, callback);
 
         } else {
+            // TODO: For instance: use func = "playlist"
 
             let search1 = {
                 channelId: "UC7JIciCwnD5jX3Z8je8-YYg",

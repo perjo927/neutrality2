@@ -1,9 +1,6 @@
-let search = (text) => {
-    Meteor.call("searchVideo", text, (err, res) => {
-        if(!!err) {
-        } else {
-        }
-    });
+// TODO
+let search = (text, numResults1, numResults2, pageTokens) => {
+    //Meteor.call("searchVideo", text, numResults1, numResults2, pageTokens, (err,res) => console.debug(err, res) );
 };
 
 
@@ -16,9 +13,6 @@ Template._videos.scrollFireContent = function () {
 Template._videos.onRendered(() => {
     $('select').material_select();
     this.$('.modal-trigger').leanModal();
-
-    // TODO
-    search("all", 50, 50);
 });
 
 Template.video_list.onRendered(() => {
@@ -41,37 +35,68 @@ Template.videos_search.events({
     },
     'submit form': (event, template) => {
         event.preventDefault();
-        Session.set("allVideos", false);
-        if (event.target[0].value === "all") {
-            Session.set("allVideos", true);
-        }
-        search(event.target[0].value, 6, 6);
+        // TODO: Refactor search
+        //search(event.target[0].value, 6, 6);
     }
+});
+
+Template.videos_menu.helpers({
+    // TODO: Not needed
+    //nextPageTokens() {
+    //    let token = false;
+    //    this.videos.forEach((e,i,a) => {
+    //        if (!!e.nextPageToken) {
+    //            token = true;
+    //        }
+    //    });
+    //    return token;
+    //},
+    //prevPageTokens() {
+    //    let token = false;
+    //    this.videos.forEach((e,i,a) => {
+    //        if (!!e.prevPageToken) {
+    //            token = true;
+    //        }
+    //    });
+    //    return token;
+    //}
 });
 
 Template.videos_menu.events({
     'click .videos-more': (event, template) => {
-        let tokens = [];
-        template.data.videos.forEach((element,index,array) => {
-           tokens.unshift(element.nextPageToken);
-        });
-        Session.set("allVideos", true);
-
-        // TODO
-        search("all", 50, 50, tokens)
+        // TODO: Refactor
+        //let tokens = [];
+        //
+        //template.data.videos.forEach((element,index,array) => {
+        //    if(!!element.nextPageToken) {
+        //        tokens.unshift(element.nextPageToken);
+        //    }
+        //});
+        //
+        //search("all", 5, 5, tokens)
+    },
+    'click .videos-less': (event, template) => {
+        // TODO: Refactor
+        //let tokens = [];
+        //
+        //template.data.videos.forEach((element,index,array) => {
+        //    if(!!element.prevPageToken) {
+        //        tokens.unshift(element.prevPageToken);
+        //    }
+        //});
+        //
+        //search("all", 5, 5, tokens)
     }
 });
 
 Template.videos_categories.events({
     'change select': (event, template) => {
-        let counts = [6, 6];
-        Session.set("allVideos", false);
-
-        if (event.target.value === "all") {
-            Session.set("allVideos", true);
-            counts = [50, 50];
-        }
-        search(event.target.value, counts[0], counts[1]);
-        // TODO
+        // TODO: Refactor
+        //let counts = [6, 6];
+        //
+        //if (event.target.value === "all") {
+        //    counts = [6, 6];
+        //}
+        //search(event.target.value, counts[0], counts[1]);
     }
 });

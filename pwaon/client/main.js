@@ -7,11 +7,11 @@ UI.body.rendered = function() {
 Session.setDefault("urlPrefix", "");
 
 //
-Session.setDefault("allVideos", true);
-
+Session.setDefault("SC", null);
 
 //
-Session.setDefault("SC", null);
+Session.setDefault("videosLength", 9);
+Session.setDefault("videosThresholdReached", false);
 
 //
 Session.setDefault("experiencesHistory", false);

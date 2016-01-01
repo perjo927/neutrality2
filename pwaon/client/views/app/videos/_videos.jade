@@ -17,10 +17,9 @@ template(name="video_list")
         .row
             ul.scrollfire.videos
                 each videos
-                    each items
-                        li
-                            +video_frame
-    //+videos_creator
+                    //each items
+                    li
+                        +video_frame
 
 //
 template(name="videos_icon_container")
@@ -39,8 +38,6 @@ template(name="videos_main_title_container")
 template(name="videos_main_title")
     // TODO: Make title editable
     h2.videos-title= title
-    //if currentUser
-        +videos_history
 
 //
 template(name="videos_history")
@@ -78,12 +75,19 @@ template(name="videos_menu")
             .row
                 +videos_search
                 +videos_categories
-            if Session 'allVideos'
-                .row
-                    p
-                        with videos
-                            h5.center.videos-more
-                                a More videos
+
+            // TODO: New solution
+            //.row
+                p
+                    b.center
+                        // TODO: Don't use tokens
+                        if prevPageTokens
+                            span
+                                a.videos-less.green-text.left Previous
+                        // TODO: Don't use tokens
+                        if nextPageTokens
+                            span
+                                a.videos-more.green-text.right Next
 
 //
 template(name="videos_search")
