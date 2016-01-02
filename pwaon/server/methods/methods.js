@@ -89,7 +89,7 @@ Meteor.methods({
         }
     },
     "searchPlaylist": function(id, count) {
-        console.log("searchPlaylist", id);
+        console.log("searchPlaylist", id, count);
 
         let callback = Meteor.bindEnvironment(function (err, res) {
             if (!!err) {

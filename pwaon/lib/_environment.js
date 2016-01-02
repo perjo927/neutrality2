@@ -48,7 +48,7 @@ Models = {
 
 _YouTubePlaylists = {
     "Transmissions": "PLRAkk0-k_rysON5a3Jgbddm2MtBFbCgFs",
-    "Fears & Phobias": "PLRAkk0-k_rysON5a3Jgbddm2MtBFbCgFs",
+    "Fears & Phobias": "PL44F2F92C7C671168",
     "Natural Pain Relief": "PLRAkk0-k_rysON5a3Jgbddm2MtBFbCgFs",
-    "Natural Pain Loss": "PLRAkk0-k_rysON5a3Jgbddm2MtBFbCgFs"
+    "Natural Pain Loss": "PL44F2F92C7C671168"
 };
