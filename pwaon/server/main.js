@@ -9,7 +9,7 @@ var createAdminUser = function () {
             "password": admin["password"]
         });
     } catch (err) {
-        //console.log(err);
+        console.log(err);
     }
 };
 

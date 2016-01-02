@@ -17,9 +17,21 @@ template(name="video_list")
         .row
             ul.scrollfire.videos
                 each videos
-                    //each items
                     li
                         +video_frame
+
+        .row
+            .center.pointer
+                if Session 'videosThresholdReached'
+                    .less-videos
+                        h2.pink-text
+                            i.mdi-navigation-expand-less
+                        h6.pink-text Collapse
+                else
+                    .more-videos
+                        h2.pink-text
+                            i.mdi-navigation-expand-more
+                        h6.pink-text Get More Videos
 
 //
 template(name="videos_icon_container")

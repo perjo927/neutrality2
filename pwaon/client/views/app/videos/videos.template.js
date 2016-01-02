@@ -40,6 +40,27 @@ Template.videos_search.events({
     }
 });
 
+Template.video_list.events({
+    // TODO: Refactor to generic
+    'click .more-videos': function (event, template) {
+        let arrayLength = Session.get("videosCount");
+        let videosLength = Session.get("videosLength");
+
+        if (videosLength < arrayLength) {
+            videosLength += 3;
+            Session.set("videosLength", videosLength);
+
+            if (videosLength >= arrayLength) {
+                Session.set("videosThresholdReached", true);
+            }
+        }
+    },
+    'click .less-videos': function (event, template) {
+        Session.set("videosLength", 3);
+        Session.set("videosThresholdReached", false);
+    }
+});
+
 Template.videos_menu.helpers({
     // TODO: Not needed
     //nextPageTokens() {
@@ -63,7 +84,7 @@ Template.videos_menu.helpers({
 });
 
 Template.videos_menu.events({
-    'click .videos-more': (event, template) => {
+    //'click .videos-more': (event, template) => {
         // TODO: Refactor
         //let tokens = [];
         //
@@ -74,8 +95,8 @@ Template.videos_menu.events({
         //});
         //
         //search("all", 5, 5, tokens)
-    },
-    'click .videos-less': (event, template) => {
+    //},
+    //'click .videos-less': (event, template) => {
         // TODO: Refactor
         //let tokens = [];
         //
@@ -86,7 +107,7 @@ Template.videos_menu.events({
         //});
         //
         //search("all", 5, 5, tokens)
-    }
+    //}
 });
 
 Template.videos_categories.events({

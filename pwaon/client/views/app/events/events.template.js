@@ -50,8 +50,8 @@ Template.eventss.events({
             );
         }
     },
-    // TODO: Refactor to generic (for experiences)
-    'click .more-events' : function (event, template) {
+    // TODO: Refactor to generic
+    'click .more-events': function (event, template) {
         var arrayLength = Session.get("eventsCount");
         var eventsLength = Session.get("eventsLength");
 
