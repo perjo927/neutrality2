@@ -15,3 +15,5 @@ Object.keys(Models).forEach(function (key) {
         return App.collections[key].find();
     });
 });
+
+Meteor.publish("youTubePlaylists", () => YouTubePlaylists.find());

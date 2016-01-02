@@ -28,9 +28,17 @@ Meteor.startup(function () {
     //});
     Meteor.call("searchVideo", "all", 50, 50 /*, (err,res) => console.log(err, res) */);
 
+    YouTubePlaylists.remove({});
+    Object.keys(_YouTubePlaylists).forEach((id)=> {
+        Meteor.call("searchPlaylist", id, 50 /*, (err,res) => console.log(err, res) */);
+    });
+
     let interval = 1000 * 60 * 60 * 2; // Search every other hour for a new video
     Meteor.setInterval(() => {
         // TODO: Ideally only one instance of results (50 instead of 50,50)
         Meteor.call("searchVideo", "all", 50, 50 /*, (err,res) => console.log(err, res) */);
+        Object.keys(_YouTubePlaylists).forEach((id)=> {
+            Meteor.call("searchPlaylist", id, 50 /*, (err,res) => console.log(err, res) */);
+        });
     }, interval)
 });

@@ -16,9 +16,17 @@ template(name="video_list")
 
         .row
             ul.scrollfire.videos
-                each videos
-                    li
-                        +video_frame
+                // if isSearch ...
+                unless isPlaylist
+                    each videos
+                        li
+                            +video_frame
+                else
+                    with selectedPlaylist
+                        each items
+                            // TODO
+                            h2 Tja
+
 
         .row
             .center.pointer

@@ -19,6 +19,7 @@ Object.keys(Models).forEach(function (model) {
     App.collections[model] = new Mongo.Collection(model);
 });
 
+YouTubePlaylists = new Mongo.Collection("youTubePlaylists");
 
 /* LIB */
 App.Collection.insert = function (collection, document, callback) {

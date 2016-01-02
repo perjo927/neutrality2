@@ -21,10 +21,11 @@ Meteor.methods({
     // TODO: refactor with lists for the channels ... or wait until there's only one channel
     //"searchVideo": function(text, count1, count2, pageTokens) {
     "searchVideo": function(text, count1, count2) {
+        console.log("searchVideo",text,count1,count2);
 
         let callback = Meteor.bindEnvironment(function (err, res) {
             if (!!err) {
-                console.log(err);
+                console.log("err", err);
             } else {
                 res.items.forEach((element, index, array) => {
                     element["publishedAt"] = element.snippet.publishedAt;
@@ -38,24 +39,22 @@ Meteor.methods({
             }
         });
 
-        let func = "search";
-
         App.collections["videos"].remove({});
 
         if (text === "all") {
 
             let search1 = {
-                channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
-                part: "snippet",
-                order: "date",
-                maxResults: count1
-            },
+                    channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
+                    part: "snippet",
+                    order: "date",
+                    maxResults: count1
+                },
                 search2 = {
-                channelId: "UCPmIqJvZg7SCel4aWEGdtVg",
-                part: "snippet",
-                order: "date",
-                maxResults: count2
-            };
+                    channelId: "UCPmIqJvZg7SCel4aWEGdtVg",
+                    part: "snippet",
+                    order: "date",
+                    maxResults: count2
+                };
 
             // TODO: Not needed currently
             //if (!!pageTokens) {
@@ -63,32 +62,63 @@ Meteor.methods({
             //    search1.pageToken = (!!pageTokens[0] ) ? pageTokens[0] : null;
             //    search2.pageToken = (!!pageTokens[1] ) ? pageTokens[1] : null;
             //}
-            YoutubeApi[func].list(search1, callback);
-            YoutubeApi[func].list(search2, callback);
+            YoutubeApi.search.list(search1, callback);
+            YoutubeApi.search.list(search2, callback);
 
         } else {
-            // TODO: For instance: use func = "playlist"
 
             let search1 = {
-                channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
-                part: "snippet",
-                type: "video",
-                order: "relevance",
-                maxResults: count1,
-                q: text
-            },
+                    channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
+                    part: "snippet",
+                    type: "video",
+                    order: "relevance",
+                    maxResults: count1,
+                    q: text
+                },
                 search2 = {
-                channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
-                part: "snippet",
-                type: "video",
-                order: "relevance",
-                maxResults: count2,
-                q: text
-            };
+                    channelId: "UC7JIciCwnD5jX3Z8je8-YYg",
+                    part: "snippet",
+                    type: "video",
+                    order: "relevance",
+                    maxResults: count2,
+                    q: text
+                };
 
-            YoutubeApi[func].list(search1, callback);
-            YoutubeApi[func].list(search2, callback);
+            YoutubeApi.search.list(search1, callback);
+            YoutubeApi.search.list(search2, callback);
         }
+    },
+    "searchPlaylist": function(id, count) {
+        console.log("searchPlaylist", id);
+
+        let callback = Meteor.bindEnvironment(function (err, res) {
+            if (!!err) {
+                console.log("err sp", err);
+            } else {
+                console.log("res sp",res);
+
+                res.items.forEach((element, index, array) => {
+                    element["publishedAt"] = element.snippet.publishedAt;
+
+                YouTubePlaylists.insert(element, (e,r) => {
+                    if (!!e) {
+                        console.log(e);
+                    } else {
+                    }
+                });
+                })
+            }
+        });
+
+        let search = {
+            id: [id],
+            playlistId: id,
+            part: "snippet",
+            order: "date",
+            maxResults: count
+        };
+
+        YoutubeApi.playlists.list(search, callback);
     },
 
     "sendEmail": function (email, message, subject) {

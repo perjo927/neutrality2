@@ -45,3 +45,10 @@ Models = {
     "consultationSteps": [],
     "workshops": []
 };
+
+_YouTubePlaylists = {
+    "Transmissions": "PLRAkk0-k_rysON5a3Jgbddm2MtBFbCgFs",
+    "Fears & Phobias": "PLRAkk0-k_rysON5a3Jgbddm2MtBFbCgFs",
+    "Natural Pain Relief": "PLRAkk0-k_rysON5a3Jgbddm2MtBFbCgFs",
+    "Natural Pain Loss": "PLRAkk0-k_rysON5a3Jgbddm2MtBFbCgFs"
+};

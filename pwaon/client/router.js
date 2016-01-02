@@ -202,7 +202,8 @@ Router.route('/videos', {
             "consultationForms": noParams,
             "consultationSteps": noParams,
             "workshops": noParams,
-            "videos": noParams
+            "videos": noParams,
+            "youTubePlaylists": noParams
         });
     },
     action(){
@@ -230,7 +231,8 @@ Router.route('/videos', {
                             limit: Session.get("videosLength"),
                             sort: { publishedAt: -1 }
                         }
-                    )
+                    ),
+                    youtubePlaylists: YouTubePlaylists.find()
                 }
             }
         });
@@ -247,5 +249,7 @@ Router.route('/videos', {
 
 // TODO:
 // Route videos for seo / server-side-rendering
+// Fetch videos, subscribe from db => each video => Router.route
+
 
 // TODO: 404, etc
