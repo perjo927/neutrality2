@@ -232,7 +232,7 @@ Router.route('/videos', {
                             sort: { publishedAt: -1 }
                         }
                     ),
-                    youtubePlaylists: YouTubePlaylists.find()
+                    youtubePlaylists: YouTubePlaylists.find() // TODO: Sort, count (?)
                 }
             }
         });

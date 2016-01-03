@@ -61,6 +61,14 @@ Template.video_list.events({
     }
 });
 
+Template.video_list.helpers({
+   "isSelectedPlaylist" () {
+       console.debug(this);
+       let selectedPlaylist = Session.get("selectedPlaylist");
+       return selectedPlaylist === this.id;
+   }
+});
+
 Template.videos_menu.helpers({
     // TODO: Not needed
     //nextPageTokens() {
@@ -110,9 +118,20 @@ Template.videos_menu.events({
     //}
 });
 
+Template.videos_categories.helpers({
+});
+
 Template.videos_categories.events({
     'change select': (event, template) => {
-        // TODO: Refactor
+        //console.info(event.target.value,template,this, _YouTubePlaylists);
+
+        let selectedValue = event.target.value;
+        let isPlaylist = selectedValue !== "all";
+        let selectedPlaylist = isPlaylist ? selectedValue : isPlaylist ;
+
+        Session.set("selectedPlaylist", selectedPlaylist);
+
+        // TODO: Refactor/not needed
         //let counts = [6, 6];
         //
         //if (event.target.value === "all") {

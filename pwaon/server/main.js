@@ -37,6 +37,8 @@ Meteor.startup(function () {
     Meteor.setInterval(() => {
         // TODO: Ideally only one instance of results (50 instead of 50,50)
         Meteor.call("searchVideo", "all", 50, 50 /*, (err,res) => console.log(err, res) */);
+
+        YouTubePlaylists.remove({});
         Object.keys(_YouTubePlaylists).forEach((id) => {
             Meteor.call("searchPlaylist", _YouTubePlaylists[id], 50 /*, (err,res) => console.log(err, res) */);
         });

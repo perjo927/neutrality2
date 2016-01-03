@@ -16,18 +16,22 @@ template(name="video_list")
 
         .row
             ul.scrollfire.videos
-                // if isSearch ...
-                unless isPlaylist
-                    each videos
-                        li
-                            +video_frame
+                unless Session 'selectedPlaylist'
+                    if isSearch
+                        h1 TODO!
+                    else
+                        each videos
+                            li
+                                +video_frame
                 else
-                    with selectedPlaylist
-                        each items
-                            // TODO
-                            h2 Tja
+                    each youtubePlaylists
+                        if isSelectedPlaylist
+                            each items
+                                // TODO
+                                li
+                                    +video_frame
 
-
+        // TODO: if playlist, etc
         .row
             .center.pointer
                 if Session 'videosThresholdReached'
@@ -123,9 +127,8 @@ template(name="videos_categories")
         select.browser-default
             option(value="" disabled="," selected="") Choose category
             option(value="all") All videos
-            option(value="fear") Fears & Phobias
-            option(value="pain") Natural Pain Relief
-            option(value="weight") Natural Weight Loss
+            each youtubePlaylists
+                option(value="{{id}}")= title
 
 //
 template(name="video_frame")
@@ -135,14 +138,26 @@ template(name="video_frame")
                 //span.card-title
                     h6= snippet.title
 
-                iframe(width='100%',
-                        height='100%',
-                        src='https://www.youtube.com/embed/#{id.videoId}',
-                        frameborder='0',
-                        allowfullscreen='')
+                if this.snippet.resourceId
+                    iframe(width='100%',
+                    height='100%',
+                    src='https://www.youtube.com/embed/#{snippet.resourceId.videoId}',
+                    frameborder='0',
+                    allowfullscreen='')
+                else
+                    iframe(width='100%',
+                    height='100%',
+                    src='https://www.youtube.com/embed/#{id.videoId}',
+                    frameborder='0',
+                    allowfullscreen='')
 
                 // TODO: Lazy load with image first
                 //img.responsive-img(src="#{snippet.thumbnails.default.url}")
 
             .card-action
-                a(href="https://www.youtube.com/embed/#{this.id.videoId}") View Fullscreen
+                if this.snippet.resourceId
+                    // Playlist item
+                    a(href="https://www.youtube.com/embed/#{this.snippet.resourceId.videoId}") View Fullscreen
+                else
+                    // Searched video
+                    a(href="https://www.youtube.com/embed/#{this.id.videoId}") View Fullscreen

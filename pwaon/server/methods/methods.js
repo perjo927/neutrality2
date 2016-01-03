@@ -21,7 +21,6 @@ Meteor.methods({
     // TODO: refactor with lists for the channels ... or wait until there's only one channel
     //"searchVideo": function(text, count1, count2, pageTokens) {
     "searchVideo": function(text, count1, count2) {
-        console.log("searchVideo",text,count1,count2);
 
         let callback = Meteor.bindEnvironment(function (err, res) {
             if (!!err) {
@@ -88,37 +87,40 @@ Meteor.methods({
             YoutubeApi.search.list(search2, callback);
         }
     },
-    "searchPlaylist": function(id, count) {
-        console.log("searchPlaylist", id, count);
+    "searchPlaylist" (id, count) {
 
         let callback = Meteor.bindEnvironment(function (err, res) {
             if (!!err) {
-                console.log("err sp", err);
+                console.log(err);
             } else {
-                console.log("res sp",res);
 
-                res.items.forEach((element, index, array) => {
-                    element["publishedAt"] = element.snippet.publishedAt;
+                //res.items.forEach((element, index, array) => {
+                //    element["publishedAt"] = element.snippet.publishedAt;
 
-                YouTubePlaylists.insert(element, (e,r) => {
+                let key = Object.keys(_YouTubePlaylists).filter(function(key) {
+                    return _YouTubePlaylists[key] === id
+                })[0];
+
+                res.id = id;
+                res.title = key;
+
+                YouTubePlaylists.insert(res, (e,r) => {
                     if (!!e) {
                         console.log(e);
                     } else {
                     }
                 });
-                })
             }
         });
 
         let search = {
-            id: [id],
             playlistId: id,
             part: "snippet",
             order: "date",
             maxResults: count
         };
 
-        YoutubeApi.playlists.list(search, callback);
+        YoutubeApi.playlistItems.list(search, callback);
     },
 
     "sendEmail": function (email, message, subject) {
