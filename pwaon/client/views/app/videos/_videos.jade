@@ -31,19 +31,19 @@ template(name="video_list")
                                 li
                                     +video_frame
 
-        // TODO: if playlist, etc
-        .row
-            .center.pointer
-                if Session 'videosThresholdReached'
-                    .less-videos
-                        h2.pink-text
-                            i.mdi-navigation-expand-less
-                        h6.pink-text Collapse
-                else
-                    .more-videos
-                        h2.pink-text
-                            i.mdi-navigation-expand-more
-                        h6.pink-text Get More Videos
+        unless Session 'selectedPlaylist'
+            .row
+                .center.pointer
+                    if Session 'videosThresholdReached'
+                        .less-videos
+                            h2.pink-text
+                                i.mdi-navigation-expand-less
+                            h6.pink-text Collapse
+                    else
+                        .more-videos
+                            h2.pink-text
+                                i.mdi-navigation-expand-more
+                            h6.pink-text Get More Videos
 
 //
 template(name="videos_icon_container")
@@ -62,16 +62,6 @@ template(name="videos_main_title_container")
 template(name="videos_main_title")
     // TODO: Make title editable
     h2.videos-title= title
-
-//
-template(name="videos_history")
-    .pink-text
-        if Session 'videosHistory'
-            h6.center.videos-current
-                i &#8594; View Current Videos
-        else
-            h6.center.videos-history
-                i &#8594; View Archived Videos
 
 //
 template(name="videos_action_button")
@@ -100,15 +90,12 @@ template(name="videos_menu")
                 +videos_search
                 +videos_categories
 
-            // TODO: New solution
             //.row
                 p
                     b.center
-                        // TODO: Don't use tokens
                         if prevPageTokens
                             span
                                 a.videos-less.green-text.left Previous
-                        // TODO: Don't use tokens
                         if nextPageTokens
                             span
                                 a.videos-more.green-text.right Next
@@ -121,7 +108,7 @@ template(name="videos_search")
             input#videos-search.validate(type="text")
             label(for="videos-search") Search
 
-// TODO: Bind to real categories from channels
+//
 template(name="videos_categories")
     .input-field.col.s12.m6.l8
         select.browser-default
@@ -151,7 +138,6 @@ template(name="video_frame")
                     frameborder='0',
                     allowfullscreen='')
 
-                // TODO: Lazy load with image first
                 //img.responsive-img(src="#{snippet.thumbnails.default.url}")
 
             .card-action

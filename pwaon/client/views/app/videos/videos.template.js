@@ -63,14 +63,12 @@ Template.video_list.events({
 
 Template.video_list.helpers({
    "isSelectedPlaylist" () {
-       console.debug(this);
        let selectedPlaylist = Session.get("selectedPlaylist");
        return selectedPlaylist === this.id;
    }
 });
 
 Template.videos_menu.helpers({
-    // TODO: Not needed
     //nextPageTokens() {
     //    let token = false;
     //    this.videos.forEach((e,i,a) => {
