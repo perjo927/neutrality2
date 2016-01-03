@@ -29,21 +29,34 @@ Template.video_list.onRendered(() => {
 Template.videos_search.events({
     'click .videos-search': () => App.Template.Jquery.focus({_id: "videos-search"}),
     'keypress #videos-search': (event, template) => {
-        console.info(event.target.value);
-        Session.set("isSearch", event.target.value);
-        Session.set("selectedPlaylist", false);
 
         // TODO: Filter for every keypress (?)
+        //Session.set("isSearch", event.target.value);
+        //Session.set("selectedPlaylist", false);
+
         //if (event.which === 13) {
         //}
     },
     'submit form': (event, template) => {
         event.preventDefault();
-        console.info(event.target[0].value);
+        Session.set("videosLength", 100);
         Session.set("isSearch", event.target[0].value);
         Session.set("selectedPlaylist", false);
         // TODO: Refactor search
         //search(event.target[0].value, 6, 6);
+    }
+});
+
+Template.video_list.helpers({
+    "isSelectedPlaylist" () {
+        let selectedPlaylist = Session.get("selectedPlaylist");
+        return selectedPlaylist === this.id;
+    },
+    "videoContainsText" () {
+        let target = this.snippet.title + this.snippet.description,
+            search = Session.get("isSearch");
+        let contains = (target.toLowerCase().indexOf(search) > -1);
+        return contains;
     }
 });
 
@@ -66,13 +79,6 @@ Template.video_list.events({
         Session.set("videosLength", 3);
         Session.set("videosThresholdReached", false);
     }
-});
-
-Template.video_list.helpers({
-   "isSelectedPlaylist" () {
-       let selectedPlaylist = Session.get("selectedPlaylist");
-       return selectedPlaylist === this.id;
-   }
 });
 
 Template.videos_menu.helpers({
@@ -128,7 +134,6 @@ Template.videos_categories.helpers({
 
 Template.videos_categories.events({
     'change select': (event, template) => {
-        //console.info(event.target.value,template,this, _YouTubePlaylists);
 
         let selectedValue = event.target.value;
         let isPlaylist = selectedValue !== "all";
@@ -136,6 +141,7 @@ Template.videos_categories.events({
 
         Session.set("selectedPlaylist", selectedPlaylist);
         Session.set("isSearch", false);
+        Session.set("videosLength", 9);
 
         // TODO: Refactor/not needed
         //let counts = [6, 6];

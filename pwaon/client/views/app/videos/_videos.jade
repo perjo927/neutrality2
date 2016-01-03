@@ -20,7 +20,9 @@ template(name="video_list")
                     each videos
                         // TODO
                         if Session 'isSearch'
-                            h1 TODO!
+                            if videoContainsText
+                                li
+                                    +video_frame
                         else
                             li
                                 +video_frame
