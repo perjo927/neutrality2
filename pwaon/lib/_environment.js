@@ -47,6 +47,8 @@ Models = {
 };
 
 _YouTubePlaylists = {
-    "Transmissions 2014": "PLRAkk0-k_rysON5a3Jgbddm2MtBFbCgFs",
-    "Chinese Energetics": "PL44F2F92C7C671168"
+    "Fears & Phobias": "PLwUG2rvQ0wJq3BibkO-_JqPWlSXgGaPK5",
+    "Natural Pain Relief": "PLwUG2rvQ0wJrcwPcO_ZKIl8U96YkSmgIB",
+    "Natural Weight Loss": "PLwUG2rvQ0wJoZpTA99vo8SV1s6QAekMKp",
+    "Transmissions 2014": "PLRAkk0-k_rysON5a3Jgbddm2MtBFbCgFs"
 };

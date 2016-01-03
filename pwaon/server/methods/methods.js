@@ -94,9 +94,6 @@ Meteor.methods({
                 console.log(err);
             } else {
 
-                //res.items.forEach((element, index, array) => {
-                //    element["publishedAt"] = element.snippet.publishedAt;
-
                 let key = Object.keys(_YouTubePlaylists).filter(function(key) {
                     return _YouTubePlaylists[key] === id
                 })[0];
