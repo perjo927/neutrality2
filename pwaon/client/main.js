@@ -13,6 +13,8 @@ Session.setDefault("SC", null);
 Session.setDefault("videosLength", 9);
 Session.setDefault("videosThresholdReached", false);
 Session.setDefault("selectedPlaylist", false);
+Session.setDefault("videoSearchText", "");
+Session.setDefault("isSearch", false);
 
 //
 Session.setDefault("experiencesHistory", false);

@@ -29,12 +29,19 @@ Template.video_list.onRendered(() => {
 Template.videos_search.events({
     'click .videos-search': () => App.Template.Jquery.focus({_id: "videos-search"}),
     'keypress #videos-search': (event, template) => {
-        // TODO: Filter for every keypress
-        if (event.which === 13) {
-        }
+        console.info(event.target.value);
+        Session.set("isSearch", event.target.value);
+        Session.set("selectedPlaylist", false);
+
+        // TODO: Filter for every keypress (?)
+        //if (event.which === 13) {
+        //}
     },
     'submit form': (event, template) => {
         event.preventDefault();
+        console.info(event.target[0].value);
+        Session.set("isSearch", event.target[0].value);
+        Session.set("selectedPlaylist", false);
         // TODO: Refactor search
         //search(event.target[0].value, 6, 6);
     }
@@ -128,6 +135,7 @@ Template.videos_categories.events({
         let selectedPlaylist = isPlaylist ? selectedValue : isPlaylist ;
 
         Session.set("selectedPlaylist", selectedPlaylist);
+        Session.set("isSearch", false);
 
         // TODO: Refactor/not needed
         //let counts = [6, 6];

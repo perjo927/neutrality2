@@ -17,17 +17,17 @@ template(name="video_list")
         .row
             ul.scrollfire.videos
                 unless Session 'selectedPlaylist'
-                    if isSearch
-                        h1 TODO!
-                    else
-                        each videos
+                    each videos
+                        // TODO
+                        if Session 'isSearch'
+                            h1 TODO!
+                        else
                             li
                                 +video_frame
                 else
                     each youtubePlaylists
                         if isSelectedPlaylist
                             each items
-                                // TODO
                                 li
                                     +video_frame
 
