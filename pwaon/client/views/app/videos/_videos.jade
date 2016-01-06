@@ -49,21 +49,35 @@ template(name="video_list")
 
 //
 template(name="videos_icon_container")
-    +videos_icon
+    if Session 'editingVideosIcon'
+        if currentUser
+            +InputHelper(attribute="videos.icon" document=this collection="contentareas"
+            class='form-control' placeholder=icon id=this)
+        else
+            +videos_icon
+    else
+        +videos_icon
+
 
 //
 template(name="videos_icon")
-    // TODO: Make editable
-    i.purple-text.medium(class="#{icon}")
+    i.purple-text.medium(class="{{#if currentUser}}edit{{/if}} #{icon}")
 
 //
 template(name="videos_main_title_container")
-    +videos_main_title
+    if Session 'editingVideosMainTitle'
+        if currentUser
+            +InputHelper(attribute="videos.title" document=this collection="contentareas"
+            class='form-control' placeholder=title id=this)
+        else
+            +videos_main_title
+    else
+        +videos_main_title
 
 //
 template(name="videos_main_title")
     // TODO: Make title editable
-    h2.videos-title= title
+    h2.videos-title(class="{{#if currentUser}}edit{{/if}}")= title
 
 //
 template(name="videos_action_button")

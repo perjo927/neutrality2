@@ -152,3 +152,7 @@ Template.videos_categories.events({
         //search(event.target.value, counts[0], counts[1]);
     }
 });
+
+/* */
+Template.videos_icon_container.events(App.Template.registerEditableInput("editingVideosIcon", "icon"));
+Template.videos_main_title_container.events(App.Template.registerEditableInput("editingVideosMainTitle", "title"));

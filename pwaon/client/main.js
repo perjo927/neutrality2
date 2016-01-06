@@ -100,3 +100,6 @@ Session.setDefault("editingWorkTitle", false);
 Session.setDefault("editingWorkImg", false);
 Session.setDefault("editingWorkName", false);
 Session.setDefault("editingWorkText", false);
+
+Session.setDefault("editingVideosMainTitle", false);
+Session.setDefault("editingVideosIcon", false);
