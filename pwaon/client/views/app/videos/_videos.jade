@@ -138,7 +138,7 @@ template(name="video_frame")
             .card-action
                 if this.snippet.resourceId
                     // Playlist item
-                    a(href="/video/#{this._id}" target="_blank") More info
+                    a(href="/video/{{encodeUri(this.snippet.title)}}") More info
                 else
                     // Searched video
-                    a(href="/video/#{this._id}" target="_blank") More info
+                    a(href="/video/{{encodeUri(this.snippet.title)}}") More info

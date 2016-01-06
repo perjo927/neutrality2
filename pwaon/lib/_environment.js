@@ -52,3 +52,5 @@ _YouTubePlaylists = {
     "Natural Weight Loss": "PLwUG2rvQ0wJoZpTA99vo8SV1s6QAekMKp",
     "Transmissions 2014": "PLRAkk0-k_rysON5a3Jgbddm2MtBFbCgFs"
 };
+
+_YouTubeVideos = {};

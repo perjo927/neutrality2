@@ -151,6 +151,13 @@ Template.videos_categories.events({
     }
 });
 
+//
+Template.video_frame.helpers({
+  "encodeUri" (title) {
+      return title.replace("?", "").replace("&", "").replace("=", "");
+  }
+});
+
 /* */
 Template.videos_icon_container.events(App.Template.registerEditableInput("editingVideosIcon", "icon"));
 Template.videos_main_title_container.events(App.Template.registerEditableInput("editingVideosMainTitle", "title"));

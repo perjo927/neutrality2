@@ -275,32 +275,37 @@ Router.route('/video/:_id', {
         var params = router.params;
         var c = App.collections;
 
-        Session.set("videosCount", c["videos"].find().count());
+        Meteor.call("getYouTubeVideo", params._id, (e,r)=> {
+            if(!!e) {
+                console.error(e);
+            } else {
+                router.render('videos_seo', {
+                    data() {
+                        return {
+                            contentareas: c["contentareas"].findOne(),
+                            navbar: c["navbar"].find(),
+                            consultation: c["consultation"].find(),
+                            training: c["training"].find(),
+                            sticky: c["sticky"].find(),
+                            appointment: c["appointment"].find(),
+                            consultationForms: c["consultationForms"].find(),
+                            consultationSteps: c["consultationSteps"].find(),
+                            workshops: c["workshops"].find(),
+                            videos: c["videos"].find({_id: r})
+                        }
+                    }
+                });
+                router.render('navbar', {
+                    to: "navbar",
+                    data() {
+                        return {
+                            navbar: c["navbar"].find()
+                        }
+                    }
+                });
+            }
+        })
 
-        router.render('videos_seo', {
-            data() {
-                return {
-                    contentareas: c["contentareas"].findOne(),
-                    navbar: c["navbar"].find(),
-                    consultation: c["consultation"].find(),
-                    training: c["training"].find(),
-                    sticky: c["sticky"].find(),
-                    appointment: c["appointment"].find(),
-                    consultationForms: c["consultationForms"].find(),
-                    consultationSteps: c["consultationSteps"].find(),
-                    workshops: c["workshops"].find(),
-                    videos: c["videos"].find({_id: params._id})
-                }
-            }
-        });
-        router.render('navbar', {
-            to: "navbar",
-            data() {
-                return {
-                    navbar: c["navbar"].find()
-                }
-            }
-        });
     }
 });
 

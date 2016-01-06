@@ -18,6 +18,10 @@ Meteor.methods({
         return processEnvVar;
     },
 
+    "getYouTubeVideo" (name) {
+        return _YouTubeVideos[name.replace("?", "").replace("&", "").replace("=", "")]
+    },
+
     // TODO: refactor with lists for the channels ... or wait until there's only one channel
     //"searchVideo": function(text, count1, count2, pageTokens) {
     "searchVideo": function(text, count1, count2) {
@@ -28,13 +32,18 @@ Meteor.methods({
             } else {
                 res.items.forEach((element, index, array) => {
                     element["publishedAt"] = element.snippet.publishedAt;
-                    App.collections["videos"].insert(element, (e,r) => {
-                        if (!!e) {
-                            console.log(e);
-                        } else {
-                        }
-                    });
-                })
+
+                    if (element.id.kind === "youtube#video") {
+                        App.collections["videos"].insert(element, (e,r) => {
+                            if (!!e) {
+                                console.log(e);
+                            } else {
+                                let url = element.snippet.title.replace("?", "").replace("&", "").replace("=", "");
+                                _YouTubeVideos[url] = r;
+                            }
+                        });
+                    }
+                });
             }
         });
 
@@ -55,9 +64,8 @@ Meteor.methods({
                     maxResults: count2
                 };
 
-            // TODO: Not needed currently
+
             //if (!!pageTokens) {
-            //    // TODO: each
             //    search1.pageToken = (!!pageTokens[0] ) ? pageTokens[0] : null;
             //    search2.pageToken = (!!pageTokens[1] ) ? pageTokens[1] : null;
             //}
@@ -105,6 +113,7 @@ Meteor.methods({
                     if (!!e) {
                         console.log(e);
                     } else {
+                        // r = _id
                     }
                 });
             }
