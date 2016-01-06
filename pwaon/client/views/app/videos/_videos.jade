@@ -10,7 +10,6 @@ template(name="video_list")
             .row.center
                 +videos_icon_container
                 +videos_main_title_container
-                +videos_action_button
 
         +videos_menu
 
@@ -79,24 +78,6 @@ template(name="videos_main_title")
     h2.videos-title(class="{{#if currentUser}}edit{{/if}}")= title
 
 //
-template(name="videos_action_button")
-    if currentUser
-        a.btn-floating.btn-large.btn-edit.waves-light.green.right(href='youtube')
-            i.mdi-content-add Add
-//
-template(name="videos_remove_button")
-    if currentUser
-        i.remove-item.mdi-action-highlight-remove.left
-//
-template(name="videos_archive_button")
-    if currentUser
-        if archived
-            i.tiny.archive-item.right.material-icons.red-text restore
-        else
-            i.tiny.archive-item.right.material-icons.green-text schedule
-
-
-//
 template(name="videos_menu")
     .row
         form.col.s12
@@ -157,7 +138,7 @@ template(name="video_frame")
             .card-action
                 if this.snippet.resourceId
                     // Playlist item
-                    a(href="https://www.youtube.com/embed/#{this.snippet.resourceId.videoId}") View Fullscreen
+                    a(href="/video/#{this._id}" target="_blank") More info
                 else
                     // Searched video
-                    a(href="https://www.youtube.com/embed/#{this.id.videoId}") View Fullscreen
+                    a(href="/video/#{this._id}" target="_blank") More info

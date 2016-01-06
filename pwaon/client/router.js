@@ -247,9 +247,62 @@ Router.route('/videos', {
     }
 });
 
+
 // TODO:
 // Route videos for seo / server-side-rendering
 // Fetch videos, subscribe from db => each video => Router.route
+
+Router.route('/video/:_id', {
+    name: "videos_seo",
+    loadingTemplate: "loading",
+    layoutTemplate: "app",
+    waitOn() {
+        var noParams = false;
+
+        return CreateSubscriptions({
+            "contentareas": noParams,
+            "navbar": noParams,
+            "sticky": noParams,
+            "appointment": noParams,
+            "consultationForms": noParams,
+            "consultationSteps": noParams,
+            "workshops": noParams,
+            "videos": noParams
+        });
+    },
+    action(){
+        var router = this;
+        var params = router.params;
+        var c = App.collections;
+
+        Session.set("videosCount", c["videos"].find().count());
+
+        router.render('videos_seo', {
+            data() {
+                return {
+                    contentareas: c["contentareas"].findOne(),
+                    navbar: c["navbar"].find(),
+                    consultation: c["consultation"].find(),
+                    training: c["training"].find(),
+                    sticky: c["sticky"].find(),
+                    appointment: c["appointment"].find(),
+                    consultationForms: c["consultationForms"].find(),
+                    consultationSteps: c["consultationSteps"].find(),
+                    workshops: c["workshops"].find(),
+                    videos: c["videos"].find({_id: params._id})
+                }
+            }
+        });
+        router.render('navbar', {
+            to: "navbar",
+            data() {
+                return {
+                    navbar: c["navbar"].find()
+                }
+            }
+        });
+    }
+});
 
 
 // TODO: 404, etc

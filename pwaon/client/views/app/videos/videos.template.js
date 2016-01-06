@@ -1,7 +1,7 @@
-// TODO
-let search = (text, numResults1, numResults2, pageTokens) => {
-    //Meteor.call("searchVideo", text, numResults1, numResults2, pageTokens, (err,res) => console.debug(err, res) );
-};
+//
+//let search = (text, numResults1, numResults2, pageTokens) => {
+//    //Meteor.call("searchVideo", text, numResults1, numResults2, pageTokens, (err,res) => console.debug(err, res) );
+//};
 
 
 var fireSelector = ".scrollfire.videos";
@@ -42,7 +42,7 @@ Template.videos_search.events({
         Session.set("videosLength", 100);
         Session.set("isSearch", event.target[0].value);
         Session.set("selectedPlaylist", false);
-        // TODO: Refactor search
+        //
         //search(event.target[0].value, 6, 6);
     }
 });
@@ -104,7 +104,7 @@ Template.videos_menu.helpers({
 
 Template.videos_menu.events({
     //'click .videos-more': (event, template) => {
-        // TODO: Refactor
+
         //let tokens = [];
         //
         //template.data.videos.forEach((element,index,array) => {
@@ -116,7 +116,6 @@ Template.videos_menu.events({
         //search("all", 5, 5, tokens)
     //},
     //'click .videos-less': (event, template) => {
-        // TODO: Refactor
         //let tokens = [];
         //
         //template.data.videos.forEach((element,index,array) => {
@@ -143,7 +142,6 @@ Template.videos_categories.events({
         Session.set("isSearch", false);
         Session.set("videosLength", 9);
 
-        // TODO: Refactor/not needed
         //let counts = [6, 6];
         //
         //if (event.target.value === "all") {

@@ -1,0 +1,26 @@
+template(name='_videos_seo')
+    +sticky
+    +appointment
+
+    each videos
+        +video_seo_frame
+
+
+
+template(name="video_seo_frame")
+    h2.center= snippet.title
+
+
+    iframe(width='100%',
+    height='600px',
+    src='https://www.youtube.com/embed/#{id.videoId}',
+    frameborder='0',
+    allowfullscreen='')
+
+    // TODO: Description
+    h4 Description
+    p= snippet.description
+
+    h4.card-action
+        // Searched video
+        a(href="https://www.youtube.com/embed/#{this.id.videoId}") View on YouTube
