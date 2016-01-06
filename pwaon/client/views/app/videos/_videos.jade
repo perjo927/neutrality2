@@ -76,13 +76,11 @@ template(name="videos_main_title_container")
 
 //
 template(name="videos_main_title")
-    // TODO: Make title editable
     h2.videos-title(class="{{#if currentUser}}edit{{/if}}")= title
 
 //
 template(name="videos_action_button")
     if currentUser
-        //a.btn-floating.btn-large.btn-edit.waves-light.green.right.modal-trigger(href='#videos-creator')
         a.btn-floating.btn-large.btn-edit.waves-light.green.right(href='youtube')
             i.mdi-content-add Add
 //
