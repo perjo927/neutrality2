@@ -103,6 +103,22 @@ Router.route('/admin', {
     }
 });
 
+// Menu choices
+Router.route('/menu/:_id', {
+    name: "menu",
+    loadingTemplate: "loading",
+    layoutTemplate: "app",
+    onBeforeAction: function () {
+        var router = this;
+        var params = router.params;
+        Router.go(`/#${params._id}`);
+    },
+    action: function(){
+        var router = this;
+        this.next();
+    }
+});
+
 // SC
 Router.route('/soundcloud', {
     name: "soundcloud_sdk",

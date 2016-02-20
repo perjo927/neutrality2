@@ -8,8 +8,9 @@ Meteor.AppCache.config({
     chromium: false
 });
 
-Meteor.AppCache.config({
-    onlineOnly: [
-        //'/packages/jquery.js', // example
-    ]
-});
+// TODO
+//Meteor.AppCache.config({
+//    onlineOnly: [
+//        //'/packages/jquery.js', // example
+//    ]
+//});

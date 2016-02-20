@@ -3,12 +3,11 @@ Template.events_modal_date.onRendered(() => {
     this.$(".events_modal_pickdate").each(function() {
         let update = true,
             name = this.name,
-            data = this.dataset;
+            data = this.dataset,
+            setDate = moment(this.dateFrom).toDate(),
+            type = "dateFrom";
 
         if (this.name === "events_modal_date_from" ) {
-            let setDate = moment(this.dateFrom).toDate(),
-                type = "dateFrom";
-
             let pickerFrom = EventsCreator.createPicker(
                 this.id,
                 setDate,
@@ -18,8 +17,8 @@ Template.events_modal_date.onRendered(() => {
                 data
             );
         } else {
-            let setDate = moment(this.dateTo).toDate(),
-                type = "dateTo";
+            setDate = moment(this.dateTo).toDate();
+            let type = "dateTo";
         }
         let pickerTo = EventsCreator.createPicker(
             this.id,
