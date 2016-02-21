@@ -18,6 +18,19 @@ Template.navbar.events({
 });
 
 /*  */
+Template.nav_items.onRendered(() => {
+    $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: false,
+            hover: true,
+            gutter: 5,
+            belowOrigin: true,
+            alignment: 'left'
+        }
+    );
+});
+
 Template.nav_items.events({
     "click .edit": App.Template.Session.setDesignatedCollectionPropertyFromClickName(
         "editingNavbar", "text", App.Template.Jquery.focus)

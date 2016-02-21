@@ -54,29 +54,75 @@ template(name="nav_items_side")
 
 
 //
-// TODO: url-prefix
 template(name="nav_items")
     li
         a(href='#{{#unless currentUser}}{{about.link}}{{/unless}}'
-        name="about" class="{{#if currentUser}}edit{{/if}}")= about.text
+        name="about" class="{{#if currentUser}}edit{{/if}} dropdown-button"
+        data-activates='menu-dropdown-about')= about.text
+
+        ul#menu-dropdown-about.dropdown-content
+            a(href="#{{about.link}}")
+                each about.menu
+                    li= this
+
     li
         a(href='#{{#unless currentUser}}{{consultation.link}}{{/unless}}'
-        name="consultation" class="{{#if currentUser}}edit{{/if}}")= consultation.text
+        name="consultation" class="{{#if currentUser}}edit{{/if}} dropdown-button"
+        data-activates='menu-dropdown-consultation')= consultation.text
+
+        ul#menu-dropdown-consultation.dropdown-content
+            a(href="#{{consultation.link}}")
+                each consultation.menu
+                    li= this
+
     li
         a(href='#{{#unless currentUser}}{{resources.link}}{{/unless}}'
-        name="resources" class="{{#if currentUser}}edit{{/if}}")= resources.text
+        name="resources" class="{{#if currentUser}}edit{{/if}} dropdown-button"
+        data-activates='menu-dropdown-resources')= resources.text
+
+        ul#menu-dropdown-resources.dropdown-content
+            a(href="#{{resources.link}}")
+                each resources.menu
+                    li= this
+
     li
         a(href='#{{#unless currentUser}}{{training.link}}{{/unless}}'
-        name="training" class="{{#if currentUser}}edit{{/if}}")= training.text
+        name="training" class="{{#if currentUser}}edit{{/if}} dropdown-button"
+        data-activates='menu-dropdown-training')= training.text
+
+        ul#menu-dropdown-training.dropdown-content
+            a(href="#{{training.link}}")
+                each training.menu
+                    li= this
+
     li
         a(href='#{{#unless currentUser}}{{eventss.link}}{{/unless}}'
-        name="eventss" class="{{#if currentUser}}edit{{/if}}")= eventss.text
+        name="eventss" class="{{#if currentUser}}edit{{/if}} dropdown-button"
+        data-activates='menu-dropdown-eventss')= eventss.text
+
+        ul#menu-dropdown-eventss.dropdown-content
+            a(href="#{{eventss.link}}")
+                each eventss.menu
+                    li= this
+
     li
         a(href='#{{#unless currentUser}}{{experiences.link}}{{/unless}}'
-        name="experiences" class="{{#if currentUser}}edit{{/if}}")= experiences.text
+        name="experiences" class="{{#if currentUser}}edit{{/if}} dropdown-button"
+        data-activates='menu-dropdown-experiences')= experiences.text
+
+        ul#menu-dropdown-experiences.dropdown-content
+            a(href="#{{experiences.link}}")
+                each experiences.menu
+                    li= this
 
 //
 template(name="nav_appointment")
     li
         a.appointment-text.modal-trigger(href='#{{#unless currentUser}}{{appointment.link}}{{/unless}}'
-        name="appointment" class="{{#if currentUser}}edit{{/if}}")= appointment.text
+        name="appointment" class="{{#if currentUser}}edit{{/if}} dropdown-button"
+        data-activates='menu-dropdown-appointment')= appointment.text
+
+        ul#menu-dropdown-appointment.dropdown-content
+            a.modal-trigger(href="#{{appointment.link}}")
+                each appointment.menu
+                    li= this
