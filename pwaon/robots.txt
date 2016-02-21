@@ -1,0 +1,9 @@
+# Locations
+# Sitemap: http://www.din-domän.com/sitemap.xml
+# Sitemap: http://www.din-domän.com/sitemap2.xml
+
+Allow: /*.css$
+Allow: /*.js$
+
+User-agent: *
+# Disallow: /admin/

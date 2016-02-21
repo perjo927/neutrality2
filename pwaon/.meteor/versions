@@ -14,6 +14,7 @@ caching-compiler@1.0.0
 caching-html-compiler@1.0.2
 callback-hook@1.0.4
 check@1.1.0
+coffeescript@1.0.11
 dburles:mongo-collection-instances@0.3.4
 ddp@1.2.2
 ddp-client@1.2.1
@@ -31,6 +32,8 @@ es5-shim@4.1.14
 fastclick@1.0.7
 fourseven:scss@3.4.1
 francocatena:compass@0.6.0
+gadicohen:robots-txt@0.0.10
+gadicohen:sitemaps@0.0.23
 geojson-utils@1.0.4
 hot-code-push@1.0.0
 html-tools@1.0.5
@@ -51,6 +54,7 @@ launch-screen@1.0.4
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
+manuelschoebel:ms-seo@0.4.1
 markdown@1.0.5
 materialize:materialize@0.97.3
 meteor@1.1.10
@@ -87,6 +91,7 @@ session@1.1.1
 sha@1.0.4
 spacebars@1.0.7
 spacebars-compiler@1.0.7
+spiderable@1.0.9
 srp@1.0.4
 standard-minifiers@1.0.2
 templating@1.1.5
