@@ -90,6 +90,8 @@ Session.setDefault("editingResourcesIcon", false);
 Session.setDefault("editingResourcesCardTitle", false);
 Session.setDefault("editingResourcesCardIcon", false);
 
+Session.setDefault("editingSoundcloudPlaylist", false);
+
 Session.setDefault("editingTrainingTitle", false);
 Session.setDefault("editingTrainingIcon", false);
 Session.setDefault("editingTrainingTitle", false);

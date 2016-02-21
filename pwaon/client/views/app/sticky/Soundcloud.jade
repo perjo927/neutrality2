@@ -1,3 +1,14 @@
 //
 template(name="SoundCloud")
-    iframe(width='100%', height='475', scrolling='no', frameborder='no', src='#{this.link}')
+    .col.s12
+        if currentUser
+            if Session 'editingSoundcloudPlaylist'
+                .black-text
+                    +InputHelper(attribute="link" document=this collection="sticky"
+                    class="form-control" placeholder=link id=this)
+            else
+                i.material-icons.sticky-icon(name="link" class="{{#if currentUser}}edit{{/if}}") playlist_add
+
+
+    .col.s12
+        iframe(width='100%', height='475', scrolling='no', frameborder='no', src='#{this.link}')
