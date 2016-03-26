@@ -19,7 +19,6 @@ msavin:jetsetter
 erasaur:session-helper
 standard-minifiers
 meteor-base
-mobile-experience
 mongo
 blaze-html-templates
 session
