@@ -17,7 +17,6 @@ markdown
 accounts-password
 msavin:jetsetter
 erasaur:session-helper
-standard-minifiers
 meteor-base
 mongo
 blaze-html-templates
@@ -41,3 +40,5 @@ webapp
 gadicohen:sitemaps
 spiderable
 manuelschoebel:ms-seo
+standard-minifier-css
+standard-minifier-js
