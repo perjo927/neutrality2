@@ -38,7 +38,7 @@ renaldo:youtube-api
 es5-shim
 webapp
 gadicohen:sitemaps
-spiderable
 manuelschoebel:ms-seo
 standard-minifier-css
 standard-minifier-js
+gadicohen:spiderable-remote

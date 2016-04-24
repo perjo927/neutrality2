@@ -34,6 +34,7 @@ fourseven:scss@3.4.3
 francocatena:compass@0.6.0
 gadicohen:robots-txt@0.0.10
 gadicohen:sitemaps@0.0.24
+gadicohen:spiderable-remote@0.0.9
 geojson-utils@1.0.8
 hot-code-push@1.0.4
 html-tools@1.0.9
@@ -92,7 +93,6 @@ session@1.1.5
 sha@1.0.7
 spacebars@1.0.11
 spacebars-compiler@1.0.11
-spiderable@1.0.13
 srp@1.0.8
 standard-minifier-css@1.0.6
 standard-minifier-js@1.0.6
